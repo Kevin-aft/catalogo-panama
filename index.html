@@ -18,7 +18,6 @@
       --text: #f8fafc;
       --text-muted: #94a3b8;
       --danger: #ef4444;
-      --danger-hover: #dc2626;
       --wa-color: #25d366;
       --wa-hover: #20ba59;
     }
@@ -317,9 +316,6 @@
       font-size: 0.82rem;
       color: #60a5fa;
       font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
     }
 
     .cart-total {
@@ -394,9 +390,9 @@
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 18px;
-      max-width: 520px;
+      max-width: 540px;
       width: 100%;
-      max-height: 85vh;
+      max-height: 90vh;
       display: flex;
       flex-direction: column;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
@@ -442,7 +438,7 @@
       flex-grow: 1;
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 1.2rem;
     }
 
     .cart-item {
@@ -522,6 +518,73 @@
     .btn-delete:hover {
       background: var(--danger);
       color: white;
+    }
+
+    /* FORMULARIO DE ENTREGA DENTRO DEL MODAL */
+    .delivery-section {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .delivery-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #e2e8f0;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .delivery-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+    }
+
+    .radio-card {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--card-border);
+      padding: 0.65rem 0.75rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      color: #cbd5e1;
+      transition: all 0.2s;
+    }
+
+    .radio-card input {
+      accent-color: var(--accent);
+    }
+
+    .radio-card:hover {
+      border-color: #3b82f6;
+    }
+
+    .customer-inputs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+    }
+
+    .custom-input {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--card-border);
+      color: white;
+      padding: 0.65rem 0.8rem;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      outline: none;
+    }
+
+    .custom-input:focus {
+      border-color: var(--accent);
     }
 
     .modal-footer {
@@ -605,16 +668,16 @@
           <p>Añade o retira fragancias de tu carrito en cualquier momento.</p>
         </div>
         <div class="service-item">
-          <h4>2. Pedido directo a WhatsApp</h4>
-          <p>Envía tu selección en un solo toque para coordinar disponibilidad y detalles.</p>
+          <h4>2. Elige entrega y pide por WhatsApp</h4>
+          <p>Selecciona retiro presencial o envío y envíanos tu pedido con un solo toque.</p>
         </div>
         <div class="service-item">
-          <h4>3. Método de entrega a tu gusto</h4>
-          <p>Coordinamos entregas presenciales directas o envíos seguros por encomienda/delivery.</p>
+          <h4>3. Coordinación directa</h4>
+          <p>Te confirmamos disponibilidad inmediata y coordinamos el horario o la guía de envío.</p>
         </div>
         <div class="service-item">
           <h4>4. Pago transparente</h4>
-          <p>Aceptamos transferencias bancarias directas y pago contra entrega presencial.</p>
+          <p>Aceptamos transferencias bancarias y pago contra entrega en Quito.</p>
         </div>
       </div>
     </section>
@@ -623,7 +686,7 @@
   <!-- BARRA FLOTANTE -->
   <div class="floating-bar">
     <div class="floating-content">
-      <div class="cart-summary" id="cartSummaryTrigger" title="Haz clic para revisar o quitar perfumes">
+      <div class="cart-summary" id="cartSummaryTrigger" title="Haz clic para revisar o editar">
         <span class="cart-count" id="cartCount">0 perfumes seleccionados ✎</span>
         <span class="cart-total" id="cartTotal">$0.00 USD</span>
       </div>
@@ -634,19 +697,40 @@
     </div>
   </div>
 
-  <!-- MODAL / VENTANA DEL CARRITO -->
+  <!-- MODAL / VENTANA DEL CARRITO CON SELECTOR DE ENTREGA -->
   <div class="modal-overlay" id="cartModal">
     <div class="modal-box">
       <div class="modal-header">
         <h3>Tu Carrito de Fragancias</h3>
         <button class="modal-close" id="btnCloseCart">&times;</button>
       </div>
-      <div class="modal-body" id="cartItemsList">
-        <!-- Elementos del carrito cargados dinámicamente -->
+      <div class="modal-body">
+        <div id="cartItemsList">
+          <!-- Lista cargada dinámicamente -->
+        </div>
+
+        <!-- Sección de detalles de entrega -->
+        <div class="delivery-section">
+          <div class="delivery-title">Método de Entrega</div>
+          <div class="delivery-options">
+            <label class="radio-card">
+              <input type="radio" name="deliveryMethod" value="Presencial en Quito" checked>
+              <span>Presencial en Quito</span>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="deliveryMethod" value="Envío por Servientrega">
+              <span>Envío (Servientrega)</span>
+            </label>
+          </div>
+          <div class="customer-inputs">
+            <input type="text" id="customerName" class="custom-input" placeholder="Tu Nombre (Opcional)">
+            <input type="text" id="customerLocation" class="custom-input" placeholder="Ciudad o Sector">
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
         <div class="modal-total-row">
-          <span>Total a Pagar:</span>
+          <span>Total:</span>
           <span id="modalCartTotal">$0.00 USD</span>
         </div>
         <button class="btn-wa" style="width: 100%; justify-content: center;" id="btnModalWhatsapp">
@@ -783,7 +867,6 @@
       }
     ];
 
-    // Carrito estructurado por objetos con cantidades
     let carrito = [];
 
     const grid = document.getElementById('productsGrid');
@@ -794,13 +877,14 @@
     const btnWhatsapp = document.getElementById('btnWhatsapp');
     const btnModalWhatsapp = document.getElementById('btnModalWhatsapp');
     
-    // Modal elementos
     const cartModal = document.getElementById('cartModal');
     const btnOpenCart = document.getElementById('btnOpenCart');
     const btnCloseCart = document.getElementById('btnCloseCart');
     const cartItemsList = document.getElementById('cartItemsList');
     const modalCartTotal = document.getElementById('modalCartTotal');
     const cartSummaryTrigger = document.getElementById('cartSummaryTrigger');
+    const customerName = document.getElementById('customerName');
+    const customerLocation = document.getElementById('customerLocation');
 
     let categoriaActual = 'all';
 
@@ -845,7 +929,6 @@
       });
     }
 
-    // Funciones del Carrito: Agregar, Sumar, Restar, Eliminar
     window.agregarAlCarrito = function(id) {
       const prod = PRODUCTOS.find(p => p.id === id);
       if (!prod) return;
@@ -888,11 +971,9 @@
       const totalUnidades = contarTotalItems();
       const totalDinero = calcularTotal();
 
-      // Barra inferior
       cartCount.textContent = `${totalUnidades} perfume${totalUnidades === 1 ? '' : 's'} seleccionado${totalUnidades === 1 ? '' : 's'} ✎`;
       cartTotal.textContent = `$${totalDinero.toFixed(2)} USD`;
 
-      // Modal
       modalCartTotal.textContent = `$${totalDinero.toFixed(2)} USD`;
       renderizarListaModal();
     }
@@ -901,7 +982,7 @@
       cartItemsList.innerHTML = '';
 
       if (carrito.length === 0) {
-        cartItemsList.innerHTML = '<p style="color: var(--text-muted); text-align: center; padding: 2rem 0;">Tu carrito está vacío. Agrega una fragancia del catálogo.</p>';
+        cartItemsList.innerHTML = '<p style="color: var(--text-muted); text-align: center; padding: 1.5rem 0;">Tu carrito está vacío.</p>';
         return;
       }
 
@@ -924,7 +1005,6 @@
       });
     }
 
-    // Abrir y cerrar modal
     function abrirModal() {
       renderizarListaModal();
       cartModal.classList.add('active');
@@ -942,14 +1022,21 @@
       if (e.target === cartModal) cerrarModal();
     });
 
-    // Enviar pedido por WhatsApp
     function procesarPedidoWhatsApp() {
       if (carrito.length === 0) {
         alert("Selecciona al menos un perfume para coordinar tu pedido.");
         return;
       }
 
-      let mensaje = "¡Hola! Me interesa adquirir los siguientes perfumes de tu catálogo:%0A%0A";
+      const metodoSeleccionado = document.querySelector('input[name="deliveryMethod"]:checked')?.value || 'Presencial en Quito';
+      const nombre = customerName.value.trim();
+      const ubicacion = customerLocation.value.trim();
+
+      let saludo = "¡Hola!";
+      if (nombre) saludo += ` Soy *${nombre}*.`;
+      saludo += " Me interesa adquirir los siguientes perfumes de tu catálogo:%0A%0A";
+
+      let mensaje = saludo;
       carrito.forEach((p, index) => {
         const subtotal = p.price > 0 ? `$${(p.price * p.cantidad).toFixed(2)}` : 'A cotizar';
         mensaje += `${index + 1}. *${p.name}* (x${p.cantidad}) - ${subtotal}%0A`;
@@ -959,16 +1046,27 @@
       if (total > 0) {
         mensaje += `%0A*Total estimado:* $${total.toFixed(2)} USD%0A`;
       }
-      mensaje += "%0A¿Me confirmas disponibilidad y opciones de entrega (presencial o envío)? Muchas gracias.";
+
+      mensaje += `%0A📍 *Método de entrega preferido:* ${metodoSeleccionado}`;
+      if (ubicacion) {
+        mensaje += `%0A📍 *Ciudad / Sector:* ${ubicacion}`;
+      }
+
+      mensaje += "%0A%0A¿Me confirmas disponibilidad y los datos para coordinar el pago? Muchas gracias.";
 
       const url = `https://wa.me/${MI_WHATSAPP}?text=${mensaje}`;
       window.open(url, '_blank');
     }
 
-    btnWhatsapp.addEventListener('click', procesarPedidoWhatsApp);
+    btnWhatsapp.addEventListener('click', () => {
+      if (carrito.length === 0) {
+        alert("Selecciona al menos un perfume para coordinar tu pedido.");
+        return;
+      }
+      abrirModal();
+    });
     btnModalWhatsapp.addEventListener('click', procesarPedidoWhatsApp);
 
-    // Búsqueda y filtros
     searchInput.addEventListener('input', (e) => {
       renderizar(e.target.value);
     });
