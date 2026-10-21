@@ -255,14 +255,14 @@
     .container {
       max-width: 1220px;
       margin: 0 auto;
-      padding: 2.5rem 1.25rem;
+      padding: 2rem 1.25rem;
     }
 
     .tester-banner {
       background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(18, 22, 33, 0.85) 100%);
       border: 1px solid var(--gold);
       border-radius: 16px;
-      padding: 1.35rem 1.6rem;
+      padding: 1.2rem 1.5rem;
       margin-bottom: 2rem;
       display: flex;
       align-items: center;
@@ -272,111 +272,92 @@
     }
 
     .tester-text h4 {
-      font-size: 1.05rem;
+      font-size: 1rem;
       color: var(--gold-light);
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.25rem;
       display: flex;
       align-items: center;
       gap: 0.5rem;
     }
 
     .tester-text p {
-      font-size: 0.86rem;
+      font-size: 0.84rem;
       color: #cbd5e1;
       margin: 0;
       line-height: 1.55;
     }
 
-    .controls {
+    /* BARRA DE BÚSQUEDA Y ACCESO RÁPIDO LIMPIO */
+    .search-wrapper-clean {
       display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-bottom: 2.5rem;
+      gap: 0.75rem;
+      align-items: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
     }
 
-    .search-box {
-      width: 100%;
+    .search-box-clean {
+      flex: 1;
+      min-width: 250px;
       background: rgba(18, 22, 33, 0.85);
       border: 1px solid var(--card-border);
       color: white;
-      padding: 1.05rem 1.35rem;
-      border-radius: 14px;
-      font-size: 0.95rem;
+      padding: 0.95rem 1.35rem;
+      border-radius: 12px;
+      font-size: 0.92rem;
       outline: none;
       transition: all 0.25s ease;
     }
 
-    .search-box:focus {
+    .search-box-clean:focus {
       border-color: var(--gold);
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
     }
 
-    .tabs-label {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--gold-light);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-top: 0.25rem;
-    }
-
-    .filter-tabs {
-      display: flex;
-      gap: 0.5rem;
-      overflow-x: auto;
-      padding-bottom: 0.4rem;
-    }
-
-    .filter-btn {
-      background: rgba(18, 22, 33, 0.75);
+    .btn-clean-fav {
+      background: rgba(18, 22, 33, 0.85);
       border: 1px solid var(--card-border);
-      color: var(--text-muted);
-      padding: 0.55rem 1.15rem;
-      border-radius: 999px;
-      cursor: pointer;
-      font-size: 0.82rem;
-      font-weight: 600;
-      white-space: nowrap;
-      transition: all 0.2s ease;
-    }
-
-    .filter-btn.active, .filter-btn:hover {
-      background: var(--gold-gradient);
-      color: #07090e;
-      border-color: var(--gold);
+      color: #cbd5e1;
+      padding: 0.9rem 1.2rem;
+      border-radius: 12px;
+      font-size: 0.85rem;
       font-weight: 700;
-      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s ease;
+      white-space: nowrap;
     }
 
-    .filter-btn.fav-tab.active {
-      background: rgba(239, 68, 68, 0.2);
+    .btn-clean-fav:hover, .btn-clean-fav.active {
       border-color: #ef4444;
+      background: rgba(239, 68, 68, 0.15);
       color: #f87171;
     }
 
-    .notes-filter-wrap {
-      display: flex;
-      gap: 0.45rem;
-      overflow-x: auto;
-      padding-bottom: 0.3rem;
-    }
-
-    .note-tag-btn {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px dashed var(--card-border);
-      color: #cbd5e1;
-      padding: 0.35rem 0.85rem;
-      border-radius: 999px;
-      cursor: pointer;
-      font-size: 0.75rem;
-      white-space: nowrap;
-      transition: all 0.2s;
-    }
-
-    .note-tag-btn.active, .note-tag-btn:hover {
+    .active-filter-indicator {
+      display: none;
+      align-items: center;
+      gap: 0.5rem;
       background: var(--gold-soft);
-      border-color: var(--gold);
+      border: 1px solid var(--gold);
       color: var(--gold-light);
+      padding: 0.4rem 0.9rem;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      width: fit-content;
+    }
+
+    .active-filter-indicator button {
+      background: transparent;
+      border: none;
+      color: #f87171;
+      cursor: pointer;
+      font-size: 0.9rem;
+      margin-left: 0.3rem;
     }
 
     .products-grid {
@@ -700,7 +681,7 @@
 
     .faq-item.active .faq-icon { transform: rotate(45deg); }
 
-    /* FRANJA DE PAGOS LOCALES */
+    /* FRANJA DE PAGOS */
     .payment-strip {
       display: flex;
       justify-content: center;
@@ -847,7 +828,7 @@
       transform: translateY(-1px);
     }
 
-    /* BURBUJA FLOTANTE WHATSAPP FIJA */
+    /* BURBUJA FLOTANTE WHATSAPP */
     .whatsapp-float-btn {
       position: fixed;
       bottom: 85px;
@@ -1517,7 +1498,7 @@
 </head>
 <body>
 
-  <!-- BARRA DE NAVEGACIÓN DESPLEGABLE SUPERIOR -->
+  <!-- BARRA DE NAVEGACIÓN SUPERIOR CON DESPLEGABLES -->
   <nav class="main-navbar">
     <div class="nav-container">
       <ul class="nav-menu">
@@ -1525,7 +1506,6 @@
           <a class="nav-link active" onclick="filtrarNav('all')">Todos</a>
         </li>
 
-        <!-- Desplegable Caballero -->
         <li class="nav-item has-dropdown">
           <a class="nav-link">Caballero ▾</a>
           <ul class="dropdown-menu">
@@ -1538,7 +1518,6 @@
           </ul>
         </li>
 
-        <!-- Desplegable Dama -->
         <li class="nav-item has-dropdown">
           <a class="nav-link">Dama ▾</a>
           <ul class="dropdown-menu">
@@ -1550,7 +1529,6 @@
           </ul>
         </li>
 
-        <!-- Desplegable Árabes -->
         <li class="nav-item has-dropdown">
           <a class="nav-link">Árabes Selectos ▾</a>
           <ul class="dropdown-menu">
@@ -1616,56 +1594,17 @@
       </div>
     </div>
 
-    <div class="controls">
-      <input type="text" id="searchInput" class="search-box" placeholder="Buscar por perfume, diseñador o notas (ej. vainilla, café, cítrico, tabaco)...">
-      
-      <div class="tabs-label">Público:</div>
-      <div class="filter-tabs" id="categoryTabs">
-        <button class="filter-btn active" data-cat="all">Todos</button>
-        <button class="filter-btn" data-cat="hombre">Caballero</button>
-        <button class="filter-btn" data-cat="mujer">Dama</button>
-        <button class="filter-btn" data-cat="arabes">Árabes Selectos</button>
-        <button class="filter-btn fav-tab" id="btnFavTab" onclick="filtrarFavoritos()">♥ Mis Favoritos (<span id="favCount">0</span>)</button>
-        <button class="filter-btn" data-cat="custom">A Pedido</button>
-      </div>
+    <!-- BARRA DE BÚSQUEDA LIMPIA SIN LAS 5 FILAS DE BOTONES -->
+    <div class="search-wrapper-clean">
+      <input type="text" id="searchInput" class="search-box-clean" placeholder="🔍 Escribe lo que buscas: 'vainilla', 'café', 'Dior', 'EDP', 'cítrico', 'noche'...">
+      <button class="btn-clean-fav" id="btnFavTab" onclick="filtrarFavoritos()">
+        ♥ Mis Favoritos (<span id="favCount">0</span>)
+      </button>
+    </div>
 
-      <div class="tabs-label">Concentración / Intensidad:</div>
-      <div class="filter-tabs" id="concentrationTabs">
-        <button class="filter-btn active" data-conc="all">✨ Todas</button>
-        <button class="filter-btn" data-conc="edp">💧 Eau de Parfum (EDP)</button>
-        <button class="filter-btn" data-conc="edt">🍃 Eau de Toilette (EDT)</button>
-        <button class="filter-btn" data-conc="elixir">🔥 Elixir / Parfum</button>
-      </div>
-
-      <div class="tabs-label">Clima & Momento del día:</div>
-      <div class="filter-tabs" id="climateTabs">
-        <button class="filter-btn active" data-clim="all">✨ Cualquier Clima</button>
-        <button class="filter-btn" data-clim="frio">❄️ Frío / Lluvia / Noche</button>
-        <button class="filter-btn" data-clim="calor">☀️ Sol / Mediodía Cálido</button>
-        <button class="filter-btn" data-clim="versatil">⛅ Templado / Todo Terreno</button>
-      </div>
-
-      <div class="tabs-label">Temporada & Ocasión:</div>
-      <div class="filter-tabs" id="occasionTabs">
-        <button class="filter-btn occasion-btn active" data-occ="all">✨ Todos</button>
-        <button class="filter-btn occasion-btn" data-occ="halloween">🎃 Noches Frías / Dulces</button>
-        <button class="filter-btn occasion-btn" data-occ="navidad">🎄 Regalos & Fiesta</button>
-        <button class="filter-btn occasion-btn" data-occ="verano">☀️ Frescos & Versátiles</button>
-        <button class="filter-btn occasion-btn" data-occ="noche">🌙 Citas Elegantes</button>
-        <button class="filter-btn occasion-btn" data-occ="diario">💼 Trabajo & Oficina</button>
-      </div>
-
-      <div class="tabs-label">Explorar por Notas Clave:</div>
-      <div class="notes-filter-wrap" id="notesFilterWrap">
-        <button class="note-tag-btn active" data-note="all">Todas las notas</button>
-        <button class="note-tag-btn" data-note="vainilla">🍦 Vainilla</button>
-        <button class="note-tag-btn" data-note="café">☕ Café</button>
-        <button class="note-tag-btn" data-note="cítrico">🍋 Cítrico / Limón</button>
-        <button class="note-tag-btn" data-note="tabaco">🍂 Tabaco</button>
-        <button class="note-tag-btn" data-note="oud">🪵 Madera de Oud</button>
-        <button class="note-tag-btn" data-note="fresa">🍓 Fresa / Dulce</button>
-        <button class="note-tag-btn" data-note="mango">🥭 Mango Tropical</button>
-      </div>
+    <div class="active-filter-indicator" id="activeFilterBadge">
+      <span id="activeFilterText">Filtro activo</span>
+      <button onclick="limpiarFiltros()">✕ Quitar</button>
     </div>
 
     <div class="products-grid" id="productsGrid"></div>
@@ -1763,7 +1702,6 @@
       </div>
       <div class="modal-body">
         
-        <!-- TERMÓMETRO ENVÍO GRATIS -->
         <div class="shipping-progress-box">
           <span class="shipping-progress-text" id="shippingProgressText">Agrega perfumes para activar Envío Gratis</span>
           <div class="shipping-bar-bg">
@@ -2318,13 +2256,12 @@
     let favoritos = JSON.parse(localStorage.getItem('vantage_favs') || '[]');
     let modoSoloFavoritos = false;
 
+    // Estados de filtro activo
+    let filtroActivoTipo = 'todos'; 
+    let filtroActivoValor = 'all';
+
     const grid = document.getElementById('productsGrid');
     const searchInput = document.getElementById('searchInput');
-    const categoryBtns = document.querySelectorAll('#categoryTabs .filter-btn');
-    const concentrationBtns = document.querySelectorAll('#concentrationTabs .filter-btn');
-    const occasionBtns = document.querySelectorAll('#occasionTabs .filter-btn');
-    const climateBtns = document.querySelectorAll('#climateTabs .filter-btn');
-    const noteBtns = document.querySelectorAll('#notesFilterWrap .note-tag-btn');
     const cartCount = document.getElementById('cartCount');
     const cartTotal = document.getElementById('cartTotal');
     const btnWhatsapp = document.getElementById('btnWhatsapp');
@@ -2334,6 +2271,8 @@
     const compareCount = document.getElementById('compareCount');
     const favCount = document.getElementById('favCount');
     const btnFavTab = document.getElementById('btnFavTab');
+    const activeFilterBadge = document.getElementById('activeFilterBadge');
+    const activeFilterText = document.getElementById('activeFilterText');
     
     // Modal Carrito
     const cartModal = document.getElementById('cartModal');
@@ -2403,11 +2342,6 @@
     const quoteSize = document.getElementById('quoteSize');
     const quoteBudget = document.getElementById('quoteBudget');
 
-    let categoriaActual = 'all';
-    let concentracionActual = 'all';
-    let ocasionActual = 'all';
-    let climaActual = 'all';
-    let notaActual = 'all';
     let respuestasQuiz = { genero: '', ocasion: '' };
 
     function actualizarContadorFavoritos() {
@@ -2438,94 +2372,137 @@
 
     function filtrarFavoritos() {
       modoSoloFavoritos = !modoSoloFavoritos;
-      categoryBtns.forEach(b => b.classList.remove('active'));
+      btnFavTab.classList.toggle('active', modoSoloFavoritos);
 
       if (modoSoloFavoritos) {
-        btnFavTab.classList.add('active');
+        mostrarInsigniaFiltro("♥ Mis Favoritos");
       } else {
-        document.querySelector('#categoryTabs .filter-btn[data-cat="all"]').classList.add('active');
-        categoriaActual = 'all';
+        limpiarFiltros();
       }
       renderizar(searchInput.value);
     }
 
-    // Funciones puente para la barra superior
+    function mostrarInsigniaFiltro(texto) {
+      activeFilterText.textContent = `Filtro: ${texto}`;
+      activeFilterBadge.style.display = 'inline-flex';
+    }
+
+    function limpiarFiltros() {
+      modoSoloFavoritos = false;
+      filtroActivoTipo = 'todos';
+      filtroActivoValor = 'all';
+      btnFavTab.classList.remove('active');
+      activeFilterBadge.style.display = 'none';
+      searchInput.value = '';
+      renderizar('');
+    }
+
+    // Funciones activadas desde la barra superior desplegable
     function filtrarNav(cat) {
       modoSoloFavoritos = false;
       btnFavTab.classList.remove('active');
-      categoryBtns.forEach(b => {
-        b.classList.toggle('active', b.getAttribute('data-cat') === cat);
-      });
-      categoriaActual = cat;
+      filtroActivoTipo = 'cat';
+      filtroActivoValor = cat;
+
+      if (cat === 'all') {
+        limpiarFiltros();
+      } else {
+        const nombres = { hombre: 'Caballero', mujer: 'Dama', arabes: 'Árabes Selectos', custom: 'A Pedido' };
+        mostrarInsigniaFiltro(nombres[cat] || cat);
+      }
       renderizar(searchInput.value);
-      document.querySelector('.controls').scrollIntoView({ behavior: 'smooth' });
+      document.querySelector('.search-wrapper-clean').scrollIntoView({ behavior: 'smooth' });
     }
 
     function filtrarClimaNav(clim) {
-      climateBtns.forEach(b => {
-        b.classList.toggle('active', b.getAttribute('data-clim') === clim);
-      });
-      climaActual = clim;
+      modoSoloFavoritos = false;
+      btnFavTab.classList.remove('active');
+      filtroActivoTipo = 'clima';
+      filtroActivoValor = clim;
+      const nombres = { frio: 'Frío / Noches / Citas', calor: 'Sol / Diario / Cítricos' };
+      mostrarInsigniaFiltro(nombres[clim] || clim);
       renderizar(searchInput.value);
-      document.querySelector('.controls').scrollIntoView({ behavior: 'smooth' });
+      document.querySelector('.search-wrapper-clean').scrollIntoView({ behavior: 'smooth' });
     }
 
     function filtrarConcNav(conc) {
-      concentrationBtns.forEach(b => {
-        b.classList.toggle('active', b.getAttribute('data-conc') === conc);
-      });
-      concentracionActual = conc;
+      modoSoloFavoritos = false;
+      btnFavTab.classList.remove('active');
+      filtroActivoTipo = 'conc';
+      filtroActivoValor = conc;
+      mostrarInsigniaFiltro(`Concentración ${conc.toUpperCase()}`);
       renderizar(searchInput.value);
-      document.querySelector('.controls').scrollIntoView({ behavior: 'smooth' });
+      document.querySelector('.search-wrapper-clean').scrollIntoView({ behavior: 'smooth' });
     }
 
     function filtrarOccNav(occ) {
-      occasionBtns.forEach(b => {
-        b.classList.toggle('active', b.getAttribute('data-occ') === occ);
-      });
-      ocasionActual = occ;
+      modoSoloFavoritos = false;
+      btnFavTab.classList.remove('active');
+      filtroActivoTipo = 'occ';
+      filtroActivoValor = occ;
+      mostrarInsigniaFiltro("Especial Temporada");
       renderizar(searchInput.value);
-      document.querySelector('.controls').scrollIntoView({ behavior: 'smooth' });
+      document.querySelector('.search-wrapper-clean').scrollIntoView({ behavior: 'smooth' });
     }
 
     function filtrarNotaNav(nota) {
-      noteBtns.forEach(b => {
-        b.classList.toggle('active', b.getAttribute('data-note') === nota);
-      });
-      notaActual = nota;
+      modoSoloFavoritos = false;
+      btnFavTab.classList.remove('active');
+      filtroActivoTipo = 'nota';
+      filtroActivoValor = nota;
+      mostrarInsigniaFiltro(`Nota: ${nota}`);
       renderizar(searchInput.value);
-      document.querySelector('.controls').scrollIntoView({ behavior: 'smooth' });
+      document.querySelector('.search-wrapper-clean').scrollIntoView({ behavior: 'smooth' });
     }
 
     function filtrarTextoNav(txt) {
       searchInput.value = txt;
       renderizar(txt);
-      document.querySelector('.controls').scrollIntoView({ behavior: 'smooth' });
+      document.querySelector('.search-wrapper-clean').scrollIntoView({ behavior: 'smooth' });
     }
 
+    // Renderizador optimizado y limpio
     function renderizar(filtroTexto = '') {
       grid.innerHTML = '';
+      const textoLower = filtroTexto.toLowerCase().trim();
+
       const filtrados = PRODUCTOS.filter(p => {
         if (modoSoloFavoritos) {
           return favoritos.includes(p.id);
         }
 
-        const coincideCat = categoriaActual === 'all' || p.category.includes(categoriaActual);
-        const coincideConc = concentracionActual === 'all' || p.concentration === concentracionActual;
-        const coincideOcc = ocasionActual === 'all' || (p.occasions && p.occasions.includes(ocasionActual));
-        const coincideClim = climaActual === 'all' || (p.climate && (p.climate === climaActual || p.climate === 'versatil'));
-        const coincideNota = notaActual === 'all' || (p.notesKey && p.notesKey.includes(notaActual));
-        const coincideTexto = p.name.toLowerCase().includes(filtroTexto.toLowerCase()) || 
-                              (p.salida && p.salida.toLowerCase().includes(filtroTexto.toLowerCase())) ||
-                              (p.fondo && p.fondo.toLowerCase().includes(filtroTexto.toLowerCase())) ||
-                              p.desc.toLowerCase().includes(filtroTexto.toLowerCase());
-        return coincideCat && coincideConc && coincideOcc && coincideClim && coincideNota && coincideTexto;
+        // Filtro por menú desplegable activo
+        if (filtroActivoTipo === 'cat' && filtroActivoValor !== 'all') {
+          if (!p.category.includes(filtroActivoValor)) return false;
+        } else if (filtroActivoTipo === 'clima') {
+          if (p.climate !== filtroActivoValor && p.climate !== 'versatil') return false;
+        } else if (filtroActivoTipo === 'conc') {
+          if (p.concentration !== filtroActivoValor) return false;
+        } else if (filtroActivoTipo === 'occ') {
+          if (!p.occasions || !p.occasions.includes(filtroActivoValor)) return false;
+        } else if (filtroActivoTipo === 'nota') {
+          if (!p.notesKey || !p.notesKey.includes(filtroActivoValor)) return false;
+        }
+
+        // Búsqueda inteligente: busca en nombre, notas, descripción, público y concentración
+        if (textoLower) {
+          const coincide = p.name.toLowerCase().includes(textoLower) || 
+                           (p.salida && p.salida.toLowerCase().includes(textoLower)) ||
+                           (p.corazon && p.corazon.toLowerCase().includes(textoLower)) ||
+                           (p.fondo && p.fondo.toLowerCase().includes(textoLower)) ||
+                           (p.notesKey && p.notesKey.toLowerCase().includes(textoLower)) ||
+                           (p.type && p.type.toLowerCase().includes(textoLower)) ||
+                           p.desc.toLowerCase().includes(textoLower);
+          if (!coincide) return false;
+        }
+
+        return true;
       });
 
       if (filtrados.length === 0) {
         grid.innerHTML = modoSoloFavoritos 
           ? '<p style="color: var(--text-muted); grid-column: 1/-1; text-align: center; padding: 3rem;">Aún no tienes perfumes guardados como favoritos. Toca el corazón ♥ en cualquier fragancia para verla aquí.</p>'
-          : '<p style="color: var(--text-muted); grid-column: 1/-1; text-align: center; padding: 3rem;">No se encontraron perfumes en Perfumería Vantage con ese criterio.</p>';
+          : '<p style="color: var(--text-muted); grid-column: 1/-1; text-align: center; padding: 3rem;">No se encontraron perfumes con ese criterio. Prueba con otra palabra clave en el buscador.</p>';
         return;
       }
 
@@ -2915,7 +2892,6 @@
 
       modalCartTotal.textContent = `$${totalDinero.toFixed(2)} USD`;
 
-      // Termómetro Envío Gratis
       if (subtotalReal >= META_ENVIO_GRATIS) {
         shippingProgressText.innerHTML = `🎉 <strong>¡Felicidades! Tienes Envío Gratis asegurado</strong>`;
         shippingBarFill.style.width = '100%';
@@ -3238,57 +3214,9 @@
       quoteModal.classList.remove('active');
     });
 
-    // Filtros & Buscador
+    // Filtros & Buscador en Vivo
     searchInput.addEventListener('input', (e) => {
       renderizar(e.target.value);
-    });
-
-    categoryBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        if (btn.id === 'btnFavTab') return;
-        modoSoloFavoritos = false;
-        btnFavTab.classList.remove('active');
-        categoryBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        categoriaActual = btn.getAttribute('data-cat');
-        renderizar(searchInput.value);
-      });
-    });
-
-    concentrationBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        concentrationBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        concentracionActual = btn.getAttribute('data-conc');
-        renderizar(searchInput.value);
-      });
-    });
-
-    climateBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        climateBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        climaActual = btn.getAttribute('data-clim');
-        renderizar(searchInput.value);
-      });
-    });
-
-    occasionBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        occasionBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        ocasionActual = btn.getAttribute('data-occ');
-        renderizar(searchInput.value);
-      });
-    });
-
-    noteBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        noteBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        notaActual = btn.getAttribute('data-note');
-        renderizar(searchInput.value);
-      });
     });
 
     // Acordeón FAQ
