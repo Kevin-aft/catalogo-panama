@@ -77,6 +77,7 @@
 
     .nav-item {
       position: relative;
+      display: inline-block;
     }
 
     .nav-link {
@@ -93,6 +94,10 @@
       border-bottom: 2px solid transparent;
       cursor: pointer;
       user-select: none;
+      background: transparent;
+      border-top: none;
+      border-left: none;
+      border-right: none;
     }
 
     .nav-link:hover, .nav-link.active, .nav-item.open > .nav-link {
@@ -100,12 +105,12 @@
       border-bottom: 2px solid var(--gold);
     }
 
-    /* MENÚS DESPLEGABLES (DROPDOWN FUNCIONAL POR CLIC O TOQUE) */
+    /* MENÚS DESPLEGABLES CON TRANSICIÓN SUAVE (HOVER + TÁCTIL) */
     .dropdown-menu {
       position: absolute;
-      top: calc(100% + 2px);
+      top: calc(100% + 4px);
       left: 50%;
-      transform: translateX(-50%);
+      transform: translateX(-50%) translateY(6px);
       background: #0f131c;
       border: 1px solid var(--gold);
       border-radius: 14px;
@@ -113,24 +118,59 @@
       list-style: none;
       padding: 0.65rem 0;
       min-width: 230px;
-      display: none;
       z-index: 600;
-      animation: popDropdown 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      
+      /* Animación fluida de desvanecimiento */
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+                  transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+                  visibility 0.25s;
     }
 
-    @keyframes popDropdown {
-      from { opacity: 0; transform: translate(-50%, -8px); }
-      to { opacity: 1; transform: translate(-50%, 0); }
+    /* Zona de seguridad para que el ratón no pierda el menú al bajar */
+    .dropdown-menu::before {
+      content: "";
+      position: absolute;
+      top: -8px;
+      left: 0;
+      width: 100%;
+      height: 8px;
     }
 
-    /* Clase activa para abrir el menú */
+    /* 1. Comportamiento en Computadoras (Hover con ratón) */
+    @media (hover: hover) and (pointer: fine) {
+      .nav-item.has-dropdown:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateX(-50%) translateY(0);
+      }
+    }
+
+    /* 2. Comportamiento en Móviles y Tablets (Clase abierta por toque) */
     .nav-item.open .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .dropdown-header-tag {
       display: block;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      padding: 0.4rem 1.35rem 0.2rem;
+      font-weight: 800;
+      pointer-events: none;
     }
 
     .dropdown-menu li a {
       display: block;
-      padding: 0.7rem 1.35rem;
+      padding: 0.65rem 1.35rem;
       color: #cbd5e1;
       text-decoration: none;
       font-size: 0.84rem;
@@ -138,6 +178,7 @@
       transition: all 0.2s ease;
       cursor: pointer;
       text-align: left;
+      white-space: nowrap;
     }
 
     .dropdown-menu li a:hover {
@@ -156,6 +197,23 @@
     .dropdown-menu .view-all {
       color: var(--gold-light) !important;
       font-weight: 800 !important;
+    }
+
+    /* Ajuste responsivo del menú en pantallas estrechas */
+    @media (max-width: 768px) {
+      .dropdown-menu {
+        position: fixed;
+        top: 60px;
+        left: 50%;
+        transform: translateX(-50%) translateY(10px);
+        width: 90%;
+        max-width: 320px;
+        max-height: 70vh;
+        overflow-y: auto;
+      }
+      .nav-item.open .dropdown-menu {
+        transform: translateX(-50%) translateY(0);
+      }
     }
 
     header {
@@ -1506,7 +1564,7 @@
 </head>
 <body>
 
-  <!-- BARRA DE NAVEGACIÓN SUPERIOR CON DESPLEGABLES INTERACTIVOS -->
+  <!-- BARRA DE NAVEGACIÓN SUPERIOR CON DESPLEGABLES FLUIDOS Y TÁCTILES -->
   <nav class="main-navbar">
     <div class="nav-container">
       <ul class="nav-menu">
@@ -1514,39 +1572,74 @@
           <a class="nav-link active" onclick="filtrarNav('all')">Todos</a>
         </li>
 
+        <!-- Caballero con Desplegable -->
         <li class="nav-item has-dropdown" id="navCaballero">
-          <a class="nav-link" onclick="toggleDropdownNav('navCaballero', event)">Caballero ▾</a>
+          <button class="nav-link" onclick="toggleDropdownNav('navCaballero', event, 'hombre')">Caballero ▾</button>
           <ul class="dropdown-menu">
-            <li><a onclick="filtrarNav('hombre')">Todos Caballero</a></li>
+            <span class="dropdown-header-tag">Formato</span>
+            <li><a onclick="filtrarPorFormatoYCat('hombre', 'regular')">📦 Caja Sellada Original</a></li>
+            <li><a onclick="filtrarPorFormatoYCat('hombre', 'tester')">🏷️ Formato Tester (-20%)</a></li>
+            <li class="divider"></li>
+            <span class="dropdown-header-tag">Casas de Diseñador</span>
+            <li><a onclick="filtrarTextoNav('Jean Paul Gaultier')">Jean Paul Gaultier</a></li>
+            <li><a onclick="filtrarTextoNav('Paco Rabanne')">Paco Rabanne</a></li>
+            <li><a onclick="filtrarTextoNav('Dior')">Dior Sauvage</a></li>
+            <li><a onclick="filtrarTextoNav('Carolina Herrera')">Carolina Herrera 212</a></li>
+            <li class="divider"></li>
+            <span class="dropdown-header-tag">Ocasión</span>
             <li><a onclick="filtrarClimaNav('frio')">🌙 Citas & Noche</a></li>
             <li><a onclick="filtrarClimaNav('calor')">☀️ Diario & Cítricos</a></li>
             <li><a onclick="filtrarConcNav('elixir')">🔥 Concentración Elixir</a></li>
             <li class="divider"></li>
-            <li><a class="view-all" onclick="filtrarNav('hombre')">Ver Colección →</a></li>
+            <li><a class="view-all" onclick="filtrarNav('hombre')">Ver Toda la Colección →</a></li>
           </ul>
         </li>
 
+        <!-- Dama con Desplegable -->
         <li class="nav-item has-dropdown" id="navDama">
-          <a class="nav-link" onclick="toggleDropdownNav('navDama', event)">Dama ▾</a>
+          <button class="nav-link" onclick="toggleDropdownNav('navDama', event, 'mujer')">Dama ▾</button>
           <ul class="dropdown-menu">
-            <li><a onclick="filtrarNav('mujer')">Todas Dama</a></li>
-            <li><a onclick="filtrarNotaNav('fresa')">🍓 Dulces & Fresa</a></li>
-            <li><a onclick="filtrarNotaNav('vainilla')">🍦 Vainilla & Floral</a></li>
+            <span class="dropdown-header-tag">Formato</span>
+            <li><a onclick="filtrarPorFormatoYCat('mujer', 'regular')">📦 Caja Sellada Original</a></li>
+            <li><a onclick="filtrarPorFormatoYCat('mujer', 'tester')">🏷️ Formato Tester (-20%)</a></li>
             <li class="divider"></li>
-            <li><a class="view-all" onclick="filtrarNav('mujer')">Ver Colección →</a></li>
+            <span class="dropdown-header-tag">Aromas Destacados</span>
+            <li><a onclick="filtrarNotaNav('fresa')">🍓 Dulces & Fresa (Yara)</a></li>
+            <li><a onclick="filtrarNotaNav('vainilla')">🍦 Vainilla & Floral</a></li>
+            <li><a onclick="filtrarTextoNav('Good Girl')">👠 Good Girl Blush</a></li>
+            <li><a onclick="filtrarTextoNav('Cloud')">☁️ Ariana Grande Cloud</a></li>
+            <li class="divider"></li>
+            <li><a class="view-all" onclick="filtrarNav('mujer')">Ver Toda la Colección →</a></li>
           </ul>
         </li>
 
+        <!-- Árabes Selectos con Desplegable -->
         <li class="nav-item has-dropdown" id="navArabes">
-          <a class="nav-link" onclick="toggleDropdownNav('navArabes', event)">Árabes Selectos ▾</a>
+          <button class="nav-link" onclick="toggleDropdownNav('navArabes', event, 'arabes')">Árabes Selectos ▾</button>
           <ul class="dropdown-menu">
-            <li><a onclick="filtrarNav('arabes')">Todos los Árabes</a></li>
+            <span class="dropdown-header-tag">Casas de Dubái</span>
             <li><a onclick="filtrarTextoNav('Lattafa')">Casa Lattafa</a></li>
-            <li><a onclick="filtrarTextoNav('Afnan')">Casa Afnan</a></li>
-            <li><a onclick="filtrarTextoNav('Armaf')">Casa Armaf</a></li>
+            <li><a onclick="filtrarTextoNav('Afnan')">Casa Afnan (9 PM)</a></li>
+            <li><a onclick="filtrarTextoNav('Armaf')">Casa Armaf (Club de Nuit)</a></li>
+            <li class="divider"></li>
+            <span class="dropdown-header-tag">Colecciones</span>
+            <li><a onclick="filtrarPorFormatoYCat('arabes', 'tester')">🏷️ Testers Árabes</a></li>
             <li><a onclick="filtrarNotaNav('oud')">🪵 Maderas de Oud</a></li>
+            <li><a onclick="filtrarTextoNav('Khamrah')">☕ Khamrah Qahwa (Café)</a></li>
             <li class="divider"></li>
             <li><a class="view-all" onclick="filtrarNav('arabes')">Ver Catálogo Árabe →</a></li>
+          </ul>
+        </li>
+
+        <!-- Testers Especiales -->
+        <li class="nav-item has-dropdown" id="navTesters">
+          <button class="nav-link" onclick="toggleDropdownNav('navTesters', event, 'tester')">Testers ▾</button>
+          <ul class="dropdown-menu">
+            <span class="dropdown-header-tag">Ahorro Inteligente</span>
+            <li><a onclick="filtrarPorFormatoYCat('all', 'tester')">🏷️ Todos los Testers Oficiales</a></li>
+            <li><a onclick="filtrarPorFormatoYCat('hombre', 'tester')">Testers Caballero</a></li>
+            <li><a onclick="filtrarPorFormatoYCat('mujer', 'tester')">Testers Dama</a></li>
+            <li><a onclick="filtrarPorFormatoYCat('arabes', 'tester')">Testers Árabes</a></li>
           </ul>
         </li>
 
@@ -2267,6 +2360,7 @@
     // Estados de filtro activo
     let filtroActivoTipo = 'todos'; 
     let filtroActivoValor = 'all';
+    let filtroFormatoForzado = null;
 
     const grid = document.getElementById('productsGrid');
     const searchInput = document.getElementById('searchInput');
@@ -2399,6 +2493,7 @@
       modoSoloFavoritos = false;
       filtroActivoTipo = 'todos';
       filtroActivoValor = 'all';
+      filtroFormatoForzado = null;
       btnFavTab.classList.remove('active');
       activeFilterBadge.style.display = 'none';
       searchInput.value = '';
@@ -2407,15 +2502,25 @@
     }
 
     // CONTROL DEL MENÚ DESPLEGABLE TÁCTIL O POR CLIC
-    function toggleDropdownNav(navId, e) {
-      e.stopPropagation();
+    function toggleDropdownNav(navId, e, categoriaFallback = null) {
+      const esTactil = window.matchMedia('(hover: none)').matches || ('ontouchstart' in window);
       const target = document.getElementById(navId);
       const yaAbierto = target.classList.contains('open');
 
-      cerrarTodosLosDropdowns();
-
-      if (!yaAbierto) {
-        target.classList.add('open');
+      if (esTactil) {
+        if (e) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+        cerrarTodosLosDropdowns();
+        if (!yaAbierto) {
+          target.classList.add('open');
+        }
+      } else {
+        // En computadora con mouse, hacer clic directo filtra la categoría
+        if (categoriaFallback) {
+          filtrarNav(categoriaFallback);
+        }
       }
     }
 
@@ -2425,7 +2530,7 @@
       });
     }
 
-    // Cerrar al hacer clic en cualquier otra parte
+    // Cerrar al hacer clic en cualquier otra parte de la pantalla
     document.addEventListener('click', (e) => {
       if (!e.target.closest('.main-navbar')) {
         cerrarTodosLosDropdowns();
@@ -2436,6 +2541,7 @@
     function filtrarNav(cat) {
       cerrarTodosLosDropdowns();
       modoSoloFavoritos = false;
+      filtroFormatoForzado = null;
       btnFavTab.classList.remove('active');
       filtroActivoTipo = 'cat';
       filtroActivoValor = cat;
@@ -2446,6 +2552,29 @@
         const nombres = { hombre: 'Caballero', mujer: 'Dama', arabes: 'Árabes Selectos', custom: 'A Pedido' };
         mostrarInsigniaFiltro(nombres[cat] || cat);
       }
+      renderizar(searchInput.value);
+      document.querySelector('.search-wrapper-clean').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Filtro especial cruzado por Formato (Sellado vs Tester)
+    function filtrarPorFormatoYCat(cat, formato) {
+      cerrarTodosLosDropdowns();
+      modoSoloFavoritos = false;
+      btnFavTab.classList.remove('active');
+      
+      // Sincronizar el selector de tarjetas con el formato elegido
+      PRODUCTOS.forEach(p => {
+        varianteSeleccionada[p.id] = formato;
+      });
+
+      filtroActivoTipo = 'cat';
+      filtroActivoValor = cat;
+      filtroFormatoForzado = formato;
+
+      const labelCat = cat === 'all' ? 'Todos' : (cat === 'hombre' ? 'Caballero' : (cat === 'mujer' ? 'Dama' : 'Árabes'));
+      const labelFmt = formato === 'tester' ? 'Tester Oficial' : 'Caja Sellada';
+      mostrarInsigniaFiltro(`${labelCat} (${labelFmt})`);
+
       renderizar(searchInput.value);
       document.querySelector('.search-wrapper-clean').scrollIntoView({ behavior: 'smooth' });
     }
