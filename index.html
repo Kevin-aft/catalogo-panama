@@ -43,14 +43,14 @@
       padding-bottom: 125px;
     }
 
-    /* BARRA DE NAVEGACIÓN DESPLEGABLE SUPERIOR */
+    /* BARRA DE NAVEGACIÓN SUPERIOR FIJA Y VISIBLE */
     .main-navbar {
-      background: rgba(10, 13, 20, 0.94);
+      background: rgba(10, 13, 20, 0.96);
       backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.25);
       position: sticky;
       top: 0;
-      z-index: 150;
+      z-index: 500;
       width: 100%;
     }
 
@@ -60,94 +60,102 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 0 1rem;
+      padding: 0 0.5rem;
+      position: relative;
     }
 
     .nav-menu {
       list-style: none;
       display: flex;
-      gap: 0.5rem;
+      align-items: center;
+      justify-content: center;
+      gap: 0.3rem;
       margin: 0;
       padding: 0;
-      overflow-x: auto;
-      scrollbar-width: none;
+      flex-wrap: wrap;
     }
-    .nav-menu::-webkit-scrollbar { display: none; }
 
     .nav-item {
       position: relative;
     }
 
     .nav-link {
-      display: block;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
       color: #cbd5e1;
       text-decoration: none;
-      font-size: 0.86rem;
-      font-weight: 600;
-      padding: 1.05rem 1rem;
+      font-size: 0.88rem;
+      font-weight: 700;
+      padding: 0.95rem 0.85rem;
       white-space: nowrap;
       transition: all 0.2s ease;
       border-bottom: 2px solid transparent;
       cursor: pointer;
+      user-select: none;
     }
 
-    .nav-link:hover, .nav-link.active {
+    .nav-link:hover, .nav-link.active, .nav-item.open > .nav-link {
       color: var(--gold-light);
       border-bottom: 2px solid var(--gold);
     }
 
-    /* MENÚS DESPLEGABLES */
+    /* MENÚS DESPLEGABLES (DROPDOWN FUNCIONAL POR CLIC O TOQUE) */
     .dropdown-menu {
       position: absolute;
-      top: 100%;
-      left: 0;
+      top: calc(100% + 2px);
+      left: 50%;
+      transform: translateX(-50%);
       background: #0f131c;
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      border-radius: 12px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.1);
+      border: 1px solid var(--gold);
+      border-radius: 14px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.9), 0 0 25px rgba(212, 175, 55, 0.2);
       list-style: none;
       padding: 0.65rem 0;
-      min-width: 220px;
+      min-width: 230px;
       display: none;
-      animation: fadeInDropdown 0.2s ease forwards;
-      z-index: 200;
+      z-index: 600;
+      animation: popDropdown 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
-    @keyframes fadeInDropdown {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes popDropdown {
+      from { opacity: 0; transform: translate(-50%, -8px); }
+      to { opacity: 1; transform: translate(-50%, 0); }
     }
 
-    .has-dropdown:hover .dropdown-menu {
+    /* Clase activa para abrir el menú */
+    .nav-item.open .dropdown-menu {
       display: block;
     }
 
     .dropdown-menu li a {
       display: block;
-      padding: 0.6rem 1.25rem;
-      color: #94a3b8;
+      padding: 0.7rem 1.35rem;
+      color: #cbd5e1;
       text-decoration: none;
-      font-size: 0.82rem;
-      font-weight: 500;
+      font-size: 0.84rem;
+      font-weight: 600;
       transition: all 0.2s ease;
       cursor: pointer;
+      text-align: left;
     }
 
     .dropdown-menu li a:hover {
-      color: #fff;
-      background: rgba(212, 175, 55, 0.1);
-      padding-left: 1.45rem;
+      color: #07090e;
+      background: var(--gold-gradient);
+      font-weight: 700;
+      padding-left: 1.6rem;
     }
 
     .dropdown-menu .divider {
       height: 1px;
-      background: rgba(212, 175, 55, 0.15);
+      background: rgba(212, 175, 55, 0.2);
       margin: 0.4rem 0;
     }
 
     .dropdown-menu .view-all {
       color: var(--gold-light) !important;
-      font-weight: 700;
+      font-weight: 800 !important;
     }
 
     header {
@@ -287,12 +295,12 @@
       line-height: 1.55;
     }
 
-    /* BARRA DE BÚSQUEDA Y ACCESO RÁPIDO LIMPIO */
+    /* BARRA DE BÚSQUEDA Y ACCESO RÁPIDO */
     .search-wrapper-clean {
       display: flex;
       gap: 0.75rem;
       align-items: center;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
       flex-wrap: wrap;
     }
 
@@ -880,7 +888,7 @@
       align-items: center;
       justify-content: center;
       padding: 1.25rem;
-      z-index: 200;
+      z-index: 700;
     }
 
     .modal-overlay.active {
@@ -1482,7 +1490,7 @@
       padding: 0.85rem 1.25rem;
       border-radius: 12px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-      z-index: 300;
+      z-index: 800;
       display: flex;
       align-items: center;
       gap: 0.7rem;
@@ -1498,7 +1506,7 @@
 </head>
 <body>
 
-  <!-- BARRA DE NAVEGACIÓN SUPERIOR CON DESPLEGABLES -->
+  <!-- BARRA DE NAVEGACIÓN SUPERIOR CON DESPLEGABLES INTERACTIVOS -->
   <nav class="main-navbar">
     <div class="nav-container">
       <ul class="nav-menu">
@@ -1506,8 +1514,8 @@
           <a class="nav-link active" onclick="filtrarNav('all')">Todos</a>
         </li>
 
-        <li class="nav-item has-dropdown">
-          <a class="nav-link">Caballero ▾</a>
+        <li class="nav-item has-dropdown" id="navCaballero">
+          <a class="nav-link" onclick="toggleDropdownNav('navCaballero', event)">Caballero ▾</a>
           <ul class="dropdown-menu">
             <li><a onclick="filtrarNav('hombre')">Todos Caballero</a></li>
             <li><a onclick="filtrarClimaNav('frio')">🌙 Citas & Noche</a></li>
@@ -1518,8 +1526,8 @@
           </ul>
         </li>
 
-        <li class="nav-item has-dropdown">
-          <a class="nav-link">Dama ▾</a>
+        <li class="nav-item has-dropdown" id="navDama">
+          <a class="nav-link" onclick="toggleDropdownNav('navDama', event)">Dama ▾</a>
           <ul class="dropdown-menu">
             <li><a onclick="filtrarNav('mujer')">Todas Dama</a></li>
             <li><a onclick="filtrarNotaNav('fresa')">🍓 Dulces & Fresa</a></li>
@@ -1529,8 +1537,8 @@
           </ul>
         </li>
 
-        <li class="nav-item has-dropdown">
-          <a class="nav-link">Árabes Selectos ▾</a>
+        <li class="nav-item has-dropdown" id="navArabes">
+          <a class="nav-link" onclick="toggleDropdownNav('navArabes', event)">Árabes Selectos ▾</a>
           <ul class="dropdown-menu">
             <li><a onclick="filtrarNav('arabes')">Todos los Árabes</a></li>
             <li><a onclick="filtrarTextoNav('Lattafa')">Casa Lattafa</a></li>
@@ -1594,7 +1602,7 @@
       </div>
     </div>
 
-    <!-- BARRA DE BÚSQUEDA LIMPIA SIN LAS 5 FILAS DE BOTONES -->
+    <!-- BARRA DE BÚSQUEDA Y ACCESO RÁPIDO LIMPIO -->
     <div class="search-wrapper-clean">
       <input type="text" id="searchInput" class="search-box-clean" placeholder="🔍 Escribe lo que buscas: 'vainilla', 'café', 'Dior', 'EDP', 'cítrico', 'noche'...">
       <button class="btn-clean-fav" id="btnFavTab" onclick="filtrarFavoritos()">
@@ -2394,11 +2402,39 @@
       btnFavTab.classList.remove('active');
       activeFilterBadge.style.display = 'none';
       searchInput.value = '';
+      cerrarTodosLosDropdowns();
       renderizar('');
     }
 
+    // CONTROL DEL MENÚ DESPLEGABLE TÁCTIL O POR CLIC
+    function toggleDropdownNav(navId, e) {
+      e.stopPropagation();
+      const target = document.getElementById(navId);
+      const yaAbierto = target.classList.contains('open');
+
+      cerrarTodosLosDropdowns();
+
+      if (!yaAbierto) {
+        target.classList.add('open');
+      }
+    }
+
+    function cerrarTodosLosDropdowns() {
+      document.querySelectorAll('.has-dropdown').forEach(item => {
+        item.classList.remove('open');
+      });
+    }
+
+    // Cerrar al hacer clic en cualquier otra parte
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.main-navbar')) {
+        cerrarTodosLosDropdowns();
+      }
+    });
+
     // Funciones activadas desde la barra superior desplegable
     function filtrarNav(cat) {
+      cerrarTodosLosDropdowns();
       modoSoloFavoritos = false;
       btnFavTab.classList.remove('active');
       filtroActivoTipo = 'cat';
@@ -2415,6 +2451,7 @@
     }
 
     function filtrarClimaNav(clim) {
+      cerrarTodosLosDropdowns();
       modoSoloFavoritos = false;
       btnFavTab.classList.remove('active');
       filtroActivoTipo = 'clima';
@@ -2426,6 +2463,7 @@
     }
 
     function filtrarConcNav(conc) {
+      cerrarTodosLosDropdowns();
       modoSoloFavoritos = false;
       btnFavTab.classList.remove('active');
       filtroActivoTipo = 'conc';
@@ -2436,6 +2474,7 @@
     }
 
     function filtrarOccNav(occ) {
+      cerrarTodosLosDropdowns();
       modoSoloFavoritos = false;
       btnFavTab.classList.remove('active');
       filtroActivoTipo = 'occ';
@@ -2446,6 +2485,7 @@
     }
 
     function filtrarNotaNav(nota) {
+      cerrarTodosLosDropdowns();
       modoSoloFavoritos = false;
       btnFavTab.classList.remove('active');
       filtroActivoTipo = 'nota';
@@ -2456,6 +2496,7 @@
     }
 
     function filtrarTextoNav(txt) {
+      cerrarTodosLosDropdowns();
       searchInput.value = txt;
       renderizar(txt);
       document.querySelector('.search-wrapper-clean').scrollIntoView({ behavior: 'smooth' });
@@ -2484,7 +2525,7 @@
           if (!p.notesKey || !p.notesKey.includes(filtroActivoValor)) return false;
         }
 
-        // Búsqueda inteligente: busca en nombre, notas, descripción, público y concentración
+        // Búsqueda inteligente
         if (textoLower) {
           const coincide = p.name.toLowerCase().includes(textoLower) || 
                            (p.salida && p.salida.toLowerCase().includes(textoLower)) ||
@@ -2892,6 +2933,7 @@
 
       modalCartTotal.textContent = `$${totalDinero.toFixed(2)} USD`;
 
+      // Termómetro Envío Gratis
       if (subtotalReal >= META_ENVIO_GRATIS) {
         shippingProgressText.innerHTML = `🎉 <strong>¡Felicidades! Tienes Envío Gratis asegurado</strong>`;
         shippingBarFill.style.width = '100%';
