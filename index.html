@@ -119,8 +119,6 @@
       padding: 0.65rem 0;
       min-width: 230px;
       z-index: 600;
-      
-      /* Animación fluida de desvanecimiento */
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
@@ -129,7 +127,6 @@
                   visibility 0.25s;
     }
 
-    /* Zona de seguridad para que el ratón no pierda el menú al bajar */
     .dropdown-menu::before {
       content: "";
       position: absolute;
@@ -139,7 +136,6 @@
       height: 8px;
     }
 
-    /* 1. Comportamiento en Computadoras (Hover con ratón) */
     @media (hover: hover) and (pointer: fine) {
       .nav-item.has-dropdown:hover .dropdown-menu {
         opacity: 1;
@@ -149,7 +145,6 @@
       }
     }
 
-    /* 2. Comportamiento en Móviles y Tablets (Clase abierta por toque) */
     .nav-item.open .dropdown-menu {
       opacity: 1;
       visibility: visible;
@@ -199,7 +194,6 @@
       font-weight: 800 !important;
     }
 
-    /* Ajuste responsivo del menú en pantallas estrechas */
     @media (max-width: 768px) {
       .dropdown-menu {
         position: fixed;
@@ -603,6 +597,12 @@
       background: var(--gold-soft);
       color: var(--gold-light);
       border: 1px solid rgba(212, 175, 55, 0.4);
+    }
+
+    .variant-btn.btn-disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      text-decoration: line-through;
     }
 
     .card-extra-actions {
@@ -1572,46 +1572,46 @@
           <a class="nav-link active" onclick="filtrarNav('all')">Todos</a>
         </li>
 
-       <!-- Caballero corregido -->
-<li class="nav-item has-dropdown" id="navCaballero">
-  <button class="nav-link" onclick="toggleDropdownNav('navCaballero', event, 'hombre')">Caballero ▾</button>
-  <ul class="dropdown-menu">
-    <span class="dropdown-header-tag">Formato</span>
-    <li><a onclick="filtrarPorFormatoYCat('hombre', 'regular')">📦 Caja Sellada Original</a></li>
-    <li><a onclick="filtrarPorFormatoYCat('hombre', 'tester')">🏷️ Formato Tester</a></li>
-    <li class="divider"></li>
-    <span class="dropdown-header-tag">Casas de Diseñador</span>
-    <li><a onclick="filtrarTextoNav('Jean Paul Gaultier')">Jean Paul Gaultier</a></li>
-    <li><a onclick="filtrarTextoNav('Paco Rabanne')">Paco Rabanne</a></li>
-    <li><a onclick="filtrarTextoNav('Dior')">Dior Sauvage</a></li>
-    <li><a onclick="filtrarTextoNav('Carolina Herrera')">Carolina Herrera 212</a></li>
-    <li class="divider"></li>
-    <span class="dropdown-header-tag">Ocasión</span>
-    <li><a onclick="filtrarClimaNav('frio')">🌙 Citas & Noche</a></li>
-    <li><a onclick="filtrarClimaNav('calor')">☀️ Diario & Cítricos</a></li>
-    <li><a onclick="filtrarConcNav('elixir')">🔥 Concentración Elixir</a></li>
-    <li class="divider"></li>
-    <li><a class="view-all" onclick="filtrarNav('hombre')">Ver Toda la Colección →</a></li>
-  </ul>
-</li>
+        <!-- Caballero con Desplegable -->
+        <li class="nav-item has-dropdown" id="navCaballero">
+          <button class="nav-link" onclick="toggleDropdownNav('navCaballero', event, 'hombre')">Caballero ▾</button>
+          <ul class="dropdown-menu">
+            <span class="dropdown-header-tag">Formato</span>
+            <li><a onclick="filtrarPorFormatoYCat('hombre', 'regular')">📦 Caja Sellada Original</a></li>
+            <li><a onclick="filtrarPorFormatoYCat('hombre', 'tester')">🏷️ Formato Tester</a></li>
+            <li class="divider"></li>
+            <span class="dropdown-header-tag">Casas de Diseñador</span>
+            <li><a onclick="filtrarTextoNav('Jean Paul Gaultier')">Jean Paul Gaultier</a></li>
+            <li><a onclick="filtrarTextoNav('Paco Rabanne')">Paco Rabanne</a></li>
+            <li><a onclick="filtrarTextoNav('Dior')">Dior Sauvage</a></li>
+            <li><a onclick="filtrarTextoNav('Carolina Herrera')">Carolina Herrera 212</a></li>
+            <li class="divider"></li>
+            <span class="dropdown-header-tag">Ocasión</span>
+            <li><a onclick="filtrarClimaNav('frio')">🌙 Citas & Noche</a></li>
+            <li><a onclick="filtrarClimaNav('calor')">☀️ Diario & Cítricos</a></li>
+            <li><a onclick="filtrarConcNav('elixir')">🔥 Concentración Elixir</a></li>
+            <li class="divider"></li>
+            <li><a class="view-all" onclick="filtrarNav('hombre')">Ver Toda la Colección →</a></li>
+          </ul>
+        </li>
 
-<!-- Dama corregido: solo notas/familias aromáticas -->
-<li class="nav-item has-dropdown" id="navDama">
-  <button class="nav-link" onclick="toggleDropdownNav('navDama', event, 'mujer')">Dama ▾</button>
-  <ul class="dropdown-menu">
-    <span class="dropdown-header-tag">Formato</span>
-    <li><a onclick="filtrarPorFormatoYCat('mujer', 'regular')">📦 Caja Sellada Original</a></li>
-    <li><a onclick="filtrarPorFormatoYCat('mujer', 'tester')">🏷️ Formato Tester</a></li>
-    <li class="divider"></li>
-    <span class="dropdown-header-tag">Aromas Destacados</span>
-    <li><a onclick="filtrarNotaNav('fresa')">🍓 Frutales & Fresa</a></li>
-    <li><a onclick="filtrarNotaNav('vainilla')">🍦 Vainilla & Dulces</a></li>
-    <li><a onclick="filtrarTextoNav('cítrico')">🍋 Cítricos & Frescos</a></li>
-    <li><a onclick="filtrarTextoNav('floral')">🌸 Florales Elegantes</a></li>
-    <li class="divider"></li>
-    <li><a class="view-all" onclick="filtrarNav('mujer')">Ver Toda la Colección →</a></li>
-  </ul>
-</li>
+        <!-- Dama con Desplegable -->
+        <li class="nav-item has-dropdown" id="navDama">
+          <button class="nav-link" onclick="toggleDropdownNav('navDama', event, 'mujer')">Dama ▾</button>
+          <ul class="dropdown-menu">
+            <span class="dropdown-header-tag">Formato</span>
+            <li><a onclick="filtrarPorFormatoYCat('mujer', 'regular')">📦 Caja Sellada Original</a></li>
+            <li><a onclick="filtrarPorFormatoYCat('mujer', 'tester')">🏷️ Formato Tester</a></li>
+            <li class="divider"></li>
+            <span class="dropdown-header-tag">Aromas Destacados</span>
+            <li><a onclick="filtrarNotaNav('fresa')">🍓 Frutales & Fresa</a></li>
+            <li><a onclick="filtrarNotaNav('vainilla')">🍦 Vainilla & Dulces</a></li>
+            <li><a onclick="filtrarTextoNav('cítrico')">🍋 Cítricos & Frescos</a></li>
+            <li><a onclick="filtrarTextoNav('floral')">🌸 Florales Elegantes</a></li>
+            <li class="divider"></li>
+            <li><a class="view-all" onclick="filtrarNav('mujer')">Ver Toda la Colección →</a></li>
+          </ul>
+        </li>
 
         <!-- Árabes Selectos con Desplegable -->
         <li class="nav-item has-dropdown" id="navArabes">
@@ -2027,8 +2027,10 @@
   <script>
     const MI_WHATSAPP = "593993641593"; 
     const META_ENVIO_GRATIS = 80;
+    const URL_INVENTARIO_SHEETS = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSZOknHlai1_v68XDQh9ARWBSZ-V0YHIz_lcoSiInbhb2EbaekiNqYinagBxQN2xG9ZQ6vg7fYGLgXo/pub?gid=316533173&single=true&output=csv";
 
-    const PRODUCTOS = [
+    // RESPALDO SEGURO: Si la conexión a Google Sheets falla, la tienda usa esta lista automáticamente
+    const PRODUCTOS_RESPALDO = [
       {
         id: 1,
         name: "Lattafa Yara Rosa EDP (100ml)",
@@ -2037,7 +2039,8 @@
         climate: "versatil",
         occasions: "diario fiesta verano",
         notesKey: "vainilla fresa",
-        stock: true,
+        stockSellado: 5,
+        stockTester: 2,
         priceRegular: 45,
         priceTester: 36,
         badge: "Más Vendido Dama",
@@ -2058,7 +2061,8 @@
         climate: "calor",
         occasions: "fiesta verano navidad",
         notesKey: "fresa vainilla",
-        stock: true,
+        stockSellado: 4,
+        stockTester: 1,
         priceRegular: 48,
         priceTester: 39,
         badge: "Alta Demanda",
@@ -2078,8 +2082,9 @@
         concentration: "edp",
         climate: "versatil",
         occasions: "noche fiesta navidad",
-        notesKey: "vainilla cítrico",
-        stock: true,
+        notesKey: "vainilla cítrico floral",
+        stockSellado: 3,
+        stockTester: 1,
         priceRegular: 118,
         priceTester: 92,
         badge: "Top Floral & Vainilla",
@@ -2100,7 +2105,8 @@
         climate: "versatil",
         occasions: "diario fiesta halloween",
         notesKey: "vainilla cítrico",
-        stock: true,
+        stockSellado: 4,
+        stockTester: 2,
         priceRegular: 75,
         priceTester: 58,
         badge: "Favorito Dulce",
@@ -2121,7 +2127,8 @@
         climate: "frio",
         occasions: "noche fiesta halloween navidad",
         notesKey: "vainilla tabaco",
-        stock: true,
+        stockSellado: 3,
+        stockTester: 1,
         priceRegular: 115,
         priceTester: 89,
         badge: "Top Seducción",
@@ -2142,7 +2149,8 @@
         climate: "frio",
         occasions: "noche fiesta halloween",
         notesKey: "vainilla",
-        stock: true,
+        stockSellado: 6,
+        stockTester: 2,
         priceRegular: 45,
         priceTester: 36,
         badge: "Alta Demanda",
@@ -2163,7 +2171,8 @@
         climate: "frio",
         occasions: "noche halloween navidad",
         notesKey: "café vainilla",
-        stock: true,
+        stockSellado: 5,
+        stockTester: 2,
         priceRegular: 52,
         priceTester: 42,
         badge: "Gourmand Premium",
@@ -2184,7 +2193,8 @@
         climate: "frio",
         occasions: "diario noche halloween",
         notesKey: "tabaco café vainilla",
-        stock: true,
+        stockSellado: 4,
+        stockTester: 2,
         priceRegular: 42,
         priceTester: 34,
         badge: "Carácter & Porte",
@@ -2205,7 +2215,8 @@
         climate: "calor",
         occasions: "diario fiesta verano",
         notesKey: "cítrico",
-        stock: true,
+        stockSellado: 5,
+        stockTester: 3,
         priceRegular: 48,
         priceTester: 38,
         badge: "Clásico Indiscutible",
@@ -2226,7 +2237,8 @@
         climate: "frio",
         occasions: "noche fiesta navidad",
         notesKey: "vainilla",
-        stock: true,
+        stockSellado: 3,
+        stockTester: 1,
         priceRegular: 98,
         priceTester: 76,
         badge: "Elegancia Nocturna",
@@ -2247,7 +2259,8 @@
         climate: "versatil",
         occasions: "diario noche fiesta verano navidad",
         notesKey: "cítrico vainilla",
-        stock: true,
+        stockSellado: 2,
+        stockTester: 1,
         priceRegular: 145,
         priceTester: 115,
         badge: "Rey Azul",
@@ -2268,7 +2281,8 @@
         climate: "frio",
         occasions: "noche fiesta halloween navidad",
         notesKey: "vainilla",
-        stock: true,
+        stockSellado: 3,
+        stockTester: 1,
         priceRegular: 110,
         priceTester: 88,
         badge: "Top Dulce",
@@ -2289,7 +2303,8 @@
         climate: "frio",
         occasions: "noche halloween",
         notesKey: "oud",
-        stock: true,
+        stockSellado: 4,
+        stockTester: 2,
         priceRegular: 48,
         priceTester: 38,
         badge: "Lujo Oriental",
@@ -2310,7 +2325,8 @@
         climate: "calor",
         occasions: "diario fiesta verano",
         notesKey: "mango vainilla",
-        stock: true,
+        stockSellado: 4,
+        stockTester: 1,
         priceRegular: 46,
         priceTester: 37,
         badge: "Trilogía Yara",
@@ -2331,7 +2347,8 @@
         climate: "all",
         occasions: "all",
         notesKey: "",
-        stock: true,
+        stockSellado: 99,
+        stockTester: 99,
         priceRegular: 0,
         priceTester: 0,
         badge: "A Pedido",
@@ -2346,9 +2363,12 @@
       }
     ];
 
+    // Array activo de trabajo
+    let PRODUCTOS = [...PRODUCTOS_RESPALDO];
+
     let varianteSeleccionada = {};
     PRODUCTOS.forEach(p => {
-      varianteSeleccionada[p.id] = 'regular';
+      varianteSeleccionada[p.id] = (p.stockSellado > 0) ? 'regular' : 'tester';
     });
 
     let carrito = [];
@@ -2501,7 +2521,6 @@
       renderizar('');
     }
 
-    // CONTROL DEL MENÚ DESPLEGABLE TÁCTIL O POR CLIC
     function toggleDropdownNav(navId, e, categoriaFallback = null) {
       const esTactil = window.matchMedia('(hover: none)').matches || ('ontouchstart' in window);
       const target = document.getElementById(navId);
@@ -2517,7 +2536,6 @@
           target.classList.add('open');
         }
       } else {
-        // En computadora con mouse, hacer clic directo filtra la categoría
         if (categoriaFallback) {
           filtrarNav(categoriaFallback);
         }
@@ -2530,14 +2548,12 @@
       });
     }
 
-    // Cerrar al hacer clic en cualquier otra parte de la pantalla
     document.addEventListener('click', (e) => {
       if (!e.target.closest('.main-navbar')) {
         cerrarTodosLosDropdowns();
       }
     });
 
-    // Funciones activadas desde la barra superior desplegable
     function filtrarNav(cat) {
       cerrarTodosLosDropdowns();
       modoSoloFavoritos = false;
@@ -2556,13 +2572,11 @@
       document.querySelector('.search-wrapper-clean').scrollIntoView({ behavior: 'smooth' });
     }
 
-    // Filtro especial cruzado por Formato (Sellado vs Tester)
     function filtrarPorFormatoYCat(cat, formato) {
       cerrarTodosLosDropdowns();
       modoSoloFavoritos = false;
       btnFavTab.classList.remove('active');
       
-      // Sincronizar el selector de tarjetas con el formato elegido
       PRODUCTOS.forEach(p => {
         varianteSeleccionada[p.id] = formato;
       });
@@ -2631,7 +2645,6 @@
       document.querySelector('.search-wrapper-clean').scrollIntoView({ behavior: 'smooth' });
     }
 
-    // Renderizador optimizado y limpio
     function renderizar(filtroTexto = '') {
       grid.innerHTML = '';
       const textoLower = filtroTexto.toLowerCase().trim();
@@ -2641,7 +2654,6 @@
           return favoritos.includes(p.id);
         }
 
-        // Filtro por menú desplegable activo
         if (filtroActivoTipo === 'cat' && filtroActivoValor !== 'all') {
           if (!p.category.includes(filtroActivoValor)) return false;
         } else if (filtroActivoTipo === 'clima') {
@@ -2654,7 +2666,6 @@
           if (!p.notesKey || !p.notesKey.includes(filtroActivoValor)) return false;
         }
 
-        // Búsqueda inteligente
         if (textoLower) {
           const coincide = p.name.toLowerCase().includes(textoLower) || 
                            (p.salida && p.salida.toLowerCase().includes(textoLower)) ||
@@ -2677,20 +2688,34 @@
       }
 
       filtrados.forEach(p => {
-        const tipoActual = varianteSeleccionada[p.id] || 'regular';
+        const stockS = (p.stockSellado !== undefined) ? p.stockSellado : 1;
+        const stockT = (p.stockTester !== undefined) ? p.stockTester : 1;
+        const hayAlgunStock = (stockS > 0 || stockT > 0 || p.id === 11);
+
+        let tipoActual = varianteSeleccionada[p.id] || 'regular';
+        
+        // Ajuste inteligente si la opción seleccionada no tiene existencias
+        if (tipoActual === 'regular' && stockS <= 0 && stockT > 0) {
+          tipoActual = 'tester';
+          varianteSeleccionada[p.id] = 'tester';
+        } else if (tipoActual === 'tester' && stockT <= 0 && stockS > 0) {
+          tipoActual = 'regular';
+          varianteSeleccionada[p.id] = 'regular';
+        }
+
         const precioActual = tipoActual === 'tester' ? p.priceTester : p.priceRegular;
-        const hayStock = p.stock !== false;
         const estaEnComparador = listaComparar.includes(p.id);
         const esFavorito = favoritos.includes(p.id);
+        const tieneStockEnVarianteActual = tipoActual === 'tester' ? (stockT > 0) : (stockS > 0);
 
         const card = document.createElement('div');
-        card.className = `card ${!hayStock ? 'is-sold-out' : ''}`;
+        card.className = `card ${!hayAlgunStock ? 'is-sold-out' : ''}`;
         card.innerHTML = `
           <div class="card-img-wrapper" onclick="abrirFichaTecnica(${p.id})">
             <img src="${p.img}" alt="${p.name}" loading="lazy">
             <span class="badge-card">${p.badge}</span>
             ${p.id !== 11 ? `<button class="btn-fav ${esFavorito ? 'active' : ''}" title="Guardar favorito" onclick="toggleFavorito(event, ${p.id})">♥</button>` : ''}
-            ${!hayStock ? '<span class="badge-sold-out">Agotado</span>' : '<span class="card-zoom-hint">Ficha & Notas 🔍</span>'}
+            ${!hayAlgunStock ? '<span class="badge-sold-out">Agotado</span>' : '<span class="card-zoom-hint">Ficha & Notas 🔍</span>'}
           </div>
           <div class="card-content">
             <h3 class="card-title" onclick="abrirFichaTecnica(${p.id})">${p.name}</h3>
@@ -2698,11 +2723,13 @@
 
             ${p.id !== 11 ? `
             <div class="variant-selector">
-              <button class="variant-btn ${tipoActual === 'regular' ? 'active' : ''}" onclick="cambiarVarianteCard(${p.id}, 'regular')">
-                📦 Caja Sellada
+              <button class="variant-btn ${tipoActual === 'regular' ? 'active' : ''} ${stockS <= 0 ? 'btn-disabled' : ''}" 
+                onclick="${stockS > 0 ? `cambiarVarianteCard(${p.id}, 'regular')` : ''}">
+                📦 Caja Sellada ${stockS <= 0 ? '(Agotado)' : ''}
               </button>
-              <button class="variant-btn ${tipoActual === 'tester' ? 'active' : ''}" onclick="cambiarVarianteCard(${p.id}, 'tester')">
-                🏷️ Tester Oficial
+              <button class="variant-btn ${tipoActual === 'tester' ? 'active' : ''} ${stockT <= 0 ? 'btn-disabled' : ''}" 
+                onclick="${stockT > 0 ? `cambiarVarianteCard(${p.id}, 'tester')` : ''}">
+                🏷️ Formato Tester ${stockT <= 0 ? '(Agotado)' : ''}
               </button>
             </div>
             ` : ''}
@@ -2720,7 +2747,7 @@
                 <span class="price-label">${tipoActual === 'tester' ? 'Tester Oficial' : 'Caja Sellada'}</span>
                 <span class="price-value" id="price-card-${p.id}">${precioActual > 0 ? '$' + precioActual.toFixed(2) : 'A cotizar'}</span>
               </div>
-              ${hayStock ? `
+              ${hayAlgunStock && tieneStockEnVarianteActual ? `
                 <button class="btn-add" onclick="${p.id === 11 ? 'abrirModalCotizacion()' : `agregarAlCarritoConVariante(${p.id})`}">
                   ${p.id === 11 ? 'Cotizar' : 'Agregar'}
                 </button>
@@ -2748,8 +2775,10 @@
         return;
       }
 
+      const stockS = (p.stockSellado !== undefined) ? p.stockSellado : 1;
+      const stockT = (p.stockTester !== undefined) ? p.stockTester : 1;
+      const hayStock = (stockS > 0 || stockT > 0);
       const tipoActual = varianteSeleccionada[p.id] || 'regular';
-      const hayStock = p.stock !== false;
 
       detailTitle.textContent = p.name;
       detailBody.innerHTML = `
@@ -2759,11 +2788,13 @@
         <p style="font-size: 0.9rem; color: #cbd5e1;">${p.desc}</p>
         
         <div class="variant-selector" style="margin-top: 0.5rem;">
-          <button class="variant-btn ${tipoActual === 'regular' ? 'active' : ''}" onclick="varianteSeleccionada[${p.id}]='regular'; abrirFichaTecnica(${p.id});">
-            📦 Caja Sellada ($${p.priceRegular})
+          <button class="variant-btn ${tipoActual === 'regular' ? 'active' : ''} ${stockS <= 0 ? 'btn-disabled' : ''}" 
+            onclick="${stockS > 0 ? `varianteSeleccionada[${p.id}]='regular'; abrirFichaTecnica(${p.id});` : ''}">
+            📦 Caja Sellada ($${p.priceRegular}) ${stockS <= 0 ? '(Agotado)' : ''}
           </button>
-          <button class="variant-btn ${tipoActual === 'tester' ? 'active' : ''}" onclick="varianteSeleccionada[${p.id}]='tester'; abrirFichaTecnica(${p.id});">
-            🏷️ Tester Original ($${p.priceTester})
+          <button class="variant-btn ${tipoActual === 'tester' ? 'active' : ''} ${stockT <= 0 ? 'btn-disabled' : ''}" 
+            onclick="${stockT > 0 ? `varianteSeleccionada[${p.id}]='tester'; abrirFichaTecnica(${p.id});` : ''}">
+            🏷️ Tester Oficial ($${p.priceTester}) ${stockT <= 0 ? '(Agotado)' : ''}
           </button>
         </div>
 
@@ -2795,19 +2826,20 @@
       `;
 
       const precioFinal = tipoActual === 'tester' ? p.priceTester : p.priceRegular;
+      const tieneStockEnVarianteActual = tipoActual === 'tester' ? (stockT > 0) : (stockS > 0);
 
       detailFooter.innerHTML = `
         <div class="modal-total-row">
           <span>Precio (${tipoActual === 'tester' ? 'Tester' : 'Caja Sellada'}):</span>
           <span style="color: var(--gold-light);">$${precioFinal.toFixed(2)} USD</span>
         </div>
-        ${hayStock ? `
+        ${hayStock && tieneStockEnVarianteActual ? `
           <button class="btn-wa" style="width: 100%; justify-content: center;" onclick="agregarAlCarritoConVariante(${p.id}); cerrarModalDetalle(); abrirModal();">
             Añadir a mi Carrito
           </button>
         ` : `
           <button class="btn-wa" style="width: 100%; justify-content: center; background: #334155; color: #94a3b8; cursor: not-allowed;" disabled>
-            Producto Agotado
+            Presentación Agotada
           </button>
         `}
       `;
@@ -2825,9 +2857,8 @@
     }
     btnCloseTips.addEventListener('click', () => tipsModal.classList.remove('active'));
 
-    // Constructor de Dúo
     function abrirModalDuo() {
-      const opciones = PRODUCTOS.filter(p => p.id !== 11);
+      const opciones = PRODUCTOS.filter(p => p.id !== 11 && ((p.stockSellado || 1) > 0));
       duoSelect1.innerHTML = '';
       duoSelect2.innerHTML = '';
 
@@ -2879,7 +2910,6 @@
       mostrarToast("¡Dúo agregado con beneficio!");
     }
 
-    // Comparador Versus
     window.toggleComparar = function(id) {
       if (listaComparar.includes(id)) {
         listaComparar = listaComparar.filter(item => item !== id);
@@ -2970,12 +3000,18 @@
     }
     btnCloseCompare.addEventListener('click', () => compareModal.classList.remove('active'));
 
-    // Carrito
     window.agregarAlCarritoConVariante = function(id, varianteForzada = null) {
       const prod = PRODUCTOS.find(p => p.id === id);
-      if (!prod || prod.stock === false) return;
+      if (!prod) return;
 
       const tipo = varianteForzada || (varianteSeleccionada[id] || 'regular');
+      const stock = tipo === 'tester' ? (prod.stockTester || 1) : (prod.stockSellado || 1);
+      
+      if (stock <= 0 && prod.id !== 11) {
+        mostrarToast("Lo sentimos, esta presentación está agotada");
+        return;
+      }
+
       const precio = tipo === 'tester' ? prod.priceTester : prod.priceRegular;
       const cartItemId = `${id}-${tipo}`;
 
@@ -3062,7 +3098,6 @@
 
       modalCartTotal.textContent = `$${totalDinero.toFixed(2)} USD`;
 
-      // Termómetro Envío Gratis
       if (subtotalReal >= META_ENVIO_GRATIS) {
         shippingProgressText.innerHTML = `🎉 <strong>¡Felicidades! Tienes Envío Gratis asegurado</strong>`;
         shippingBarFill.style.width = '100%';
@@ -3272,7 +3307,10 @@
       `;
 
       listaRecomendados.forEach((item, idx) => {
-        const hayStock = item.stock !== false;
+        const stockS = (item.stockSellado !== undefined) ? item.stockSellado : 1;
+        const stockT = (item.stockTester !== undefined) ? item.stockTester : 1;
+        const hayStock = (stockS > 0 || stockT > 0);
+
         html += `
           <div class="quiz-rec-item">
             <img src="${item.img}" alt="${item.name}" class="quiz-rec-img">
@@ -3285,12 +3323,16 @@
               </div>
               <div style="display: flex; gap: 0.4rem; margin-top: 0.5rem;">
                 ${hayStock ? `
-                  <button class="variant-btn active" style="padding: 0.3rem 0.6rem; font-size: 0.72rem;" onclick="agregarAlCarritoConVariante(${item.id}, 'regular'); quizModal.classList.remove('active'); abrirModal();">
-                    + Caja Sellada
-                  </button>
-                  <button class="variant-btn" style="padding: 0.3rem 0.6rem; font-size: 0.72rem; border: 1px solid var(--card-border);" onclick="agregarAlCarritoConVariante(${item.id}, 'tester'); quizModal.classList.remove('active'); abrirModal();">
-                    + Tester 
-                  </button>
+                  ${stockS > 0 ? `
+                    <button class="variant-btn active" style="padding: 0.3rem 0.6rem; font-size: 0.72rem;" onclick="agregarAlCarritoConVariante(${item.id}, 'regular'); quizModal.classList.remove('active'); abrirModal();">
+                      + Caja Sellada
+                    </button>
+                  ` : ''}
+                  ${stockT > 0 ? `
+                    <button class="variant-btn" style="padding: 0.3rem 0.6rem; font-size: 0.72rem; border: 1px solid var(--card-border);" onclick="agregarAlCarritoConVariante(${item.id}, 'tester'); quizModal.classList.remove('active'); abrirModal();">
+                      + Tester Oficial
+                    </button>
+                  ` : ''}
                 ` : `
                   <span style="color: var(--danger); font-size: 0.75rem; font-weight: 700;">Agotado temporalmente</span>
                 `}
@@ -3385,27 +3427,71 @@
       quoteModal.classList.remove('active');
     });
 
-    // Filtros & Buscador en Vivo
     searchInput.addEventListener('input', (e) => {
       renderizar(e.target.value);
     });
 
-    // Acordeón FAQ
     document.querySelectorAll('.faq-item').forEach(item => {
       item.addEventListener('click', () => {
         item.classList.toggle('active');
       });
     });
 
-    // Cerrar modales con fondo
     [cartModal, detailModal, quizModal, rouletteModal, quoteModal, compareModal, tipsModal, duoModal].forEach(modal => {
       modal.addEventListener('click', (e) => {
         if (e.target === modal) modal.classList.remove('active');
       });
     });
 
-    actualizarContadorFavoritos();
-    renderizar();
+    // PARSER SEGURO PARA EL CSV DE GOOGLE SHEETS
+    function parseCSV(text) {
+      const lineas = text.trim().split(/\r\n|\n/);
+      if (lineas.length < 2) return [];
+
+      const encabezados = lineas[0].split(',').map(h => h.trim());
+      
+      return lineas.slice(1).map(linea => {
+        const valores = linea.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g) || linea.split(',');
+        const obj = {};
+        encabezados.forEach((h, i) => {
+          let val = valores[i] ? valores[i].trim().replace(/^"|"$/g, '') : '';
+          if (['id', 'priceRegular', 'priceTester', 'stockSellado', 'stockTester'].includes(h)) {
+            obj[h] = parseFloat(val) || 0;
+          } else {
+            obj[h] = val;
+          }
+        });
+        return obj;
+      });
+    }
+
+    // CARGA EN VIVO CON RESPALDO INSTANTÁNEO
+    async function sincronizarConGoogleSheets() {
+      try {
+        const res = await fetch(URL_INVENTARIO_SHEETS + '&cacheBust=' + new Date().getTime());
+        if (!res.ok) throw new Error("Respuesta no OK de Sheets");
+        const dataCSV = await res.text();
+        const listaDesdeSheets = parseCSV(dataCSV);
+
+        if (listaDesdeSheets.length > 0) {
+          PRODUCTOS = listaDesdeSheets;
+          PRODUCTOS.forEach(p => {
+            const stockS = (p.stockSellado !== undefined) ? p.stockSellado : 1;
+            const stockT = (p.stockTester !== undefined) ? p.stockTester : 1;
+            varianteSeleccionada[p.id] = (stockS > 0) ? 'regular' : (stockT > 0 ? 'tester' : 'regular');
+          });
+          console.log("Catálogo sincronizado exitosamente con Google Sheets.");
+        }
+      } catch (error) {
+        console.warn("Aviso: No se pudo conectar a Google Sheets temporalmente. Usando inventario de respaldo local seguro.", error);
+      } finally {
+        actualizarContadorFavoritos();
+        renderizar();
+      }
+    }
+
+    // Inicializar tienda
+    sincronizarConGoogleSheets();
   </script>
 </body>
 </html>
