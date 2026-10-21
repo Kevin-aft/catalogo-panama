@@ -1572,46 +1572,46 @@
           <a class="nav-link active" onclick="filtrarNav('all')">Todos</a>
         </li>
 
-        <!-- Caballero con Desplegable -->
-        <li class="nav-item has-dropdown" id="navCaballero">
-          <button class="nav-link" onclick="toggleDropdownNav('navCaballero', event, 'hombre')">Caballero ▾</button>
-          <ul class="dropdown-menu">
-            <span class="dropdown-header-tag">Formato</span>
-            <li><a onclick="filtrarPorFormatoYCat('hombre', 'regular')">📦 Caja Sellada Original</a></li>
-            <li><a onclick="filtrarPorFormatoYCat('hombre', 'tester')">🏷️ Formato Tester (-20%)</a></li>
-            <li class="divider"></li>
-            <span class="dropdown-header-tag">Casas de Diseñador</span>
-            <li><a onclick="filtrarTextoNav('Jean Paul Gaultier')">Jean Paul Gaultier</a></li>
-            <li><a onclick="filtrarTextoNav('Paco Rabanne')">Paco Rabanne</a></li>
-            <li><a onclick="filtrarTextoNav('Dior')">Dior Sauvage</a></li>
-            <li><a onclick="filtrarTextoNav('Carolina Herrera')">Carolina Herrera 212</a></li>
-            <li class="divider"></li>
-            <span class="dropdown-header-tag">Ocasión</span>
-            <li><a onclick="filtrarClimaNav('frio')">🌙 Citas & Noche</a></li>
-            <li><a onclick="filtrarClimaNav('calor')">☀️ Diario & Cítricos</a></li>
-            <li><a onclick="filtrarConcNav('elixir')">🔥 Concentración Elixir</a></li>
-            <li class="divider"></li>
-            <li><a class="view-all" onclick="filtrarNav('hombre')">Ver Toda la Colección →</a></li>
-          </ul>
-        </li>
+       <!-- Caballero corregido -->
+<li class="nav-item has-dropdown" id="navCaballero">
+  <button class="nav-link" onclick="toggleDropdownNav('navCaballero', event, 'hombre')">Caballero ▾</button>
+  <ul class="dropdown-menu">
+    <span class="dropdown-header-tag">Formato</span>
+    <li><a onclick="filtrarPorFormatoYCat('hombre', 'regular')">📦 Caja Sellada Original</a></li>
+    <li><a onclick="filtrarPorFormatoYCat('hombre', 'tester')">🏷️ Formato Tester</a></li>
+    <li class="divider"></li>
+    <span class="dropdown-header-tag">Casas de Diseñador</span>
+    <li><a onclick="filtrarTextoNav('Jean Paul Gaultier')">Jean Paul Gaultier</a></li>
+    <li><a onclick="filtrarTextoNav('Paco Rabanne')">Paco Rabanne</a></li>
+    <li><a onclick="filtrarTextoNav('Dior')">Dior Sauvage</a></li>
+    <li><a onclick="filtrarTextoNav('Carolina Herrera')">Carolina Herrera 212</a></li>
+    <li class="divider"></li>
+    <span class="dropdown-header-tag">Ocasión</span>
+    <li><a onclick="filtrarClimaNav('frio')">🌙 Citas & Noche</a></li>
+    <li><a onclick="filtrarClimaNav('calor')">☀️ Diario & Cítricos</a></li>
+    <li><a onclick="filtrarConcNav('elixir')">🔥 Concentración Elixir</a></li>
+    <li class="divider"></li>
+    <li><a class="view-all" onclick="filtrarNav('hombre')">Ver Toda la Colección →</a></li>
+  </ul>
+</li>
 
-        <!-- Dama con Desplegable -->
-        <li class="nav-item has-dropdown" id="navDama">
-          <button class="nav-link" onclick="toggleDropdownNav('navDama', event, 'mujer')">Dama ▾</button>
-          <ul class="dropdown-menu">
-            <span class="dropdown-header-tag">Formato</span>
-            <li><a onclick="filtrarPorFormatoYCat('mujer', 'regular')">📦 Caja Sellada Original</a></li>
-            <li><a onclick="filtrarPorFormatoYCat('mujer', 'tester')">🏷️ Formato Tester (-20%)</a></li>
-            <li class="divider"></li>
-            <span class="dropdown-header-tag">Aromas Destacados</span>
-            <li><a onclick="filtrarNotaNav('fresa')">🍓 Dulces & Fresa (Yara)</a></li>
-            <li><a onclick="filtrarNotaNav('vainilla')">🍦 Vainilla & Floral</a></li>
-            <li><a onclick="filtrarTextoNav('Good Girl')">👠 Good Girl Blush</a></li>
-            <li><a onclick="filtrarTextoNav('Cloud')">☁️ Ariana Grande Cloud</a></li>
-            <li class="divider"></li>
-            <li><a class="view-all" onclick="filtrarNav('mujer')">Ver Toda la Colección →</a></li>
-          </ul>
-        </li>
+<!-- Dama corregido: solo notas/familias aromáticas -->
+<li class="nav-item has-dropdown" id="navDama">
+  <button class="nav-link" onclick="toggleDropdownNav('navDama', event, 'mujer')">Dama ▾</button>
+  <ul class="dropdown-menu">
+    <span class="dropdown-header-tag">Formato</span>
+    <li><a onclick="filtrarPorFormatoYCat('mujer', 'regular')">📦 Caja Sellada Original</a></li>
+    <li><a onclick="filtrarPorFormatoYCat('mujer', 'tester')">🏷️ Formato Tester</a></li>
+    <li class="divider"></li>
+    <span class="dropdown-header-tag">Aromas Destacados</span>
+    <li><a onclick="filtrarNotaNav('fresa')">🍓 Frutales & Fresa</a></li>
+    <li><a onclick="filtrarNotaNav('vainilla')">🍦 Vainilla & Dulces</a></li>
+    <li><a onclick="filtrarTextoNav('cítrico')">🍋 Cítricos & Frescos</a></li>
+    <li><a onclick="filtrarTextoNav('floral')">🌸 Florales Elegantes</a></li>
+    <li class="divider"></li>
+    <li><a class="view-all" onclick="filtrarNav('mujer')">Ver Toda la Colección →</a></li>
+  </ul>
+</li>
 
         <!-- Árabes Selectos con Desplegable -->
         <li class="nav-item has-dropdown" id="navArabes">
@@ -2702,7 +2702,7 @@
                 📦 Caja Sellada
               </button>
               <button class="variant-btn ${tipoActual === 'tester' ? 'active' : ''}" onclick="cambiarVarianteCard(${p.id}, 'tester')">
-                🏷️ Tester (-20%)
+                🏷️ Tester Oficial
               </button>
             </div>
             ` : ''}
@@ -3289,7 +3289,7 @@
                     + Caja Sellada
                   </button>
                   <button class="variant-btn" style="padding: 0.3rem 0.6rem; font-size: 0.72rem; border: 1px solid var(--card-border);" onclick="agregarAlCarritoConVariante(${item.id}, 'tester'); quizModal.classList.remove('active'); abrirModal();">
-                    + Tester (-20%)
+                    + Tester 
                   </button>
                 ` : `
                   <span style="color: var(--danger); font-size: 0.75rem; font-weight: 700;">Agotado temporalmente</span>
