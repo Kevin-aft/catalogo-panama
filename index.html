@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Perfumería Vantage | Solo Perfumes 100% Originales</title>
+  <title>Perfumería Vantage | Fragancias de Diseñador & Árabes</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
@@ -54,9 +54,9 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      background: rgba(16, 185, 129, 0.15);
-      color: #6ee7b7;
-      border: 1px solid rgba(16, 185, 129, 0.35);
+      background: var(--gold-soft);
+      color: var(--gold-light);
+      border: 1px solid rgba(212, 175, 55, 0.3);
       padding: 0.45rem 1.35rem;
       border-radius: 999px;
       font-size: 0.8rem;
@@ -93,7 +93,7 @@
       margin-bottom: 1.5rem;
     }
 
-    .quiz-trigger-btn, .roulette-trigger-btn, .compare-trigger-btn, .batch-trigger-btn {
+    .quiz-trigger-btn, .roulette-trigger-btn, .compare-trigger-btn {
       display: inline-flex;
       align-items: center;
       gap: 0.6rem;
@@ -139,18 +139,6 @@
 
     .compare-trigger-btn:hover {
       background: #3b82f6;
-      color: #fff;
-      transform: translateY(-2px);
-    }
-
-    .batch-trigger-btn {
-      background: rgba(168, 85, 247, 0.15);
-      border: 1px solid #a855f7;
-      color: #d8b4fe;
-    }
-
-    .batch-trigger-btn:hover {
-      background: #a855f7;
       color: #fff;
       transform: translateY(-2px);
     }
@@ -1326,10 +1314,9 @@
   </div>
 
   <header>
-    <!-- TEXTO MEJORADO: ENFOQUE DIRECTO EN 100% ORIGINALES -->
-    <div class="brand-tag">✓ Solo fragancias 100% originales</div>
+    <div class="brand-tag">Boutique de Perfumería</div>
     <div class="brand-logo">Perfumería Vantage</div>
-    <p class="hero-subtitle">Venta exclusiva de perfumes 100% originales de diseñador y casas árabes. Cero réplicas ni imitaciones. Elige entre caja sellada de lujo o testers oficiales con batch code grabado verificable.</p>
+    <p class="hero-subtitle">Catálogo exclusivo de fragancias de diseñador y perfumería árabe en Ecuador. Encuentra presentaciones en caja sellada y testers oficiales con entrega presencial en Quito o envíos a nivel nacional.</p>
     
     <div class="interactive-header-btns">
       <button class="quiz-trigger-btn" id="btnOpenQuiz">
@@ -1341,15 +1328,12 @@
       <button class="compare-trigger-btn" onclick="abrirModalComparador()">
         <span>⚖️</span> Comparar (<span id="compareCount">0</span>)
       </button>
-      <button class="batch-trigger-btn" onclick="abrirModalBatch()">
-        <span>🔍</span> Verificar Lote
-      </button>
     </div>
 
     <div class="info-strip">
-      <span>Garantía: <strong>100% Auténticos • Cero Réplicas</strong></span>
-      <span>Entregas: <strong>Presenciales en Quito / Servientrega Nacional</strong></span>
+      <span>Catálogo: <strong>Fragancias de Diseñador & Árabes</strong></span>
       <span>Opciones: <strong>Caja Sellada o Tester Oficial</strong></span>
+      <span>Entregas: <strong>Presenciales en Quito / Servientrega Nacional</strong></span>
     </div>
   </header>
 
@@ -1357,8 +1341,8 @@
 
     <div class="tester-banner">
       <div class="tester-text">
-        <h4>✨ Transparencia Vantage: ¿Qué es un Tester 100% Original?</h4>
-        <p>Un tester oficial es el <strong>mismo perfume auténtico y la misma botella original de fábrica</strong>. Su menor valor se debe a que viene en su caja blanca de distribuidor o directamente sin caja decorativa. Cuentan con su <strong>Batch Code tallado en el cristal</strong> para comprobar su autenticidad de origen.</p>
+        <h4>✨ Opciones de Compra: Caja Sellada vs. Tester</h4>
+        <p>En Perfumería Vantage dispones de dos modalidades: la <strong>Caja Sellada</strong> clásica con empaque de lujo ideal para regalo, o el <strong>Tester Oficial</strong> (en caja neutra o sin caja decorativa), perfecto para uso personal disfrutando exactamente el mismo perfume a un valor más accesible.</p>
       </div>
     </div>
 
@@ -1400,36 +1384,26 @@
     <div class="products-grid" id="productsGrid"></div>
 
     <section class="faq-section">
-      <h3 class="faq-header-title">Preguntas Frecuentes & Garantía Vantage</h3>
-      <p class="faq-subtitle">Transparencia absoluta en cada entrega</p>
+      <h3 class="faq-header-title">Preguntas Frecuentes Vantage</h3>
+      <p class="faq-subtitle">Información clara para tu pedido</p>
       
       <div class="faq-item">
         <div class="faq-question">
-          <span>¿Cómo garantizan que son solo perfumes 100% originales?</span>
+          <span>¿Cuál es la diferencia entre Caja Sellada y Tester?</span>
           <span class="faq-icon">+</span>
         </div>
         <div class="faq-answer">
-          En Vantage no comercializamos réplicas, copias AAA ni imitaciones de ninguna clase. Todas nuestras botellas provienen de importadores mayoristas autorizados. Cada frasco tiene su Batch Code de fábrica grabado en la base, el cual puedes comprobar en portales mundiales como CheckFresh en el mismo instante de la entrega.
+          El perfume y el frasco son los mismos. La versión en <strong>Caja Sellada</strong> viene en su empaque original de fábrica con celofán, pensada principalmente para regalos. La versión <strong>Tester</strong> viene en caja neutra de distribuidor o sin caja exterior, permitiéndote disfrutar del aroma a un precio más conveniente para uso diario.
         </div>
       </div>
 
       <div class="faq-item">
         <div class="faq-question">
-          <span>¿Cómo vienen los testers y por qué son más económicos?</span>
+          <span>¿Dónde se realizan las entregas presenciales en Quito?</span>
           <span class="faq-icon">+</span>
         </div>
         <div class="faq-answer">
-          Los testers oficiales contienen exactamente el mismo líquido y frasco auténtico. Para ofrecerte el precio más bajo, pueden venir en su caja blanca de distribuidor o sin caja exterior decorativa. Para tu uso personal son la mejor elección porque ahorras entre un 15% y un 25% disfrutando el perfume original.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">
-          <span>¿Dónde se realizan las entregas en Quito?</span>
-          <span class="faq-icon">+</span>
-        </div>
-        <div class="faq-answer">
-          Coordinamos entregas presenciales en lugares seguros y centros comerciales (C.C. El Recreo, Quicentro Sur, CCI, Mall El Jardín, Scala Shopping) para que revises el perfume en mano antes de cancelar el saldo.
+          Coordinamos entregas directas en lugares públicos y seguros, principalmente en los centros comerciales más concurridos de Quito (C.C. El Recreo, Quicentro Sur, CCI, Mall El Jardín, Scala Shopping) para que puedas revisar el producto antes de cancelar el saldo.
         </div>
       </div>
 
@@ -1439,7 +1413,17 @@
           <span class="faq-icon">+</span>
         </div>
         <div class="faq-answer">
-          Despachamos por Servientrega asegurado a todo el país. Cada frasco viaja envuelto en plástico de burbujas de alta densidad. Apenas se realiza el despacho, te enviamos la foto de la guía con código de seguimiento en tiempo real.
+          Despachamos por Servientrega asegurado a todo el país. Cada frasco viaja envuelto en plástico de burbujas de alta densidad. Una vez despachado, te compartimos la fotografía de la guía con código de seguimiento en tiempo real.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>¿Puedo encargar una fragancia que no está en el catálogo?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          ¡Sí! Mediante nuestros canales de distribución podemos cotizarte y traer presentaciones específicas de diseñador o nicho. Solo haz clic en la tarjeta "Cotización de Fragancia Exclusiva" y cuéntanos cuál buscas.
         </div>
       </div>
     </section>
@@ -1521,30 +1505,6 @@
       </div>
       <div class="modal-body" id="detailBody"></div>
       <div class="modal-footer" id="detailFooter"></div>
-    </div>
-  </div>
-
-  <!-- MODAL BATCH CODE EXPLICATIVO -->
-  <div class="modal-overlay" id="batchModal">
-    <div class="modal-box">
-      <div class="modal-header">
-        <h3>Verificación de Autenticidad (Batch Code)</h3>
-        <button class="modal-close" id="btnCloseBatch">&times;</button>
-      </div>
-      <div class="modal-body">
-        <p style="font-size: 0.9rem; color: #cbd5e1;">Todos los perfumes vendidos en Vantage cuentan con su <strong>código de lote grabado en relieve o tinta en la base del frasco</strong> y en la caja.</p>
-        
-        <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--card-border); padding: 1rem; border-radius: 12px; display: flex; flex-direction: column; gap: 0.6rem;">
-          <h4 style="color: var(--gold-light); font-size: 0.95rem;">¿Cómo verificarlo en 3 pasos?</h4>
-          <p style="font-size: 0.82rem; color: var(--text-muted);">1. Revisa la base de tu botella y ubica el código alfanumérico grabado (ej. <em>38X900</em> o <em>23B123</em>).</p>
-          <p style="font-size: 0.82rem; color: var(--text-muted);">2. Ingresa al verificador mundial oficial de cosméticos.</p>
-          <p style="font-size: 0.82rem; color: var(--text-muted);">3. Selecciona la marca del perfume y escribe el código para ver su fecha y lote original de producción.</p>
-        </div>
-
-        <a href="https://www.checkfresh.com" target="_blank" rel="noopener" class="btn-wa" style="justify-content: center; text-decoration: none; margin-top: 0.5rem;">
-          Abrir Verificador CheckFresh.com ↗
-        </a>
-      </div>
     </div>
   </div>
 
@@ -1642,7 +1602,6 @@
   <script>
     const MI_WHATSAPP = "593993641593"; 
 
-    // CATÁLOGO OFICIAL CON TEMPORADAS (halloween, navidad, verano, noche, diario)
     const PRODUCTOS = [
       {
         id: 1,
@@ -1977,10 +1936,6 @@
     const detailBody = document.getElementById('detailBody');
     const detailFooter = document.getElementById('detailFooter');
 
-    // Modal Batch Code
-    const batchModal = document.getElementById('batchModal');
-    const btnCloseBatch = document.getElementById('btnCloseBatch');
-
     // Modal Comparador
     const compareModal = document.getElementById('compareModal');
     const btnCloseCompare = document.getElementById('btnCloseCompare');
@@ -2198,12 +2153,6 @@
       detailModal.classList.remove('active');
     }
     btnCloseDetail.addEventListener('click', cerrarModalDetalle);
-
-    // Modal Batch Code
-    function abrirModalBatch() {
-      batchModal.classList.add('active');
-    }
-    btnCloseBatch.addEventListener('click', () => batchModal.classList.remove('active'));
 
     // Comparador Versus
     window.toggleComparar = function(id) {
@@ -2483,7 +2432,7 @@
 
       let saludo = "¡Hola Perfumería Vantage!";
       if (nombre) saludo += ` Soy *${nombre}*.`;
-      saludo += " Me interesa adquirir los siguientes perfumes originales de su catálogo:%0A%0A";
+      saludo += " Me interesa adquirir los siguientes perfumes de su catálogo:%0A%0A";
 
       let mensaje = saludo;
       carrito.forEach((p, index) => {
@@ -2733,7 +2682,7 @@
     });
 
     // Cerrar modales con fondo
-    [cartModal, detailModal, quizModal, rouletteModal, quoteModal, compareModal, batchModal].forEach(modal => {
+    [cartModal, detailModal, quizModal, rouletteModal, quoteModal, compareModal].forEach(modal => {
       modal.addEventListener('click', (e) => {
         if (e.target === modal) modal.classList.remove('active');
       });
