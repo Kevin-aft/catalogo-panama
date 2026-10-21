@@ -44,34 +44,18 @@
     }
 
     header {
-      padding: 4.5rem 1.25rem 2.5rem;
+      padding: 4.2rem 1.25rem 2.2rem;
       text-align: center;
       border-bottom: 1px solid var(--card-border);
       position: relative;
     }
 
-    .brand-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--gold-soft);
-      color: var(--gold-light);
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      padding: 0.45rem 1.35rem;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      margin-bottom: 1.2rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-    }
-
     .brand-logo {
       font-family: 'Playfair Display', serif;
-      font-size: 3.2rem;
+      font-size: 3.4rem;
       font-weight: 800;
       letter-spacing: 0.04em;
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.5rem;
       background: var(--gold-gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -81,8 +65,9 @@
     .hero-subtitle {
       color: var(--text-muted);
       max-width: 680px;
-      margin: 0 auto 1.5rem;
-      font-size: 0.95rem;
+      margin: 0 auto 1.6rem;
+      font-size: 0.96rem;
+      line-height: 1.6;
     }
 
     .interactive-header-btns {
@@ -90,10 +75,10 @@
       justify-content: center;
       gap: 0.8rem;
       flex-wrap: wrap;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.6rem;
     }
 
-    .quiz-trigger-btn, .roulette-trigger-btn, .compare-trigger-btn {
+    .quiz-trigger-btn, .roulette-trigger-btn, .compare-trigger-btn, .tips-trigger-btn {
       display: inline-flex;
       align-items: center;
       gap: 0.6rem;
@@ -139,6 +124,18 @@
 
     .compare-trigger-btn:hover {
       background: #3b82f6;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .tips-trigger-btn {
+      background: rgba(168, 85, 247, 0.15);
+      border: 1px solid #a855f7;
+      color: #d8b4fe;
+    }
+
+    .tips-trigger-btn:hover {
+      background: #a855f7;
       color: #fff;
       transform: translateY(-2px);
     }
@@ -257,6 +254,12 @@
       border-color: var(--gold);
       font-weight: 700;
       box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25);
+    }
+
+    .filter-btn.fav-tab.active {
+      background: rgba(239, 68, 68, 0.2);
+      border-color: #ef4444;
+      color: #f87171;
     }
 
     .notes-filter-wrap {
@@ -607,6 +610,38 @@
 
     .faq-item.active .faq-icon {
       transform: rotate(45deg);
+    }
+
+    /* BLOQUE INFERIOR DE COMPARTIR */
+    .share-catalog-section {
+      text-align: center;
+      margin-top: 3.5rem;
+      padding: 2rem 1.5rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px dashed var(--card-border);
+      border-radius: 16px;
+    }
+
+    .btn-share-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(37, 211, 102, 0.15);
+      border: 1px solid var(--wa-color);
+      color: #86efac;
+      padding: 0.75rem 1.5rem;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-share-wa:hover {
+      background: var(--wa-color);
+      color: #07090e;
+      transform: translateY(-2px);
     }
 
     /* BARRA FLOTANTE */
@@ -1314,9 +1349,9 @@
   </div>
 
   <header>
-    <div class="brand-tag">Boutique de Perfumería</div>
+    <!-- LOGO Y DESCRIPCIÓN LIMPIA Y NATURAL -->
     <div class="brand-logo">Perfumería Vantage</div>
-    <p class="hero-subtitle">Catálogo exclusivo de fragancias de diseñador y perfumería árabe en Ecuador. Encuentra presentaciones en caja sellada y testers oficiales con entrega presencial en Quito o envíos a nivel nacional.</p>
+    <p class="hero-subtitle">Catálogo de fragancias de diseñador y perfumería árabe en Ecuador. Encuentra tus aromas favoritos en presentación de lujo sellada o en testers oficiales con entrega presencial en Quito o envíos a nivel nacional.</p>
     
     <div class="interactive-header-btns">
       <button class="quiz-trigger-btn" id="btnOpenQuiz">
@@ -1327,6 +1362,9 @@
       </button>
       <button class="compare-trigger-btn" onclick="abrirModalComparador()">
         <span>⚖️</span> Comparar (<span id="compareCount">0</span>)
+      </button>
+      <button class="tips-trigger-btn" onclick="abrirModalTips()">
+        <span>✨</span> Guía de Aplicación
       </button>
     </div>
 
@@ -1355,6 +1393,7 @@
         <button class="filter-btn" data-cat="hombre">Caballero</button>
         <button class="filter-btn" data-cat="mujer">Dama</button>
         <button class="filter-btn" data-cat="arabes">Árabes Selectos</button>
+        <button class="filter-btn fav-tab" id="btnFavTab" onclick="filtrarFavoritos()">♥ Mis Favoritos (<span id="favCount">0</span>)</button>
         <button class="filter-btn" data-cat="custom">A Pedido</button>
       </div>
 
@@ -1427,6 +1466,15 @@
         </div>
       </div>
     </section>
+
+    <!-- COMPARTIR CATÁLOGO -->
+    <div class="share-catalog-section">
+      <h4 style="color: #fff; margin-bottom: 0.4rem; font-size: 1.1rem;">¿Te gustó alguna fragancia?</h4>
+      <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.2rem;">Comparte este catálogo con un amigo o pareja para que elijan juntos.</p>
+      <a href="https://wa.me/?text=¡Mira%20el%20catálogo%20de%20Perfumería%20Vantage!%20Tienen%20perfumes%20de%20diseñador%20y%20árabes%20en%20caja%20sellada%20y%20testers:%20https://kevin-aft.github.io/catalogo-panama/" target="_blank" rel="noopener" class="btn-share-wa">
+        📲 Compartir catálogo por WhatsApp
+      </a>
+    </div>
   </main>
 
   <!-- BARRA FLOTANTE -->
@@ -1505,6 +1553,37 @@
       </div>
       <div class="modal-body" id="detailBody"></div>
       <div class="modal-footer" id="detailFooter"></div>
+    </div>
+  </div>
+
+  <!-- MODAL GUÍA DE APLICACIÓN Y CONSEJOS -->
+  <div class="modal-overlay" id="tipsModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Consejos y Aplicación Vantage</h3>
+        <button class="modal-close" id="btnCloseTips">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--card-border); padding: 1.1rem; border-radius: 12px;">
+          <h4 style="color: var(--gold-light); font-size: 0.95rem; margin-bottom: 0.3rem;">📍 Puntos de calor corporal</h4>
+          <p style="font-size: 0.83rem; color: var(--text-muted); line-height: 1.5;">Aplica a 10-15 cm en clavículas, cuello y muñecas. El calor de tus pulsaciones proyecta el aroma naturalmente.</p>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--card-border); padding: 1.1rem; border-radius: 12px;">
+          <h4 style="color: var(--gold-light); font-size: 0.95rem; margin-bottom: 0.3rem;">🚫 El mito de frotar las muñecas</h4>
+          <p style="font-size: 0.83rem; color: var(--text-muted); line-height: 1.5;">Nunca frotes las muñecas al atomizar. La fricción genera calor excesivo que rompe las notas de salida y reduce la duración.</p>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--card-border); padding: 1.1rem; border-radius: 12px;">
+          <h4 style="color: var(--gold-light); font-size: 0.95rem; margin-bottom: 0.3rem;">💧 Máxima fijación en piel</h4>
+          <p style="font-size: 0.83rem; color: var(--text-muted); line-height: 1.5;">Aplica crema hidratante neutra o vaselina antes de atomizar. La piel hidratada retiene las moléculas de fragancia hasta el doble de tiempo.</p>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--card-border); padding: 1.1rem; border-radius: 12px;">
+          <h4 style="color: var(--gold-light); font-size: 0.95rem; margin-bottom: 0.3rem;">🧴 Conservación ideal</h4>
+          <p style="font-size: 0.83rem; color: var(--text-muted); line-height: 1.5;">Guarda tus botellas en un lugar fresco y oscuro (como tu clóset o gaveta). Evita la humedad y los cambios de temperatura del baño.</p>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1899,6 +1978,7 @@
     let cuponActivo = null;
     let listaComparar = [];
     let favoritos = JSON.parse(localStorage.getItem('vantage_favs') || '[]');
+    let modoSoloFavoritos = false;
 
     const grid = document.getElementById('productsGrid');
     const searchInput = document.getElementById('searchInput');
@@ -1912,6 +1992,8 @@
     const toast = document.getElementById('toast');
     const toastMsg = document.getElementById('toastMsg');
     const compareCount = document.getElementById('compareCount');
+    const favCount = document.getElementById('favCount');
+    const btnFavTab = document.getElementById('btnFavTab');
     
     // Modal Carrito
     const cartModal = document.getElementById('cartModal');
@@ -1935,6 +2017,10 @@
     const detailTitle = document.getElementById('detailTitle');
     const detailBody = document.getElementById('detailBody');
     const detailFooter = document.getElementById('detailFooter');
+
+    // Modal Tips
+    const tipsModal = document.getElementById('tipsModal');
+    const btnCloseTips = document.getElementById('btnCloseTips');
 
     // Modal Comparador
     const compareModal = document.getElementById('compareModal');
@@ -1971,6 +2057,10 @@
     let notaActual = 'all';
     let respuestasQuiz = { genero: '', ocasion: '' };
 
+    function actualizarContadorFavoritos() {
+      favCount.textContent = favoritos.length;
+    }
+
     function mostrarToast(mensaje) {
       toastMsg.textContent = mensaje;
       toast.classList.add('show');
@@ -1989,12 +2079,30 @@
         mostrarToast("Guardado en tus favoritos ♡");
       }
       localStorage.setItem('vantage_favs', JSON.stringify(favoritos));
+      actualizarContadorFavoritos();
+      renderizar(searchInput.value);
+    }
+
+    function filtrarFavoritos() {
+      modoSoloFavoritos = !modoSoloFavoritos;
+      categoryBtns.forEach(b => b.classList.remove('active'));
+
+      if (modoSoloFavoritos) {
+        btnFavTab.classList.add('active');
+      } else {
+        document.querySelector('#categoryTabs .filter-btn[data-cat="all"]').classList.add('active');
+        categoriaActual = 'all';
+      }
       renderizar(searchInput.value);
     }
 
     function renderizar(filtroTexto = '') {
       grid.innerHTML = '';
       const filtrados = PRODUCTOS.filter(p => {
+        if (modoSoloFavoritos) {
+          return favoritos.includes(p.id);
+        }
+
         const coincideCat = categoriaActual === 'all' || p.category.includes(categoriaActual);
         const coincideOcc = ocasionActual === 'all' || (p.occasions && p.occasions.includes(ocasionActual));
         const coincideNota = notaActual === 'all' || (p.notesKey && p.notesKey.includes(notaActual));
@@ -2006,7 +2114,9 @@
       });
 
       if (filtrados.length === 0) {
-        grid.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1; text-align: center; padding: 3rem;">No se encontraron perfumes en Perfumería Vantage con ese criterio.</p>';
+        grid.innerHTML = modoSoloFavoritos 
+          ? '<p style="color: var(--text-muted); grid-column: 1/-1; text-align: center; padding: 3rem;">Aún no tienes perfumes guardados como favoritos. Toca el corazón ♥ en cualquier fragancia para verla aquí.</p>'
+          : '<p style="color: var(--text-muted); grid-column: 1/-1; text-align: center; padding: 3rem;">No se encontraron perfumes en Perfumería Vantage con ese criterio.</p>';
         return;
       }
 
@@ -2153,6 +2263,12 @@
       detailModal.classList.remove('active');
     }
     btnCloseDetail.addEventListener('click', cerrarModalDetalle);
+
+    // Modal Tips
+    function abrirModalTips() {
+      tipsModal.classList.add('active');
+    }
+    btnCloseTips.addEventListener('click', () => tipsModal.classList.remove('active'));
 
     // Comparador Versus
     window.toggleComparar = function(id) {
@@ -2649,6 +2765,9 @@
 
     categoryBtns.forEach(btn => {
       btn.addEventListener('click', () => {
+        if (btn.id === 'btnFavTab') return;
+        modoSoloFavoritos = false;
+        btnFavTab.classList.remove('active');
         categoryBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         categoriaActual = btn.getAttribute('data-cat');
@@ -2682,12 +2801,13 @@
     });
 
     // Cerrar modales con fondo
-    [cartModal, detailModal, quizModal, rouletteModal, quoteModal, compareModal].forEach(modal => {
+    [cartModal, detailModal, quizModal, rouletteModal, quoteModal, compareModal, tipsModal].forEach(modal => {
       modal.addEventListener('click', (e) => {
         if (e.target === modal) modal.classList.remove('active');
       });
     });
 
+    actualizarContadorFavoritos();
     renderizar();
   </script>
 </body>
