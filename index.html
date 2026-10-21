@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Perfumería Vantage | Fragancias de Diseñador & Árabes</title>
+  <title>Perfumería Vantage | Solo Perfumes 100% Originales</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
@@ -54,9 +54,9 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      background: var(--gold-soft);
-      color: var(--gold-light);
-      border: 1px solid rgba(212, 175, 55, 0.3);
+      background: rgba(16, 185, 129, 0.15);
+      color: #6ee7b7;
+      border: 1px solid rgba(16, 185, 129, 0.35);
       padding: 0.45rem 1.35rem;
       border-radius: 999px;
       font-size: 0.8rem;
@@ -93,7 +93,7 @@
       margin-bottom: 1.5rem;
     }
 
-    .quiz-trigger-btn, .roulette-trigger-btn, .compare-trigger-btn {
+    .quiz-trigger-btn, .roulette-trigger-btn, .compare-trigger-btn, .batch-trigger-btn {
       display: inline-flex;
       align-items: center;
       gap: 0.6rem;
@@ -139,6 +139,18 @@
 
     .compare-trigger-btn:hover {
       background: #3b82f6;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .batch-trigger-btn {
+      background: rgba(168, 85, 247, 0.15);
+      border: 1px solid #a855f7;
+      color: #d8b4fe;
+    }
+
+    .batch-trigger-btn:hover {
+      background: #a855f7;
       color: #fff;
       transform: translateY(-2px);
     }
@@ -308,7 +320,6 @@
       box-shadow: 0 16px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(212, 175, 55, 0.12);
     }
 
-    /* ESTILO AGOTADO */
     .card.is-sold-out {
       opacity: 0.75;
       border-color: rgba(239, 68, 68, 0.3);
@@ -353,6 +364,31 @@
       transform: scale(1.06);
     }
 
+    .btn-fav {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(0, 0, 0, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      z-index: 4;
+      transition: all 0.2s;
+    }
+
+    .btn-fav.active {
+      color: #ef4444;
+      border-color: #ef4444;
+      background: rgba(239, 68, 68, 0.2);
+    }
+
     .card-zoom-hint {
       position: absolute;
       bottom: 8px;
@@ -377,19 +413,6 @@
       padding: 0.35rem 0.75rem;
       border-radius: 999px;
       border: 1px solid rgba(212, 175, 55, 0.35);
-    }
-
-    .badge-type {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background: rgba(0, 0, 0, 0.8);
-      color: #e2e8f0;
-      font-size: 0.7rem;
-      font-weight: 600;
-      padding: 0.3rem 0.65rem;
-      border-radius: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .card-content {
@@ -683,7 +706,7 @@
       transform: translateY(-1px);
     }
 
-    /* MODAL BASE */
+    /* MODALES */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -1298,43 +1321,44 @@
 </head>
 <body>
 
-  <!-- TOAST NOTIFICACIÓN -->
   <div class="toast-notification" id="toast">
-    <span>✨</span> <span id="toastMsg">Perfume añadido al carrito</span>
+    <span>✨</span> <span id="toastMsg">Perfume añadido</span>
   </div>
 
   <header>
-    <!-- SUBTÍTULO MODIFICADO CON TONO NEUTRAL -->
-    <div class="brand-tag">Fragancias de diseñador y árabes</div>
+    <!-- TEXTO MEJORADO: ENFOQUE DIRECTO EN 100% ORIGINALES -->
+    <div class="brand-tag">✓ Solo fragancias 100% originales</div>
     <div class="brand-logo">Perfumería Vantage</div>
-    <p class="hero-subtitle">Fragancias de diseñador y perfumería árabe selecta. Elige tu aroma en presentación de lujo sellada o en tester oficial con descuento. Botellas 100% auténticas con código de lote verificable.</p>
+    <p class="hero-subtitle">Venta exclusiva de perfumes 100% originales de diseñador y casas árabes. Cero réplicas ni imitaciones. Elige entre caja sellada de lujo o testers oficiales con batch code grabado verificable.</p>
     
     <div class="interactive-header-btns">
       <button class="quiz-trigger-btn" id="btnOpenQuiz">
         <span>🎯</span> Asesor Olfativo
       </button>
       <button class="roulette-trigger-btn" id="btnOpenRoulette">
-        <span>🎰</span> Girar Ruleta de Premios
+        <span>🎰</span> Ruleta de Premios
       </button>
-      <button class="compare-trigger-btn" id="btnOpenCompareBar" onclick="abrirModalComparador()">
-        <span>⚖️</span> Comparar Aromas (<span id="compareCount">0</span>)
+      <button class="compare-trigger-btn" onclick="abrirModalComparador()">
+        <span>⚖️</span> Comparar (<span id="compareCount">0</span>)
+      </button>
+      <button class="batch-trigger-btn" onclick="abrirModalBatch()">
+        <span>🔍</span> Verificar Lote
       </button>
     </div>
 
     <div class="info-strip">
+      <span>Garantía: <strong>100% Auténticos • Cero Réplicas</strong></span>
       <span>Entregas: <strong>Presenciales en Quito / Servientrega Nacional</strong></span>
-      <span>Opciones: <strong>Caja Sellada o Tester Económico</strong></span>
-      <span>Autenticidad: <strong>Lotes y Batch Codes 100% Verificables</strong></span>
+      <span>Opciones: <strong>Caja Sellada o Tester Oficial</strong></span>
     </div>
   </header>
 
   <main class="container">
 
-    <!-- AVISO EXPLICATIVO TESTER -->
     <div class="tester-banner">
       <div class="tester-text">
-        <h4>✨ ¿Qué es un Tester y por qué es la opción más inteligente?</h4>
-        <p>Un tester oficial contiene <strong>exactamente el mismo perfume auténtico y la misma botella original de fábrica</strong>. Su menor precio se debe a que viene en su caja blanca/neutra de distribuidor o en ocasiones sin caja exterior decorativa. Tienen su <strong>Batch Code grabado en el frasco</strong> y son ideales para uso personal ahorrando hasta un 25%.</p>
+        <h4>✨ Transparencia Vantage: ¿Qué es un Tester 100% Original?</h4>
+        <p>Un tester oficial es el <strong>mismo perfume auténtico y la misma botella original de fábrica</strong>. Su menor valor se debe a que viene en su caja blanca de distribuidor o directamente sin caja decorativa. Cuentan con su <strong>Batch Code tallado en el cristal</strong> para comprobar su autenticidad de origen.</p>
       </div>
     </div>
 
@@ -1350,13 +1374,14 @@
         <button class="filter-btn" data-cat="custom">A Pedido</button>
       </div>
 
-      <div class="tabs-label">Ocasión de uso:</div>
+      <div class="tabs-label">Temporada & Ocasión:</div>
       <div class="filter-tabs" id="occasionTabs">
-        <button class="filter-btn occasion-btn active" data-occ="all">✨ Cualquier Ocasión</button>
-        <button class="filter-btn occasion-btn" data-occ="noche">🌙 Noche & Citas</button>
-        <button class="filter-btn occasion-btn" data-occ="diario">💼 Diario & Oficina</button>
-        <button class="filter-btn occasion-btn" data-occ="fiesta">🔥 Fiesta & Cumplidos</button>
-        <button class="filter-btn occasion-btn" data-occ="tiktok">📱 Virales TikTok</button>
+        <button class="filter-btn occasion-btn active" data-occ="all">✨ Todos</button>
+        <button class="filter-btn occasion-btn" data-occ="halloween">🎃 Noches Frías / Dulces</button>
+        <button class="filter-btn occasion-btn" data-occ="navidad">🎄 Regalos & Fiesta</button>
+        <button class="filter-btn occasion-btn" data-occ="verano">☀️ Frescos & Versátiles</button>
+        <button class="filter-btn occasion-btn" data-occ="noche">🌙 Citas Elegantes</button>
+        <button class="filter-btn occasion-btn" data-occ="diario">💼 Trabajo & Oficina</button>
       </div>
 
       <div class="tabs-label">Explorar por Notas Clave:</div>
@@ -1374,28 +1399,27 @@
 
     <div class="products-grid" id="productsGrid"></div>
 
-    <!-- PREGUNTAS FRECUENTES -->
     <section class="faq-section">
       <h3 class="faq-header-title">Preguntas Frecuentes & Garantía Vantage</h3>
-      <p class="faq-subtitle">Todo lo que necesitas saber con total transparencia</p>
+      <p class="faq-subtitle">Transparencia absoluta en cada entrega</p>
       
       <div class="faq-item">
         <div class="faq-question">
-          <span>¿Cómo vienen los testers y por qué garantizan originalidad?</span>
+          <span>¿Cómo garantizan que son solo perfumes 100% originales?</span>
           <span class="faq-icon">+</span>
         </div>
         <div class="faq-answer">
-          Los testers son frascos destinados por las casas perfumistas para demostración oficial. Tienen exactamente la misma fragancia, concentración y frasco original de lujo. Para que aproveches el precio más bajo, pueden venir en caja blanca de distribuidor o directamente sin caja exterior. Todos traen su <strong>Batch Code (código de lote) tallado en el cristal</strong> para verificar su autenticidad de fábrica en CheckFresh.
+          En Vantage no comercializamos réplicas, copias AAA ni imitaciones de ninguna clase. Todas nuestras botellas provienen de importadores mayoristas autorizados. Cada frasco tiene su Batch Code de fábrica grabado en la base, el cual puedes comprobar en portales mundiales como CheckFresh en el mismo instante de la entrega.
         </div>
       </div>
 
       <div class="faq-item">
         <div class="faq-question">
-          <span>¿Qué me conviene más: Regular (Caja Sellada) o Tester?</span>
+          <span>¿Cómo vienen los testers y por qué son más económicos?</span>
           <span class="faq-icon">+</span>
         </div>
         <div class="faq-answer">
-          Si el perfume es para un regalo formal o te gusta coleccionar las cajas de lujo con celofán, elige <strong>Caja Sellada</strong>. Si el perfume es para tu uso diario y personal, la versión <strong>Tester</strong> es la compra maestra: disfrutas la fragancia original pagando entre $10 y $25 USD menos.
+          Los testers oficiales contienen exactamente el mismo líquido y frasco auténtico. Para ofrecerte el precio más bajo, pueden venir en su caja blanca de distribuidor o sin caja exterior decorativa. Para tu uso personal son la mejor elección porque ahorras entre un 15% y un 25% disfrutando el perfume original.
         </div>
       </div>
 
@@ -1405,7 +1429,7 @@
           <span class="faq-icon">+</span>
         </div>
         <div class="faq-answer">
-          Coordinamos entregas presenciales en lugares seguros y centros comerciales (C.C. El Recreo, Quicentro Sur, CCI, Mall El Jardín, Scala Shopping) para que puedas revisar el frasco y verificar su lote en tus manos antes de abonar el saldo final.
+          Coordinamos entregas presenciales en lugares seguros y centros comerciales (C.C. El Recreo, Quicentro Sur, CCI, Mall El Jardín, Scala Shopping) para que revises el perfume en mano antes de cancelar el saldo.
         </div>
       </div>
 
@@ -1415,7 +1439,7 @@
           <span class="faq-icon">+</span>
         </div>
         <div class="faq-answer">
-          Despachamos por Servientrega asegurado a todo el país. Cada frasco viaja envuelto en plástico de burbujas de alta densidad para máxima protección. Apenas se realiza el despacho, te enviamos la foto de la guía con código de seguimiento en tiempo real.
+          Despachamos por Servientrega asegurado a todo el país. Cada frasco viaja envuelto en plástico de burbujas de alta densidad. Apenas se realiza el despacho, te enviamos la foto de la guía con código de seguimiento en tiempo real.
         </div>
       </div>
     </section>
@@ -1435,7 +1459,7 @@
     </div>
   </div>
 
-  <!-- MODAL DEL CARRITO -->
+  <!-- MODAL CARRITO -->
   <div class="modal-overlay" id="cartModal">
     <div class="modal-box">
       <div class="modal-header">
@@ -1445,7 +1469,6 @@
       <div class="modal-body">
         <div id="cartItemsList"></div>
 
-        <!-- CALCULADORA DE AHORRO DINÁMICA -->
         <div class="cart-savings-badge" id="cartSavingsBadge">
           <span>💰</span> <span id="cartSavingsText">Ahorro estimado en tu orden: $0.00 USD</span>
         </div>
@@ -1489,7 +1512,7 @@
     </div>
   </div>
 
-  <!-- MODAL DE FICHA TÉCNICA -->
+  <!-- MODAL DETALLE -->
   <div class="modal-overlay" id="detailModal">
     <div class="modal-box">
       <div class="modal-header">
@@ -1498,6 +1521,41 @@
       </div>
       <div class="modal-body" id="detailBody"></div>
       <div class="modal-footer" id="detailFooter"></div>
+    </div>
+  </div>
+
+  <!-- MODAL BATCH CODE EXPLICATIVO -->
+  <div class="modal-overlay" id="batchModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Verificación de Autenticidad (Batch Code)</h3>
+        <button class="modal-close" id="btnCloseBatch">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.9rem; color: #cbd5e1;">Todos los perfumes vendidos en Vantage cuentan con su <strong>código de lote grabado en relieve o tinta en la base del frasco</strong> y en la caja.</p>
+        
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--card-border); padding: 1rem; border-radius: 12px; display: flex; flex-direction: column; gap: 0.6rem;">
+          <h4 style="color: var(--gold-light); font-size: 0.95rem;">¿Cómo verificarlo en 3 pasos?</h4>
+          <p style="font-size: 0.82rem; color: var(--text-muted);">1. Revisa la base de tu botella y ubica el código alfanumérico grabado (ej. <em>38X900</em> o <em>23B123</em>).</p>
+          <p style="font-size: 0.82rem; color: var(--text-muted);">2. Ingresa al verificador mundial oficial de cosméticos.</p>
+          <p style="font-size: 0.82rem; color: var(--text-muted);">3. Selecciona la marca del perfume y escribe el código para ver su fecha y lote original de producción.</p>
+        </div>
+
+        <a href="https://www.checkfresh.com" target="_blank" rel="noopener" class="btn-wa" style="justify-content: center; text-decoration: none; margin-top: 0.5rem;">
+          Abrir Verificador CheckFresh.com ↗
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL COMPARADOR VERSUS -->
+  <div class="modal-overlay" id="compareModal">
+    <div class="modal-box wide">
+      <div class="modal-header">
+        <h3>Comparador Olfativo Vantage</h3>
+        <button class="modal-close" id="btnCloseCompare">&times;</button>
+      </div>
+      <div class="modal-body" id="compareBody"></div>
     </div>
   </div>
 
@@ -1534,19 +1592,6 @@
     </div>
   </div>
 
-  <!-- MODAL COMPARADOR VERSUS (A vs B) -->
-  <div class="modal-overlay" id="compareModal">
-    <div class="modal-box wide">
-      <div class="modal-header">
-        <h3>Comparador Olfativo Vantage</h3>
-        <button class="modal-close" id="btnCloseCompare">&times;</button>
-      </div>
-      <div class="modal-body" id="compareBody">
-        <!-- Inyectado dinámicamente -->
-      </div>
-    </div>
-  </div>
-
   <!-- MODAL RULETA -->
   <div class="modal-overlay" id="rouletteModal">
     <div class="modal-box">
@@ -1556,7 +1601,7 @@
       </div>
       <div class="modal-body">
         <div class="roulette-box-ui">
-          <p style="color: var(--text-muted); font-size: 0.88rem;">¡Pon a prueba tu suerte hoy y gana un cupón directo para tu próxima fragancia en Perfumería Vantage!</p>
+          <p style="color: var(--text-muted); font-size: 0.88rem;">¡Gira la ruleta y gana un cupón directo para tu próxima fragancia en Perfumería Vantage!</p>
           
           <div style="position: relative;">
             <div class="roulette-pointer"></div>
@@ -1597,13 +1642,13 @@
   <script>
     const MI_WHATSAPP = "593993641593"; 
 
-    // LISTADO OFICIAL CON CONTROL DE STOCK (stock: true o false)
+    // CATÁLOGO OFICIAL CON TEMPORADAS (halloween, navidad, verano, noche, diario)
     const PRODUCTOS = [
       {
         id: 1,
         name: "Lattafa Yara Rosa EDP (100ml)",
         category: "mujer arabes",
-        occasions: "diario fiesta tiktok",
+        occasions: "diario fiesta verano",
         notesKey: "vainilla fresa",
         stock: true,
         priceRegular: 45,
@@ -1622,7 +1667,7 @@
         id: 2,
         name: "Lattafa Yara Candy EDP (100ml)",
         category: "mujer arabes",
-        occasions: "fiesta tiktok",
+        occasions: "fiesta verano navidad",
         notesKey: "fresa vainilla",
         stock: true,
         priceRegular: 48,
@@ -1641,7 +1686,7 @@
         id: 3,
         name: "Carolina Herrera Good Girl Blush EDP (80ml)",
         category: "mujer",
-        occasions: "noche fiesta",
+        occasions: "noche fiesta navidad",
         notesKey: "vainilla cítrico",
         stock: true,
         priceRegular: 118,
@@ -1660,7 +1705,7 @@
         id: 4,
         name: "Ariana Grande Cloud EDP (100ml)",
         category: "mujer",
-        occasions: "diario fiesta",
+        occasions: "diario fiesta halloween",
         notesKey: "vainilla cítrico",
         stock: true,
         priceRegular: 75,
@@ -1679,7 +1724,7 @@
         id: 5,
         name: "Jean Paul Gaultier Le Male Elixir (125ml)",
         category: "hombre",
-        occasions: "noche fiesta",
+        occasions: "noche fiesta halloween navidad",
         notesKey: "vainilla tabaco",
         stock: true,
         priceRegular: 115,
@@ -1698,7 +1743,7 @@
         id: 6,
         name: "Afnan 9 PM EDP (100ml)",
         category: "hombre arabes",
-        occasions: "noche fiesta tiktok",
+        occasions: "noche fiesta halloween",
         notesKey: "vainilla",
         stock: true,
         priceRegular: 45,
@@ -1717,7 +1762,7 @@
         id: 7,
         name: "Lattafa Khamrah Qahwa (100ml)",
         category: "hombre mujer arabes",
-        occasions: "noche tiktok",
+        occasions: "noche halloween navidad",
         notesKey: "café vainilla",
         stock: true,
         priceRegular: 52,
@@ -1736,7 +1781,7 @@
         id: 8,
         name: "Lattafa Asad EDP (100ml)",
         category: "hombre arabes",
-        occasions: "diario noche tiktok",
+        occasions: "diario noche halloween",
         notesKey: "tabaco café vainilla",
         stock: true,
         priceRegular: 42,
@@ -1755,7 +1800,7 @@
         id: 9,
         name: "Armaf Club de Nuit Intense Man EDT (100ml)",
         category: "hombre arabes",
-        occasions: "diario fiesta",
+        occasions: "diario fiesta verano",
         notesKey: "cítrico",
         stock: true,
         priceRegular: 48,
@@ -1774,7 +1819,7 @@
         id: 10,
         name: "Carolina Herrera 212 VIP Black EDP (100ml)",
         category: "hombre",
-        occasions: "noche fiesta",
+        occasions: "noche fiesta navidad",
         notesKey: "vainilla",
         stock: true,
         priceRegular: 98,
@@ -1793,7 +1838,7 @@
         id: 12,
         name: "Dior Sauvage Eau de Parfum (100ml)",
         category: "hombre",
-        occasions: "diario noche fiesta",
+        occasions: "diario noche fiesta verano navidad",
         notesKey: "cítrico vainilla",
         stock: true,
         priceRegular: 145,
@@ -1812,7 +1857,7 @@
         id: 13,
         name: "Paco Rabanne 1 Million Elixir (100ml)",
         category: "hombre",
-        occasions: "noche fiesta",
+        occasions: "noche fiesta halloween navidad",
         notesKey: "vainilla",
         stock: true,
         priceRegular: 110,
@@ -1831,7 +1876,7 @@
         id: 14,
         name: "Lattafa Bade'e Al Oud - Oud for Glory (100ml)",
         category: "hombre mujer arabes",
-        occasions: "noche tiktok",
+        occasions: "noche halloween",
         notesKey: "oud",
         stock: true,
         priceRegular: 48,
@@ -1850,7 +1895,7 @@
         id: 15,
         name: "Lattafa Yara Tous Amarillo (100ml)",
         category: "mujer arabes",
-        occasions: "diario fiesta tiktok",
+        occasions: "diario fiesta verano",
         notesKey: "mango vainilla",
         stock: true,
         priceRegular: 46,
@@ -1893,7 +1938,8 @@
 
     let carrito = [];
     let cuponActivo = null;
-    let listaComparar = []; // Guarda hasta 2 IDs de perfume
+    let listaComparar = [];
+    let favoritos = JSON.parse(localStorage.getItem('vantage_favs') || '[]');
 
     const grid = document.getElementById('productsGrid');
     const searchInput = document.getElementById('searchInput');
@@ -1908,7 +1954,7 @@
     const toastMsg = document.getElementById('toastMsg');
     const compareCount = document.getElementById('compareCount');
     
-    // Modal Carrito & Cupones
+    // Modal Carrito
     const cartModal = document.getElementById('cartModal');
     const btnOpenCart = document.getElementById('btnOpenCart');
     const btnCloseCart = document.getElementById('btnCloseCart');
@@ -1930,6 +1976,10 @@
     const detailTitle = document.getElementById('detailTitle');
     const detailBody = document.getElementById('detailBody');
     const detailFooter = document.getElementById('detailFooter');
+
+    // Modal Batch Code
+    const batchModal = document.getElementById('batchModal');
+    const btnCloseBatch = document.getElementById('btnCloseBatch');
 
     // Modal Comparador
     const compareModal = document.getElementById('compareModal');
@@ -1974,6 +2024,19 @@
       }, 2500);
     }
 
+    function toggleFavorito(e, id) {
+      e.stopPropagation();
+      if (favoritos.includes(id)) {
+        favoritos = favoritos.filter(item => item !== id);
+        mostrarToast("Retirado de tus favoritos");
+      } else {
+        favoritos.push(id);
+        mostrarToast("Guardado en tus favoritos ♡");
+      }
+      localStorage.setItem('vantage_favs', JSON.stringify(favoritos));
+      renderizar(searchInput.value);
+    }
+
     function renderizar(filtroTexto = '') {
       grid.innerHTML = '';
       const filtrados = PRODUCTOS.filter(p => {
@@ -1997,6 +2060,7 @@
         const precioActual = tipoActual === 'tester' ? p.priceTester : p.priceRegular;
         const hayStock = p.stock !== false;
         const estaEnComparador = listaComparar.includes(p.id);
+        const esFavorito = favoritos.includes(p.id);
 
         const card = document.createElement('div');
         card.className = `card ${!hayStock ? 'is-sold-out' : ''}`;
@@ -2004,7 +2068,7 @@
           <div class="card-img-wrapper" onclick="abrirFichaTecnica(${p.id})">
             <img src="${p.img}" alt="${p.name}" loading="lazy">
             <span class="badge-card">${p.badge}</span>
-            <span class="badge-type">${p.type}</span>
+            ${p.id !== 11 ? `<button class="btn-fav ${esFavorito ? 'active' : ''}" title="Guardar favorito" onclick="toggleFavorito(event, ${p.id})">♥</button>` : ''}
             ${!hayStock ? '<span class="badge-sold-out">Agotado</span>' : '<span class="card-zoom-hint">Ficha & Notas 🔍</span>'}
           </div>
           <div class="card-content">
@@ -2054,7 +2118,6 @@
       renderizar(searchInput.value);
     };
 
-    // Ficha Técnica Detallada
     window.abrirFichaTecnica = function(id) {
       const p = PRODUCTOS.find(item => item.id === id);
       if (!p) return;
@@ -2136,14 +2199,20 @@
     }
     btnCloseDetail.addEventListener('click', cerrarModalDetalle);
 
-    // Comparador Versus (A vs B)
+    // Modal Batch Code
+    function abrirModalBatch() {
+      batchModal.classList.add('active');
+    }
+    btnCloseBatch.addEventListener('click', () => batchModal.classList.remove('active'));
+
+    // Comparador Versus
     window.toggleComparar = function(id) {
       if (listaComparar.includes(id)) {
         listaComparar = listaComparar.filter(item => item !== id);
         mostrarToast("Perfume retirado del comparador");
       } else {
         if (listaComparar.length >= 2) {
-          listaComparar.shift(); // Quita el primero para dejar lugar
+          listaComparar.shift();
         }
         listaComparar.push(id);
         mostrarToast("Perfume sumado a la comparación");
@@ -2167,7 +2236,6 @@
 
       compareBody.innerHTML = `
         <div class="compare-container">
-          <!-- Perfume 1 -->
           <div class="compare-col">
             <img src="${p1.img}" alt="${p1.name}" class="compare-img">
             <h4 style="font-size: 0.95rem; color: #fff;">${p1.name}</h4>
@@ -2195,7 +2263,6 @@
             </button>
           </div>
 
-          <!-- Perfume 2 -->
           <div class="compare-col">
             <img src="${p2.img}" alt="${p2.name}" class="compare-img">
             <h4 style="font-size: 0.95rem; color: #fff;">${p2.name}</h4>
@@ -2229,7 +2296,7 @@
     }
     btnCloseCompare.addEventListener('click', () => compareModal.classList.remove('active'));
 
-    // Carrito, Ahorro y Descuentos
+    // Carrito
     window.agregarAlCarritoConVariante = function(id, varianteForzada = null) {
       const prod = PRODUCTOS.find(p => p.id === id);
       if (!prod || prod.stock === false) return;
@@ -2416,7 +2483,7 @@
 
       let saludo = "¡Hola Perfumería Vantage!";
       if (nombre) saludo += ` Soy *${nombre}*.`;
-      saludo += " Me interesa adquirir los siguientes perfumes de su catálogo:%0A%0A";
+      saludo += " Me interesa adquirir los siguientes perfumes originales de su catálogo:%0A%0A";
 
       let mensaje = saludo;
       carrito.forEach((p, index) => {
@@ -2666,7 +2733,7 @@
     });
 
     // Cerrar modales con fondo
-    [cartModal, detailModal, quizModal, rouletteModal, quoteModal, compareModal].forEach(modal => {
+    [cartModal, detailModal, quizModal, rouletteModal, quoteModal, compareModal, batchModal].forEach(modal => {
       modal.addEventListener('click', (e) => {
         if (e.target === modal) modal.classList.remove('active');
       });
