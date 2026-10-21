@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Boutique de Fragancias | Catálogo Oficial</title>
+  <title>VANTAGE | Haute Parfumerie</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #07090e;
       --card-bg: rgba(18, 22, 33, 0.75);
       --card-border: rgba(212, 175, 55, 0.16);
-      --card-border-hover: rgba(212, 175, 55, 0.55);
+      --card-border-hover: rgba(212, 175, 55, 0.6);
       --gold: #d4af37;
       --gold-light: #f3e5ab;
-      --gold-gradient: linear-gradient(135deg, #f5d77f 0%, #d4af37 50%, #aa820a 100%);
+      --gold-gradient: linear-gradient(135deg, #fce59b 0%, #d4af37 50%, #9a7308 100%);
       --gold-soft: rgba(212, 175, 55, 0.12);
       --text: #f8fafc;
       --text-muted: #94a3b8;
@@ -34,8 +34,8 @@
     body {
       background-color: var(--bg);
       background-image: 
-        radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.08) 0%, transparent 60%),
-        radial-gradient(circle at 10% 40%, rgba(30, 41, 59, 0.3) 0%, transparent 50%);
+        radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.09) 0%, transparent 60%),
+        radial-gradient(circle at 10% 40%, rgba(30, 41, 59, 0.35) 0%, transparent 50%);
       background-attachment: fixed;
       color: var(--text);
       line-height: 1.5;
@@ -43,7 +43,7 @@
     }
 
     header {
-      padding: 4rem 1.25rem 2.25rem;
+      padding: 4.5rem 1.25rem 2.5rem;
       text-align: center;
       border-bottom: 1px solid var(--card-border);
       position: relative;
@@ -56,24 +56,25 @@
       background: var(--gold-soft);
       color: var(--gold-light);
       border: 1px solid rgba(212, 175, 55, 0.3);
-      padding: 0.45rem 1.25rem;
+      padding: 0.45rem 1.35rem;
       border-radius: 999px;
       font-size: 0.78rem;
       font-weight: 700;
-      margin-bottom: 1.1rem;
+      margin-bottom: 1.2rem;
       text-transform: uppercase;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.18em;
     }
 
-    h1 {
+    .brand-logo {
       font-family: 'Playfair Display', serif;
-      font-size: 2.7rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      margin-bottom: 0.6rem;
+      font-size: 3.4rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.3rem;
       background: var(--gold-gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
     }
 
     .hero-subtitle {
@@ -83,17 +84,40 @@
       font-size: 0.95rem;
     }
 
+    .quiz-trigger-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+      padding: 0.7rem 1.5rem;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      margin-bottom: 1.5rem;
+    }
+
+    .quiz-trigger-btn:hover {
+      background: var(--gold-gradient);
+      color: #07090e;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
+    }
+
     .info-strip {
       display: flex;
       justify-content: center;
       gap: 1.5rem;
       flex-wrap: wrap;
-      padding: 0.9rem 1.5rem;
-      background: rgba(18, 22, 33, 0.6);
-      backdrop-filter: blur(8px);
+      padding: 0.85rem 1.5rem;
+      background: rgba(18, 22, 33, 0.65);
+      backdrop-filter: blur(10px);
       border: 1px solid var(--card-border);
       border-radius: 999px;
-      max-width: 860px;
+      max-width: 880px;
       margin: 0 auto;
       font-size: 0.82rem;
       color: #cbd5e1;
@@ -170,11 +194,6 @@
       box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25);
     }
 
-    .occasion-btn {
-      border-radius: 10px;
-      font-size: 0.8rem;
-    }
-
     .products-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
@@ -204,6 +223,7 @@
       height: 260px;
       background: #0d1017;
       overflow: hidden;
+      cursor: pointer;
     }
 
     .card-img-wrapper img {
@@ -215,6 +235,18 @@
 
     .card:hover .card-img-wrapper img {
       transform: scale(1.06);
+    }
+
+    .card-zoom-hint {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(0, 0, 0, 0.7);
+      color: var(--gold-light);
+      font-size: 0.68rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 6px;
+      backdrop-filter: blur(4px);
     }
 
     .badge-card {
@@ -257,6 +289,11 @@
       color: #fff;
       margin-bottom: 0.4rem;
       line-height: 1.35;
+      cursor: pointer;
+    }
+
+    .card-title:hover {
+      color: var(--gold-light);
     }
 
     .notes-box {
@@ -319,6 +356,74 @@
     .btn-add:hover {
       transform: scale(1.04);
       box-shadow: 0 6px 18px rgba(212, 175, 55, 0.35);
+    }
+
+    /* FAQ ACCORDION */
+    .faq-section {
+      margin-top: 4.5rem;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 3rem 1.75rem;
+    }
+
+    .faq-header-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--gold-light);
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .faq-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(212, 175, 55, 0.12);
+      padding: 1.1rem 0;
+      cursor: pointer;
+    }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+      font-size: 1rem;
+      color: #fff;
+    }
+
+    .faq-question:hover {
+      color: var(--gold-light);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      line-height: 1.6;
+      padding-top: 0;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 250px;
+      padding-top: 0.8rem;
+    }
+
+    .faq-icon {
+      color: var(--gold);
+      font-size: 1.2rem;
+      transition: transform 0.3s;
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
     }
 
     /* BARRA FLOTANTE */
@@ -406,7 +511,7 @@
       transform: translateY(-1px);
     }
 
-    /* MODAL */
+    /* MODAL BASE */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -482,6 +587,7 @@
       gap: 1.3rem;
     }
 
+    /* CARRITO DETALLES */
     .cart-item {
       display: flex;
       align-items: center;
@@ -646,64 +752,141 @@
       color: #fff;
     }
 
-    .services-section {
-      margin-top: 4.5rem;
-      background: var(--card-bg);
+    /* MODAL DE DETALLE DEL PRODUCTO */
+    .detail-img-box {
+      width: 100%;
+      height: 250px;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .detail-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .pyramid-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+
+    .pyramid-card {
+      background: rgba(255, 255, 255, 0.03);
+      border-left: 3px solid var(--gold);
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+    }
+
+    .pyramid-phase {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 0.2rem;
+    }
+
+    .pyramid-notes {
+      font-size: 0.85rem;
+      color: #e2e8f0;
+    }
+
+    .performance-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    .perf-box {
+      background: rgba(212, 175, 55, 0.05);
       border: 1px solid var(--card-border);
-      border-radius: 20px;
-      padding: 3rem 1.75rem;
+      border-radius: 10px;
+      padding: 0.75rem;
       text-align: center;
     }
 
-    .services-section h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
-      color: var(--gold-light);
-      margin-bottom: 0.5rem;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 1.75rem;
-      margin-top: 2.25rem;
-    }
-
-    .service-item h4 {
-      font-size: 1.05rem;
-      color: #fff;
-      margin-bottom: 0.45rem;
-    }
-
-    .service-item p {
-      font-size: 0.84rem;
+    .perf-label {
+      font-size: 0.7rem;
       color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .perf-val {
+      font-size: 0.95rem;
+      color: var(--gold-light);
+      font-weight: 700;
+      margin-top: 0.2rem;
+    }
+
+    /* QUIZ RECOMENDADOR */
+    .quiz-step {
+      display: none;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .quiz-step.active {
+      display: flex;
+    }
+
+    .quiz-options-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+
+    .quiz-opt-btn {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--card-border);
+      color: white;
+      padding: 1rem 1.25rem;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-align: left;
+      transition: all 0.2s;
+    }
+
+    .quiz-opt-btn:hover {
+      background: var(--gold-soft);
+      border-color: var(--gold);
+      transform: translateX(4px);
     }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="brand-tag">Colección Exclusiva</div>
-    <h1>Boutique de Alta Perfumería</h1>
-    <p class="hero-subtitle">Selección curada de fragancias de diseñador y perfumería árabe en tendencia. 100% originales, selladas con batch code verificable.</p>
+    <div class="brand-tag">Haute Parfumerie</div>
+    <div class="brand-logo">VANTAGE</div>
+    <p class="hero-subtitle">Fragancias de diseñador y alta perfumería árabe selecta. Lujo, exclusividad y distinción embotellada con batch codes 100% verificables.</p>
+    
+    <button class="quiz-trigger-btn" id="btnOpenQuiz">
+      <span>🎯</span> ¿No sabes qué aroma elegir? Descubre tu fragancia ideal
+    </button>
+
     <div class="info-strip">
       <span>Entregas: <strong>Presenciales en Quito / Envíos nacionales</strong></span>
-      <span>Garantía: <strong>Fragancias 100% Originales</strong></span>
-      <span>Asesoría: <strong>Atención personalizada vía WhatsApp</strong></span>
+      <span>Autenticidad: <strong>100% Originales & Sellados</strong></span>
+      <span>Atención: <strong>Asesoría directa vía WhatsApp</strong></span>
     </div>
   </header>
 
   <main class="container">
     <div class="controls">
-      <input type="text" id="searchInput" class="search-box" placeholder="Buscar por perfume, marca o notas (ej. vainilla, café, cítrico, tabaco)...">
+      <input type="text" id="searchInput" class="search-box" placeholder="Buscar por nombre, casa olfativa o notas (ej. vainilla, café, cítrico, tabaco)...">
       
       <div class="tabs-label">Público:</div>
       <div class="filter-tabs" id="categoryTabs">
         <button class="filter-btn active" data-cat="all">Todos</button>
         <button class="filter-btn" data-cat="hombre">Caballero</button>
         <button class="filter-btn" data-cat="mujer">Dama</button>
-        <button class="filter-btn" data-cat="arabes">Árabes Selectos</button>
+        <button class="filter-btn" data-cat="arabes">Árabes de Lujo</button>
         <button class="filter-btn" data-cat="custom">A Pedido</button>
       </div>
 
@@ -719,24 +902,48 @@
 
     <div class="products-grid" id="productsGrid"></div>
 
-    <section class="services-section">
-      <h3>Garantía y Proceso de Compra</h3>
-      <div class="services-grid">
-        <div class="service-item">
-          <h4>1. Selección a Medida</h4>
-          <p>Explora el catálogo o cotiza cualquier referencia exclusiva que estés buscando.</p>
+    <!-- PREGUNTAS FRECUENTES -->
+    <section class="faq-section">
+      <h3 class="faq-header-title">Preguntas Frecuentes & Garantía</h3>
+      <p class="faq-subtitle">Todo lo que necesitas saber sobre tu compra en Vantage</p>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>¿Cómo garantizan que los perfumes son 100% originales?</span>
+          <span class="faq-icon">+</span>
         </div>
-        <div class="service-item">
-          <h4>2. Contacto Directo</h4>
-          <p>Envía tu carrito a WhatsApp para confirmar stock inmediato y resolver dudas olfativas.</p>
+        <div class="faq-answer">
+          Todos nuestros perfumes vienen completamente nuevos, sellados de fábrica con su celofán original y código de lote (Batch Code) grabado tanto en la caja como en la base del frasco. Puedes verificarlo al instante en portales mundiales como CheckFresh o CheckCosmetic.
         </div>
-        <div class="service-item">
-          <h4>3. Entrega a Elección</h4>
-          <p>Encuentros presenciales en Quito o despachos asegurados por Servientrega a todo el país.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>¿Dónde se realizan las entregas presenciales en Quito?</span>
+          <span class="faq-icon">+</span>
         </div>
-        <div class="service-item">
-          <h4>4. Pago Transparente</h4>
-          <p>Aceptamos transferencia bancaria directa o contra entrega en persona.</p>
+        <div class="faq-answer">
+          Coordinamos entregas directas en lugares públicos y seguros, principalmente en los centros comerciales más concurridos de Quito (C.C. El Recreo, Quicentro Shopping, CCI, Mall El Jardín, Scala) o puntos céntricos a convenir. Puedes revisar el perfume en tus manos antes de abonar el saldo final.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>¿Cómo funcionan los envíos a otras ciudades del Ecuador?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          Despachamos de forma segura mediante Servientrega a nivel nacional. Una vez enviado el paquete, te compartimos de inmediato la fotografía de la guía de rastreo para que monitorees el trayecto hasta tu domicilio o agencia de retiro. El tiempo habitual de llegada es de 24 a 48 horas laborables.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>¿Puedo encargar una fragancia que no está en el catálogo?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          ¡Por supuesto! Gracias a nuestros canales directos de distribución mayorista, podemos cotizarte y traer prácticamente cualquier perfume de diseñador o nicho que desees. Solo haz clic en la tarjeta "Cotización de Fragancia Exclusiva" y cuéntanos cuál buscas.
         </div>
       </div>
     </section>
@@ -760,7 +967,7 @@
   <div class="modal-overlay" id="cartModal">
     <div class="modal-box">
       <div class="modal-header">
-        <h3>Tu Selección de Fragancias</h3>
+        <h3>Tu Carrito Vantage</h3>
         <button class="modal-close" id="btnCloseCart">&times;</button>
       </div>
       <div class="modal-body">
@@ -796,6 +1003,80 @@
     </div>
   </div>
 
+  <!-- MODAL DE FICHA TÉCNICA DEL PERFUME -->
+  <div class="modal-overlay" id="detailModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 id="detailTitle">Detalle de la Fragancia</h3>
+        <button class="modal-close" id="btnCloseDetail">&times;</button>
+      </div>
+      <div class="modal-body" id="detailBody">
+        <!-- Contenido inyectado dinámicamente -->
+      </div>
+      <div class="modal-footer" id="detailFooter"></div>
+    </div>
+  </div>
+
+  <!-- MODAL DEL ASESOR OLFATIVO -->
+  <div class="modal-overlay" id="quizModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Asesor Virtual Vantage</h3>
+        <button class="modal-close" id="btnCloseQuiz">&times;</button>
+      </div>
+      <div class="modal-body">
+        
+        <!-- Paso 1 -->
+        <div class="quiz-step active" id="quizStep1">
+          <h4 style="color: var(--gold-light); font-size: 1.1rem;">1. ¿Para quién buscas la fragancia?</h4>
+          <div class="quiz-options-grid">
+            <button class="quiz-opt-btn" onclick="responderQuiz('genero', 'hombre')">Caballero (Hombre)</button>
+            <button class="quiz-opt-btn" onclick="responderQuiz('genero', 'mujer')">Dama (Mujer)</button>
+            <button class="quiz-opt-btn" onclick="responderQuiz('genero', 'unisex')">Unisex / Indiferente</button>
+          </div>
+        </div>
+
+        <!-- Paso 2 -->
+        <div class="quiz-step" id="quizStep2">
+          <h4 style="color: var(--gold-light); font-size: 1.1rem;">2. ¿En qué ocasión planeas usarlo más?</h4>
+          <div class="quiz-options-grid">
+            <button class="quiz-opt-btn" onclick="responderQuiz('ocasion', 'noche')">Citas, noche o eventos elegantes</button>
+            <button class="quiz-opt-btn" onclick="responderQuiz('ocasion', 'fiesta')">Fiestas, rumba y llamar la atención</button>
+            <button class="quiz-opt-btn" onclick="responderQuiz('ocasion', 'diario')">Uso diario, oficina y trabajo</button>
+          </div>
+        </div>
+
+        <!-- Paso 3: Resultado -->
+        <div class="quiz-step" id="quizStep3">
+          <div id="quizResultBox" style="text-align: center; display: flex; flex-direction: column; gap: 1rem; align-items: center;"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL DE COTIZACIÓN A MEDIDA -->
+  <div class="modal-overlay" id="quoteModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Cotización Personalizada Vantage</h3>
+        <button class="modal-close" id="btnCloseQuote">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="color: var(--text-muted); font-size: 0.88rem;">Dinos qué fragancia exclusiva, edición descontinuada o tamaño especial estás buscando y te la cotizaremos al mejor precio de importación.</p>
+        
+        <input type="text" id="quotePerfumeName" class="custom-input" placeholder="Nombre completo del perfume y marca">
+        <input type="text" id="quoteSize" class="custom-input" placeholder="Presentación deseada (ej. 50ml, 100ml, 200ml)">
+        <input type="text" id="quoteBudget" class="custom-input" placeholder="Presupuesto estimado o notas adicionales">
+      </div>
+      <div class="modal-footer">
+        <button class="btn-wa" style="width: 100%; justify-content: center;" id="btnSendQuoteWhatsapp">
+          Enviar Cotización a WhatsApp
+        </button>
+      </div>
+    </div>
+  </div>
+
   <script>
     const MI_WHATSAPP = "593993641593"; 
 
@@ -808,7 +1089,12 @@
         price: 45,
         badge: "Más Vendido Dama",
         type: "Dama • Árabe",
-        notes: "Orquídea, heliotropo, frutas tropicales, vainilla cremosa y almizcle.",
+        salida: "Orquídea suave, heliotropo y mandarina.",
+        corazon: "Acorde gourmand tropical y frutas exóticas.",
+        fondo: "Vainilla cremosa, sándalo y almizcle blanco.",
+        duracion: "7 - 9 Horas",
+        estela: "Moderada a Intensa",
+        clima: "Versátil / Clima templado o frío",
         desc: "El perfume femenino más aclamado. Notas dulces que evocan un batido cremoso de fresa y vainilla.",
         img: "https://http2.mlstatic.com/D_NQ_NP_2X_981592-MLA117138814797_092026-F.webp"
       },
@@ -820,7 +1106,12 @@
         price: 48,
         badge: "Novedad Viral",
         type: "Dama • Árabe",
-        notes: "Mandarina verde, grosella negra, caramelo efervescente de fresa y jarabe de vainilla.",
+        salida: "Mandarina verde y grosellas negras.",
+        corazon: "Caramelo efervescente de fresa y gardenia.",
+        fondo: "Jarabe de vainilla, ámbar cálido y sándalo.",
+        duracion: "8 Horas",
+        estela: "Alta & Chispeante",
+        clima: "Todo el año / Salidas",
         desc: "Aroma alegre, jugoso y chispeante. Una explosión frutal dulce para destacar en cualquier ocasión.",
         img: "https://cdn11.bigcommerce.com/s-ldjp3gsdj3/images/stencil/1280x1280/products/45372/415672/785c3ce6-b17e-4a97-87ea-c78b13411119__86514.1788598541.jpg?c=1"
       },
@@ -832,7 +1123,12 @@
         price: 118,
         badge: "Top Floral & Vainilla",
         type: "Dama • Diseñador",
-        notes: "Bergamota italiana, mandarina, peonía radiante, agua de rosas, vainilla cremosa y haba tonka.",
+        salida: "Bergamota italiana y mandarina.",
+        corazon: "Peonía radiante, agua de rosas y ylang-ylang.",
+        fondo: "Vainilla cremosa y haba tonka tostada.",
+        duracion: "8 - 10 Horas",
+        estela: "Elegante y Notoria",
+        clima: "Eventos, citas y noches",
         desc: "El icónico tacón en tono rosa pastel y dorado. Reinterpretación floral y romántica con fondo dulce aterciopelado.",
         img: "https://aromasyrecuerdos.com/wp-content/uploads/2023/05/good-girl-blush-min.jpg"
       },
@@ -844,7 +1140,12 @@
         price: 75,
         badge: "Favorito Dulce",
         type: "Dama • Diseñador",
-        notes: "Lavanda, pera, bergamota, crema de coco, praliné y orquídea de vainilla.",
+        salida: "Lavanda aromática, pera dulce y bergamota.",
+        corazon: "Crema de coco, praliné y orquídea de vainilla.",
+        fondo: "Maderas suaves y almizcle sensual.",
+        duracion: "7 - 9 Horas",
+        estela: "Abrazadora & Dulce",
+        clima: "Uso diario / Tardes frescas",
         desc: "Aroma dulce, moderno y suave como una nube. Elogiado por su estela acaramelada duradera.",
         img: "https://makeuphavencosmetic.com/cdn/shop/files/zoom-back-1229445-420x420_420x.jpg?v=1697780688"
       },
@@ -856,7 +1157,12 @@
         price: 115,
         badge: "Top Seducción",
         type: "Caballero • Diseñador",
-        notes: "Menta fresca, lavanda aromática, benjuí cálido, miel, haba tonka y tabaco dulce.",
+        salida: "Menta crujiente y lavanda provenzal.",
+        corazon: "Benjuí resinoso y miel pura dorada.",
+        fondo: "Haba tonka oscura y hoja de tabaco dulce.",
+        duracion: "10 - 12 Horas (Modo Bestia)",
+        estela: "Proyección Pesada",
+        clima: "Noches, frío y citas",
         desc: "La máxima potencia masculina en su legendario torso dorado. El imán de cumplidos definitivo.",
         img: "https://i.ebayimg.com/images/g/xf4AAOSwWVxkboei/s-l1600.webp"
       },
@@ -868,7 +1174,12 @@
         price: 45,
         badge: "Rey de la Noche",
         type: "Caballero • Árabe",
-        notes: "Manzana silvestre, canela, lavanda, azahar, vainilla y haba tonka.",
+        salida: "Manzana silvestre, canela especiada y lavanda salvaje.",
+        corazon: "Flor de azahar y muguete.",
+        fondo: "Vainilla negra, haba tonka, ámbar y pachulí.",
+        duracion: "9 - 11 Horas",
+        estela: "Potente & Fiestera",
+        clima: "Salidas nocturnas",
         desc: "Proyección masiva para eventos nocturnos. Uno de los aromas dulces más aclamados por la juventud.",
         img: "https://fragarabic.com/cdn/shop/files/9PM_Afnan_Eau_de_Parfum_Para_Hombre_con_fondo_creativo.webp?v=1784540542&width=1000"
       },
@@ -880,7 +1191,12 @@
         price: 52,
         badge: "Gourmand Premium",
         type: "Unisex • Árabe",
-        notes: "Jengibre, canela, cardamomo, café arábigo tostado, praliné, dátiles y benjuí.",
+        salida: "Jengibre, canela y cardamomo ahumado.",
+        corazon: "Café arábigo tostado, praliné crujiente y dátiles.",
+        fondo: "Benjuí, vainilla Bourbon y haba tonka.",
+        duracion: "10 - 12 Horas",
+        estela: "Pesada & Cálida",
+        clima: "Clima frío / Noches especiales",
         desc: "Botella de cristal tallado. Calidez especiada de café con notas acarameladas y licor dulce.",
         img: "https://http2.mlstatic.com/D_NQ_NP_2X_935421-MLA110255861807_042026-F.webp"
       },
@@ -892,7 +1208,12 @@
         price: 42,
         badge: "Carácter & Porte",
         type: "Caballero • Árabe",
-        notes: "Pimienta negra, piña madura, tabaco rubio, café, pachulí, iris y ámbar seco.",
+        salida: "Pimienta negra, piña madura y tabaco rubio.",
+        corazon: "Café tostado, pachulí e iris.",
+        fondo: "Ámbar seco, vainilla, maderas oscuras y benjuí.",
+        duracion: "8 - 10 Horas",
+        estela: "Alta & Sofisticada",
+        clima: "Oficina, eventos formales y noche",
         desc: "Fragancia imponente y especiada. Gran presencia y sobriedad para reuniones y uso formal.",
         img: "https://arabia.com.co/cdn/shop/files/arabia-lattafa-asad-edp-922614.jpg?v=1717747692"
       },
@@ -904,7 +1225,12 @@
         price: 48,
         badge: "Clásico Indiscutible",
         type: "Caballero • Árabe",
-        notes: "Limón ácido, grosellas negras, manzana fresca, abedul ahumado, jazmín y ámbar gris.",
+        salida: "Limón ácido, bergamota, grosellas negras y piña.",
+        corazon: "Abedul ahumado, jazmín y rosa.",
+        fondo: "Ámbar gris, almizcle, pachulí y vainilla.",
+        duracion: "9 - 11 Horas",
+        estela: "Muy Alta",
+        clima: "Firma personal / Todo el año",
         desc: "El aroma ahumado cítrico por excelencia. Versatilidad total para trabajo, salidas y diario.",
         img: "https://arabia.com.co/cdn/shop/files/arabia-armaf-club-de-nuit-intense-man-edt-283743.png?v=1717747570"
       },
@@ -916,7 +1242,12 @@
         price: 98,
         badge: "Elegancia Nocturna",
         type: "Caballero • Diseñador",
-        notes: "Absenta, anís aromático, hinojo, lavanda negra, vainilla profunda y almizcle.",
+        salida: "Absenta, anís aromático e hinojo.",
+        corazon: "Lavanda negra fresca.",
+        fondo: "Vainilla oscura y almizcle sensual.",
+        duracion: "8 - 10 Horas",
+        estela: "Seductora & Notoria",
+        clima: "Noches de fiesta y citas",
         desc: "Aroma moderno, limpio y cautivador. Un clásico imprescindible para fiestas y citas de noche.",
         img: "https://luzents.com/wp-content/uploads/2026/07/212-vip-black-carolina-herrera-perfume-masculino-eau-de-parfum2-3-1-1.webp"
       },
@@ -928,7 +1259,12 @@
         price: 0,
         badge: "A Pedido",
         type: "Pedido Personalizado",
-        notes: "Cualquier marca, diseñador o presentación que estés buscando.",
+        salida: "A tu elección.",
+        corazon: "Diseñador o Nicho.",
+        fondo: "Disponibilidad asegurada.",
+        duracion: "Garantizada",
+        estela: "Original de fábrica",
+        clima: "A coordinar",
         desc: "¿Buscas un perfume específico que no ves en el catálogo? Cuéntanos cuál deseas y te lo cotizamos al mejor precio.",
         img: "https://fimgs.net/himg/o.ZjQAhSjHfX0.jpg"
       }
@@ -945,6 +1281,7 @@
     const btnWhatsapp = document.getElementById('btnWhatsapp');
     const btnModalWhatsapp = document.getElementById('btnModalWhatsapp');
     
+    // Modal Carrito
     const cartModal = document.getElementById('cartModal');
     const btnOpenCart = document.getElementById('btnOpenCart');
     const btnCloseCart = document.getElementById('btnCloseCart');
@@ -954,8 +1291,33 @@
     const customerName = document.getElementById('customerName');
     const customerLocation = document.getElementById('customerLocation');
 
+    // Modal Detalle
+    const detailModal = document.getElementById('detailModal');
+    const btnCloseDetail = document.getElementById('btnCloseDetail');
+    const detailTitle = document.getElementById('detailTitle');
+    const detailBody = document.getElementById('detailBody');
+    const detailFooter = document.getElementById('detailFooter');
+
+    // Modal Quiz
+    const quizModal = document.getElementById('quizModal');
+    const btnOpenQuiz = document.getElementById('btnOpenQuiz');
+    const btnCloseQuiz = document.getElementById('btnCloseQuiz');
+    const quizStep1 = document.getElementById('quizStep1');
+    const quizStep2 = document.getElementById('quizStep2');
+    const quizStep3 = document.getElementById('quizStep3');
+    const quizResultBox = document.getElementById('quizResultBox');
+
+    // Modal Cotización
+    const quoteModal = document.getElementById('quoteModal');
+    const btnCloseQuote = document.getElementById('btnCloseQuote');
+    const btnSendQuoteWhatsapp = document.getElementById('btnSendQuoteWhatsapp');
+    const quotePerfumeName = document.getElementById('quotePerfumeName');
+    const quoteSize = document.getElementById('quoteSize');
+    const quoteBudget = document.getElementById('quoteBudget');
+
     let categoriaActual = 'all';
     let ocasionActual = 'all';
+    let respuestasQuiz = { genero: '', ocasion: '' };
 
     function renderizar(filtroTexto = '') {
       grid.innerHTML = '';
@@ -963,13 +1325,14 @@
         const coincideCat = categoriaActual === 'all' || p.category.includes(categoriaActual);
         const coincideOcc = ocasionActual === 'all' || (p.occasions && p.occasions.includes(ocasionActual));
         const coincideTexto = p.name.toLowerCase().includes(filtroTexto.toLowerCase()) || 
-                              p.notes.toLowerCase().includes(filtroTexto.toLowerCase()) ||
+                              (p.salida && p.salida.toLowerCase().includes(filtroTexto.toLowerCase())) ||
+                              (p.fondo && p.fondo.toLowerCase().includes(filtroTexto.toLowerCase())) ||
                               p.desc.toLowerCase().includes(filtroTexto.toLowerCase());
         return coincideCat && coincideOcc && coincideTexto;
       });
 
       if (filtrados.length === 0) {
-        grid.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1; text-align: center; padding: 3rem;">No se encontraron perfumes para este filtro de búsqueda.</p>';
+        grid.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1; text-align: center; padding: 3rem;">No se encontraron perfumes para este filtro en Vantage.</p>';
         return;
       }
 
@@ -977,21 +1340,24 @@
         const card = document.createElement('div');
         card.className = 'card';
         card.innerHTML = `
-          <div class="card-img-wrapper">
+          <div class="card-img-wrapper" onclick="abrirFichaTecnica(${p.id})">
             <img src="${p.img}" alt="${p.name}" loading="lazy">
             <span class="badge-card">${p.badge}</span>
             <span class="badge-type">${p.type}</span>
+            <span class="card-zoom-hint">Ver Ficha 🔍</span>
           </div>
           <div class="card-content">
-            <h3 class="card-title">${p.name}</h3>
-            <div class="notes-box"><strong>Notas:</strong> ${p.notes}</div>
+            <h3 class="card-title" onclick="abrirFichaTecnica(${p.id})">${p.name}</h3>
+            <div class="notes-box"><strong>Fondo & Carácter:</strong> ${p.fondo || p.desc}</div>
             <p class="card-desc">${p.desc}</p>
             <div class="card-footer">
               <div class="price-tag">
-                <span class="price-label">Precio</span>
+                <span class="price-label">Inversión</span>
                 <span class="price-value">${p.price > 0 ? '$' + p.price.toFixed(2) : 'A cotizar'}</span>
               </div>
-              <button class="btn-add" onclick="agregarAlCarrito(${p.id})">Agregar</button>
+              <button class="btn-add" onclick="${p.id === 11 ? 'abrirModalCotizacion()' : `agregarAlCarrito(${p.id})`}">
+                ${p.id === 11 ? 'Cotizar' : 'Agregar'}
+              </button>
             </div>
           </div>
         `;
@@ -999,6 +1365,69 @@
       });
     }
 
+    // Ficha Técnica Detallada
+    window.abrirFichaTecnica = function(id) {
+      const p = PRODUCTOS.find(item => item.id === id);
+      if (!p) return;
+
+      if (p.id === 11) {
+        abrirModalCotizacion();
+        return;
+      }
+
+      detailTitle.textContent = p.name;
+      detailBody.innerHTML = `
+        <div class="detail-img-box">
+          <img src="${p.img}" alt="${p.name}">
+        </div>
+        <p style="font-size: 0.9rem; color: #cbd5e1;">${p.desc}</p>
+        
+        <div class="pyramid-grid">
+          <div class="pyramid-card">
+            <div class="pyramid-phase">Salida (Primeros 15 min)</div>
+            <div class="pyramid-notes">${p.salida}</div>
+          </div>
+          <div class="pyramid-card">
+            <div class="pyramid-phase">Corazón (Cuerpo del aroma)</div>
+            <div class="pyramid-notes">${p.corazon}</div>
+          </div>
+          <div class="pyramid-card">
+            <div class="pyramid-phase">Fondo (Fijación en piel)</div>
+            <div class="pyramid-notes">${p.fondo}</div>
+          </div>
+        </div>
+
+        <div class="performance-grid">
+          <div class="perf-box">
+            <div class="perf-label">Duración en Piel</div>
+            <div class="perf-val">${p.duracion}</div>
+          </div>
+          <div class="perf-box">
+            <div class="perf-label">Proyección / Estela</div>
+            <div class="perf-val">${p.estela}</div>
+          </div>
+        </div>
+      `;
+
+      detailFooter.innerHTML = `
+        <div class="modal-total-row">
+          <span>Precio:</span>
+          <span style="color: var(--gold-light);">$${p.price.toFixed(2)} USD</span>
+        </div>
+        <button class="btn-wa" style="width: 100%; justify-content: center;" onclick="agregarAlCarrito(${p.id}); cerrarModalDetalle(); abrirModal();">
+          Añadir a mi Carrito
+        </button>
+      `;
+
+      detailModal.classList.add('active');
+    };
+
+    function cerrarModalDetalle() {
+      detailModal.classList.remove('active');
+    }
+    btnCloseDetail.addEventListener('click', cerrarModalDetalle);
+
+    // Carrito
     window.agregarAlCarrito = function(id) {
       const prod = PRODUCTOS.find(p => p.id === id);
       if (!prod) return;
@@ -1041,7 +1470,7 @@
       const totalUnidades = contarTotalItems();
       const totalDinero = calcularTotal();
 
-      cartCount.textContent = `${totalUnidades} perfume${totalUnidades === 1 ? '' : 's'} seleccionado${totalUnidades === 1 ? '' : 's'} ✎`;
+      cartCount.textContent = `${totalUnidades} perfume${totalUnidades === 1 ? '' : 's'} en Vantage ✎`;
       cartTotal.textContent = `$${totalDinero.toFixed(2)} USD`;
 
       modalCartTotal.textContent = `$${totalDinero.toFixed(2)} USD`;
@@ -1088,13 +1517,9 @@
     cartSummaryTrigger.addEventListener('click', abrirModal);
     btnCloseCart.addEventListener('click', cerrarModal);
 
-    cartModal.addEventListener('click', (e) => {
-      if (e.target === cartModal) cerrarModal();
-    });
-
     function procesarPedidoWhatsApp() {
       if (carrito.length === 0) {
-        alert("Selecciona al menos un perfume para coordinar tu pedido.");
+        alert("Selecciona al menos un perfume de Vantage para coordinar tu pedido.");
         return;
       }
 
@@ -1102,9 +1527,9 @@
       const nombre = customerName.value.trim();
       const ubicacion = customerLocation.value.trim();
 
-      let saludo = "¡Hola!";
+      let saludo = "¡Hola Vantage!";
       if (nombre) saludo += ` Soy *${nombre}*.`;
-      saludo += " Me interesa adquirir los siguientes perfumes de tu catálogo:%0A%0A";
+      saludo += " Me interesa adquirir los siguientes perfumes de su catálogo:%0A%0A";
 
       let mensaje = saludo;
       carrito.forEach((p, index) => {
@@ -1122,7 +1547,7 @@
         mensaje += `%0A📍 *Ciudad / Sector:* ${ubicacion}`;
       }
 
-      mensaje += "%0A%0A¿Me confirmas disponibilidad y los datos para coordinar el pago? Muchas gracias.";
+      mensaje += "%0A%0A¿Me confirman disponibilidad y los datos para coordinar el pago? Muchas gracias.";
 
       const url = `https://wa.me/${MI_WHATSAPP}?text=${mensaje}`;
       window.open(url, '_blank');
@@ -1137,6 +1562,95 @@
     });
     btnModalWhatsapp.addEventListener('click', procesarPedidoWhatsApp);
 
+    // Asesor Olfativo
+    btnOpenQuiz.addEventListener('click', () => {
+      quizStep1.classList.add('active');
+      quizStep2.classList.remove('active');
+      quizStep3.classList.remove('active');
+      quizModal.classList.add('active');
+    });
+
+    btnCloseQuiz.addEventListener('click', () => {
+      quizModal.classList.remove('active');
+    });
+
+    window.responderQuiz = function(tipo, valor) {
+      respuestasQuiz[tipo] = valor;
+      if (tipo === 'genero') {
+        quizStep1.classList.remove('active');
+        quizStep2.classList.add('active');
+      } else if (tipo === 'ocasion') {
+        quizStep2.classList.remove('active');
+        calcularMatchQuiz();
+        quizStep3.classList.add('active');
+      }
+    };
+
+    function calcularMatchQuiz() {
+      let recomendadoId = 5; // Default: Le Male Elixir
+
+      if (respuestasQuiz.genero === 'mujer') {
+        if (respuestasQuiz.ocasion === 'noche' || respuestasQuiz.ocasion === 'fiesta') {
+          recomendadoId = 3; // Good Girl Blush
+        } else {
+          recomendadoId = 1; // Yara Rosa
+        }
+      } else if (respuestasQuiz.genero === 'hombre') {
+        if (respuestasQuiz.ocasion === 'fiesta') {
+          recomendadoId = 6; // Afnan 9PM
+        } else if (respuestasQuiz.ocasion === 'diario') {
+          recomendadoId = 9; // Club de Nuit
+        } else {
+          recomendadoId = 5; // Le Male Elixir
+        }
+      } else {
+        recomendadoId = 7; // Khamrah Qahwa (Unisex)
+      }
+
+      const match = PRODUCTOS.find(p => p.id === recomendadoId);
+
+      quizResultBox.innerHTML = `
+        <div style="font-size: 0.8rem; color: var(--gold-light); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700;">Tu fragancia firma recomendada es:</div>
+        <div class="detail-img-box" style="height: 180px; width: 180px; border-radius: 50%;">
+          <img src="${match.img}" alt="${match.name}">
+        </div>
+        <h4 style="font-size: 1.2rem; color: #fff;">${match.name}</h4>
+        <p style="font-size: 0.85rem; color: var(--text-muted); max-width: 380px;">${match.desc}</p>
+        <div style="font-size: 1.3rem; font-weight: 800; color: var(--gold-light);">$${match.price.toFixed(2)} USD</div>
+        <button class="btn-wa" style="width: 100%; justify-content: center;" onclick="agregarAlCarrito(${match.id}); quizModal.classList.remove('active'); abrirModal();">
+          Apartar Recomendación en el Carrito
+        </button>
+      `;
+    }
+
+    // Modal Cotización Especial
+    function abrirModalCotizacion() {
+      quoteModal.classList.add('active');
+    }
+    btnCloseQuote.addEventListener('click', () => quoteModal.classList.remove('active'));
+
+    btnSendQuoteWhatsapp.addEventListener('click', () => {
+      const perfume = quotePerfumeName.value.trim();
+      const tamano = quoteSize.value.trim();
+      const presupuesto = quoteBudget.value.trim();
+
+      if (!perfume) {
+        alert("Por favor ingresa el nombre de la fragancia que deseas cotizar.");
+        return;
+      }
+
+      let mensaje = `¡Hola Vantage! Deseo solicitar una cotización para un perfume a medida:%0A%0A`;
+      mensaje += `📌 *Fragancia buscada:* ${perfume}%0A`;
+      if (tamano) mensaje += `📌 *Presentación:* ${tamano}%0A`;
+      if (presupuesto) mensaje += `📌 *Detalles / Presupuesto:* ${presupuesto}%0A`;
+      mensaje += `%0A¿Me confirman si es posible importarlo y qué valor estimado tendría? Muchas gracias.`;
+
+      const url = `https://wa.me/${MI_WHATSAPP}?text=${mensaje}`;
+      window.open(url, '_blank');
+      quoteModal.classList.remove('active');
+    });
+
+    // Filtros & Buscador
     searchInput.addEventListener('input', (e) => {
       renderizar(e.target.value);
     });
@@ -1156,6 +1670,20 @@
         btn.classList.add('active');
         ocasionActual = btn.getAttribute('data-occ');
         renderizar(searchInput.value);
+      });
+    });
+
+    // Acordeón FAQ interactivo
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.addEventListener('click', () => {
+        item.classList.toggle('active');
+      });
+    });
+
+    // Cerrar modales al tocar el fondo oscuro
+    [cartModal, detailModal, quizModal, quoteModal].forEach(modal => {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.classList.remove('active');
       });
     });
 
