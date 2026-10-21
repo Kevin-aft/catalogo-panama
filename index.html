@@ -612,10 +612,40 @@
       transform: rotate(45deg);
     }
 
-    /* BLOQUE INFERIOR DE COMPARTIR */
+    /* FRANJA DE PAGOS LOCALES */
+    .payment-strip {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 3.5rem;
+      padding: 1.5rem 1rem;
+      background: rgba(18, 22, 33, 0.5);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .payment-badge {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #cbd5e1;
+      padding: 0.45rem 0.9rem;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .payment-badge.highlight {
+      border-color: rgba(212, 175, 55, 0.4);
+      color: var(--gold-light);
+    }
+
+    /* COMPARTIR */
     .share-catalog-section {
       text-align: center;
-      margin-top: 3.5rem;
+      margin-top: 2rem;
       padding: 2rem 1.5rem;
       background: rgba(255, 255, 255, 0.02);
       border: 1px dashed var(--card-border);
@@ -807,6 +837,41 @@
       display: flex;
       flex-direction: column;
       gap: 1.3rem;
+    }
+
+    /* BARRA DE PROGRESO ENVÍO GRATIS */
+    .shipping-progress-box {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+      padding: 0.85rem 1rem;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .shipping-progress-text {
+      font-size: 0.82rem;
+      color: #cbd5e1;
+    }
+
+    .shipping-bar-bg {
+      width: 100%;
+      height: 7px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .shipping-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--gold-gradient);
+      transition: width 0.35s ease, background 0.35s ease;
+    }
+
+    .shipping-bar-fill.unlocked {
+      background: var(--success);
     }
 
     /* CARRITO */
@@ -1349,7 +1414,6 @@
   </div>
 
   <header>
-    <!-- LOGO Y DESCRIPCIÓN LIMPIA Y NATURAL -->
     <div class="brand-logo">Perfumería Vantage</div>
     <p class="hero-subtitle">Catálogo de fragancias de diseñador y perfumería árabe en Ecuador. Encuentra tus aromas favoritos en presentación de lujo sellada o en testers oficiales con entrega presencial en Quito o envíos a nivel nacional.</p>
     
@@ -1395,6 +1459,14 @@
         <button class="filter-btn" data-cat="arabes">Árabes Selectos</button>
         <button class="filter-btn fav-tab" id="btnFavTab" onclick="filtrarFavoritos()">♥ Mis Favoritos (<span id="favCount">0</span>)</button>
         <button class="filter-btn" data-cat="custom">A Pedido</button>
+      </div>
+
+      <div class="tabs-label">Clima & Momento del día:</div>
+      <div class="filter-tabs" id="climateTabs">
+        <button class="filter-btn active" data-clim="all">✨ Cualquier Clima</button>
+        <button class="filter-btn" data-clim="frio">❄️ Frío / Lluvia / Noche</button>
+        <button class="filter-btn" data-clim="calor">☀️ Sol / Mediodía Cálido</button>
+        <button class="filter-btn" data-clim="versatil">⛅ Templado / Todo Terreno</button>
       </div>
 
       <div class="tabs-label">Temporada & Ocasión:</div>
@@ -1467,7 +1539,16 @@
       </div>
     </section>
 
-    <!-- COMPARTIR CATÁLOGO -->
+    <!-- FRANJA DE MÉTODOS DE PAGO LOCALES -->
+    <div class="payment-strip">
+      <span style="font-size: 0.85rem; color: #fff; font-weight: 700; width: 100%; margin-bottom: 0.2rem;">Medios de Pago Aceptados en Ecuador:</span>
+      <span class="payment-badge highlight">💳 Pichincha & Deuna!</span>
+      <span class="payment-badge">🏦 Banco Guayaquil</span>
+      <span class="payment-badge">🏦 Produbanco</span>
+      <span class="payment-badge highlight">💵 Contra Entrega Presencial en Quito</span>
+    </div>
+
+    <!-- COMPARTIR -->
     <div class="share-catalog-section">
       <h4 style="color: #fff; margin-bottom: 0.4rem; font-size: 1.1rem;">¿Te gustó alguna fragancia?</h4>
       <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.2rem;">Comparte este catálogo con un amigo o pareja para que elijan juntos.</p>
@@ -1491,7 +1572,7 @@
     </div>
   </div>
 
-  <!-- MODAL CARRITO -->
+  <!-- MODAL CARRITO CON BARRA DE ENVÍO GRATIS -->
   <div class="modal-overlay" id="cartModal">
     <div class="modal-box">
       <div class="modal-header">
@@ -1499,6 +1580,15 @@
         <button class="modal-close" id="btnCloseCart">&times;</button>
       </div>
       <div class="modal-body">
+        
+        <!-- TERMÓMETRO ENVÍO GRATIS (Meta: $80 USD) -->
+        <div class="shipping-progress-box">
+          <span class="shipping-progress-text" id="shippingProgressText">Agrega perfumes para activar Envío Gratis</span>
+          <div class="shipping-bar-bg">
+            <div class="shipping-bar-fill" id="shippingBarFill"></div>
+          </div>
+        </div>
+
         <div id="cartItemsList"></div>
 
         <div class="cart-savings-badge" id="cartSavingsBadge">
@@ -1556,7 +1646,7 @@
     </div>
   </div>
 
-  <!-- MODAL GUÍA DE APLICACIÓN Y CONSEJOS -->
+  <!-- MODAL GUÍA DE APLICACIÓN -->
   <div class="modal-overlay" id="tipsModal">
     <div class="modal-box">
       <div class="modal-header">
@@ -1680,12 +1770,14 @@
 
   <script>
     const MI_WHATSAPP = "593993641593"; 
+    const META_ENVIO_GRATIS = 80; // $80 USD para envío gratuito
 
     const PRODUCTOS = [
       {
         id: 1,
         name: "Lattafa Yara Rosa EDP (100ml)",
         category: "mujer arabes",
+        climate: "versatil",
         occasions: "diario fiesta verano",
         notesKey: "vainilla fresa",
         stock: true,
@@ -1705,6 +1797,7 @@
         id: 2,
         name: "Lattafa Yara Candy EDP (100ml)",
         category: "mujer arabes",
+        climate: "calor",
         occasions: "fiesta verano navidad",
         notesKey: "fresa vainilla",
         stock: true,
@@ -1724,6 +1817,7 @@
         id: 3,
         name: "Carolina Herrera Good Girl Blush EDP (80ml)",
         category: "mujer",
+        climate: "versatil",
         occasions: "noche fiesta navidad",
         notesKey: "vainilla cítrico",
         stock: true,
@@ -1743,6 +1837,7 @@
         id: 4,
         name: "Ariana Grande Cloud EDP (100ml)",
         category: "mujer",
+        climate: "versatil",
         occasions: "diario fiesta halloween",
         notesKey: "vainilla cítrico",
         stock: true,
@@ -1762,6 +1857,7 @@
         id: 5,
         name: "Jean Paul Gaultier Le Male Elixir (125ml)",
         category: "hombre",
+        climate: "frio",
         occasions: "noche fiesta halloween navidad",
         notesKey: "vainilla tabaco",
         stock: true,
@@ -1781,6 +1877,7 @@
         id: 6,
         name: "Afnan 9 PM EDP (100ml)",
         category: "hombre arabes",
+        climate: "frio",
         occasions: "noche fiesta halloween",
         notesKey: "vainilla",
         stock: true,
@@ -1800,6 +1897,7 @@
         id: 7,
         name: "Lattafa Khamrah Qahwa (100ml)",
         category: "hombre mujer arabes",
+        climate: "frio",
         occasions: "noche halloween navidad",
         notesKey: "café vainilla",
         stock: true,
@@ -1819,6 +1917,7 @@
         id: 8,
         name: "Lattafa Asad EDP (100ml)",
         category: "hombre arabes",
+        climate: "frio",
         occasions: "diario noche halloween",
         notesKey: "tabaco café vainilla",
         stock: true,
@@ -1838,6 +1937,7 @@
         id: 9,
         name: "Armaf Club de Nuit Intense Man EDT (100ml)",
         category: "hombre arabes",
+        climate: "calor",
         occasions: "diario fiesta verano",
         notesKey: "cítrico",
         stock: true,
@@ -1857,6 +1957,7 @@
         id: 10,
         name: "Carolina Herrera 212 VIP Black EDP (100ml)",
         category: "hombre",
+        climate: "frio",
         occasions: "noche fiesta navidad",
         notesKey: "vainilla",
         stock: true,
@@ -1876,6 +1977,7 @@
         id: 12,
         name: "Dior Sauvage Eau de Parfum (100ml)",
         category: "hombre",
+        climate: "versatil",
         occasions: "diario noche fiesta verano navidad",
         notesKey: "cítrico vainilla",
         stock: true,
@@ -1895,6 +1997,7 @@
         id: 13,
         name: "Paco Rabanne 1 Million Elixir (100ml)",
         category: "hombre",
+        climate: "frio",
         occasions: "noche fiesta halloween navidad",
         notesKey: "vainilla",
         stock: true,
@@ -1914,6 +2017,7 @@
         id: 14,
         name: "Lattafa Bade'e Al Oud - Oud for Glory (100ml)",
         category: "hombre mujer arabes",
+        climate: "frio",
         occasions: "noche halloween",
         notesKey: "oud",
         stock: true,
@@ -1933,6 +2037,7 @@
         id: 15,
         name: "Lattafa Yara Tous Amarillo (100ml)",
         category: "mujer arabes",
+        climate: "calor",
         occasions: "diario fiesta verano",
         notesKey: "mango vainilla",
         stock: true,
@@ -1952,6 +2057,7 @@
         id: 11,
         name: "Cotización de Fragancia Exclusiva",
         category: "custom",
+        climate: "all",
         occasions: "all",
         notesKey: "",
         stock: true,
@@ -1984,6 +2090,7 @@
     const searchInput = document.getElementById('searchInput');
     const categoryBtns = document.querySelectorAll('#categoryTabs .filter-btn');
     const occasionBtns = document.querySelectorAll('#occasionTabs .filter-btn');
+    const climateBtns = document.querySelectorAll('#climateTabs .filter-btn');
     const noteBtns = document.querySelectorAll('#notesFilterWrap .note-tag-btn');
     const cartCount = document.getElementById('cartCount');
     const cartTotal = document.getElementById('cartTotal');
@@ -2010,6 +2117,8 @@
     const couponAppliedText = document.getElementById('couponAppliedText');
     const cartSavingsBadge = document.getElementById('cartSavingsBadge');
     const cartSavingsText = document.getElementById('cartSavingsText');
+    const shippingProgressText = document.getElementById('shippingProgressText');
+    const shippingBarFill = document.getElementById('shippingBarFill');
 
     // Modal Detalle
     const detailModal = document.getElementById('detailModal');
@@ -2054,6 +2163,7 @@
 
     let categoriaActual = 'all';
     let ocasionActual = 'all';
+    let climaActual = 'all';
     let notaActual = 'all';
     let respuestasQuiz = { genero: '', ocasion: '' };
 
@@ -2105,12 +2215,13 @@
 
         const coincideCat = categoriaActual === 'all' || p.category.includes(categoriaActual);
         const coincideOcc = ocasionActual === 'all' || (p.occasions && p.occasions.includes(ocasionActual));
+        const coincideClim = climaActual === 'all' || (p.climate && (p.climate === climaActual || p.climate === 'versatil'));
         const coincideNota = notaActual === 'all' || (p.notesKey && p.notesKey.includes(notaActual));
         const coincideTexto = p.name.toLowerCase().includes(filtroTexto.toLowerCase()) || 
                               (p.salida && p.salida.toLowerCase().includes(filtroTexto.toLowerCase())) ||
                               (p.fondo && p.fondo.toLowerCase().includes(filtroTexto.toLowerCase())) ||
                               p.desc.toLowerCase().includes(filtroTexto.toLowerCase());
-        return coincideCat && coincideOcc && coincideNota && coincideTexto;
+        return coincideCat && coincideOcc && coincideClim && coincideNota && coincideTexto;
       });
 
       if (filtrados.length === 0) {
@@ -2264,7 +2375,6 @@
     }
     btnCloseDetail.addEventListener('click', cerrarModalDetalle);
 
-    // Modal Tips
     function abrirModalTips() {
       tipsModal.classList.add('active');
     }
@@ -2445,12 +2555,26 @@
     function actualizarInterfazCarrito() {
       const totalUnidades = contarTotalItems();
       const totalDinero = calcularTotalConDescuento();
+      const subtotalReal = calcularSubtotal();
       const ahorroTotal = calcularAhorroTotal();
 
       cartCount.textContent = `${totalUnidades} perfume${totalUnidades === 1 ? '' : 's'} en Vantage ✎`;
       cartTotal.textContent = `$${totalDinero.toFixed(2)} USD`;
 
       modalCartTotal.textContent = `$${totalDinero.toFixed(2)} USD`;
+
+      // Termómetro Envío Gratis
+      if (subtotalReal >= META_ENVIO_GRATIS) {
+        shippingProgressText.innerHTML = `🎉 <strong>¡Felicidades! Tienes Envío Gratis asegurado</strong>`;
+        shippingBarFill.style.width = '100%';
+        shippingBarFill.classList.add('unlocked');
+      } else {
+        const falta = (META_ENVIO_GRATIS - subtotalReal).toFixed(2);
+        const porcentaje = Math.min(100, (subtotalReal / META_ENVIO_GRATIS) * 100);
+        shippingProgressText.innerHTML = `Te faltan <strong>$${falta} USD</strong> para activar <strong>Envío Gratis</strong>`;
+        shippingBarFill.style.width = `${porcentaje}%`;
+        shippingBarFill.classList.remove('unlocked');
+      }
 
       if (ahorroTotal > 0) {
         cartSavingsText.textContent = `Ahorro total en tu orden: $${ahorroTotal.toFixed(2)} USD`;
@@ -2557,12 +2681,16 @@
       });
 
       const total = calcularTotalConDescuento();
+      const subtotalReal = calcularSubtotal();
       const ahorro = calcularAhorroTotal();
 
       if (total > 0) {
         mensaje += `%0A*Total estimado:* $${total.toFixed(2)} USD`;
         if (cuponActivo) {
           mensaje += ` _(Cupón: ${cuponActivo.codigo} - ${cuponActivo.desc})_`;
+        }
+        if (subtotalReal >= META_ENVIO_GRATIS) {
+          mensaje += `%0A🚚 *Beneficio activado:* Envío Gratis por Servientrega`;
         }
         if (ahorro > 0) {
           mensaje += `%0A💸 *Ahorro conseguido:* $${ahorro.toFixed(2)} USD`;
@@ -2771,6 +2899,15 @@
         categoryBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         categoriaActual = btn.getAttribute('data-cat');
+        renderizar(searchInput.value);
+      });
+    });
+
+    climateBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        climateBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        climaActual = btn.getAttribute('data-clim');
         renderizar(searchInput.value);
       });
     });
