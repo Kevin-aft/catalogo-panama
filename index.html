@@ -3443,26 +3443,55 @@
       });
     });
 
-    // PARSER SEGURO PARA EL CSV DE GOOGLE SHEETS
+    // PARSER EXACTO PARA GOOGLE SHEETS (RESPETA ESPACIOS Y COMAS)
     function parseCSV(text) {
       const lineas = text.trim().split(/\r\n|\n/);
       if (lineas.length < 2) return [];
 
-      const encabezados = lineas[0].split(',').map(h => h.trim());
-      
+      function parseLine(line) {
+        const row = [];
+        let inQuotes = false;
+        let current = '';
+        for (let i = 0; i < line.length; i++) {
+          const c = line[i];
+          if (c === '"') {
+            if (inQuotes && line[i + 1] === '"') {
+              current += '"';
+              i++;
+            } else {
+              inQuotes = !inQuotes;
+            }
+          } else if (c === ',' && !inQuotes) {
+            row.push(current.trim());
+            current = '';
+          } else {
+            current += c;
+          }
+        }
+        row.push(current.trim());
+        return row;
+      }
+
+      const encabezados = parseLine(lineas[0]);
+
       return lineas.slice(1).map(linea => {
-        const valores = linea.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g) || linea.split(',');
+        if (!linea.trim()) return null;
+        const valores = parseLine(linea);
         const obj = {};
         encabezados.forEach((h, i) => {
-          let val = valores[i] ? valores[i].trim().replace(/^"|"$/g, '') : '';
+          let val = valores[i] !== undefined ? valores[i] : '';
+          val = val.replace(/^"|"$/g, '').trim();
+
           if (['id', 'priceRegular', 'priceTester', 'stockSellado', 'stockTester'].includes(h)) {
-            obj[h] = parseFloat(val) || 0;
+            // Limpia signos de dólar si los hubiera y convierte a número
+            const cleanNum = val.replace(/[^\d.-]/g, '');
+            obj[h] = cleanNum ? parseFloat(cleanNum) : 0;
           } else {
             obj[h] = val;
           }
         });
         return obj;
-      });
+      }).filter(Boolean);
     }
 
     // CARGA EN VIVO CON RESPALDO INSTANTÁNEO
