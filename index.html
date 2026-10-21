@@ -78,7 +78,7 @@
       margin-bottom: 1.6rem;
     }
 
-    .quiz-trigger-btn, .roulette-trigger-btn, .compare-trigger-btn, .tips-trigger-btn {
+    .quiz-trigger-btn, .roulette-trigger-btn, .compare-trigger-btn, .tips-trigger-btn, .duo-trigger-btn {
       display: inline-flex;
       align-items: center;
       gap: 0.6rem;
@@ -96,12 +96,7 @@
       color: var(--gold-light);
       box-shadow: 0 4px 20px rgba(212, 175, 55, 0.18);
     }
-
-    .quiz-trigger-btn:hover {
-      background: var(--gold-gradient);
-      color: #07090e;
-      transform: translateY(-2px);
-    }
+    .quiz-trigger-btn:hover { background: var(--gold-gradient); color: #07090e; transform: translateY(-2px); }
 
     .roulette-trigger-btn {
       background: rgba(16, 185, 129, 0.15);
@@ -109,36 +104,28 @@
       color: #6ee7b7;
       box-shadow: 0 4px 20px rgba(16, 185, 129, 0.18);
     }
+    .roulette-trigger-btn:hover { background: var(--success); color: #07090e; transform: translateY(-2px); }
 
-    .roulette-trigger-btn:hover {
-      background: var(--success);
-      color: #07090e;
-      transform: translateY(-2px);
+    .duo-trigger-btn {
+      background: rgba(236, 72, 153, 0.15);
+      border: 1px solid #ec4899;
+      color: #f472b6;
     }
+    .duo-trigger-btn:hover { background: #ec4899; color: #fff; transform: translateY(-2px); }
 
     .compare-trigger-btn {
       background: rgba(59, 130, 246, 0.15);
       border: 1px solid #3b82f6;
       color: #93c5fd;
     }
-
-    .compare-trigger-btn:hover {
-      background: #3b82f6;
-      color: #fff;
-      transform: translateY(-2px);
-    }
+    .compare-trigger-btn:hover { background: #3b82f6; color: #fff; transform: translateY(-2px); }
 
     .tips-trigger-btn {
       background: rgba(168, 85, 247, 0.15);
       border: 1px solid #a855f7;
       color: #d8b4fe;
     }
-
-    .tips-trigger-btn:hover {
-      background: #a855f7;
-      color: #fff;
-      transform: translateY(-2px);
-    }
+    .tips-trigger-btn:hover { background: #a855f7; color: #fff; transform: translateY(-2px); }
 
     .info-strip {
       display: flex;
@@ -156,9 +143,7 @@
       color: #cbd5e1;
     }
 
-    .info-strip strong {
-      color: var(--gold-light);
-    }
+    .info-strip strong { color: var(--gold-light); }
 
     .container {
       max-width: 1220px;
@@ -583,9 +568,7 @@
       color: #fff;
     }
 
-    .faq-question:hover {
-      color: var(--gold-light);
-    }
+    .faq-question:hover { color: var(--gold-light); }
 
     .faq-answer {
       max-height: 0;
@@ -608,9 +591,7 @@
       transition: transform 0.3s;
     }
 
-    .faq-item.active .faq-icon {
-      transform: rotate(45deg);
-    }
+    .faq-item.active .faq-icon { transform: rotate(45deg); }
 
     /* FRANJA DE PAGOS LOCALES */
     .payment-strip {
@@ -759,6 +740,45 @@
       transform: translateY(-1px);
     }
 
+    /* BURBUJA FLOTANTE WHATSAPP FIJA */
+    .whatsapp-float-btn {
+      position: fixed;
+      bottom: 85px;
+      right: 20px;
+      background: var(--wa-color);
+      color: #07090e;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+      z-index: 90;
+      text-decoration: none;
+      font-size: 1.8rem;
+      transition: transform 0.25s ease;
+    }
+
+    .whatsapp-float-btn:hover {
+      transform: scale(1.1);
+      background: var(--wa-hover);
+    }
+
+    .whatsapp-tooltip {
+      position: absolute;
+      right: 65px;
+      background: rgba(15, 23, 42, 0.95);
+      color: #cbd5e1;
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      white-space: nowrap;
+      border: 1px solid var(--card-border);
+      pointer-events: none;
+    }
+
     /* MODALES */
     .modal-overlay {
       position: fixed;
@@ -826,9 +846,7 @@
       line-height: 1;
     }
 
-    .modal-close:hover {
-      color: #fff;
-    }
+    .modal-close:hover { color: #fff; }
 
     .modal-body {
       padding: 1.35rem 1.6rem;
@@ -886,9 +904,7 @@
       gap: 0.85rem;
     }
 
-    .cart-item-info {
-      flex-grow: 1;
-    }
+    .cart-item-info { flex-grow: 1; }
 
     .cart-item-title {
       font-size: 0.92rem;
@@ -1009,10 +1025,7 @@
       transition: all 0.2s;
     }
 
-    .coupon-btn:hover {
-      background: var(--gold);
-      color: #000;
-    }
+    .coupon-btn:hover { background: var(--gold); color: #000; }
 
     .coupon-applied-tag {
       display: none;
@@ -1065,13 +1078,8 @@
       transition: all 0.2s;
     }
 
-    .radio-card input {
-      accent-color: var(--gold);
-    }
-
-    .radio-card:hover {
-      border-color: var(--gold);
-    }
+    .radio-card input { accent-color: var(--gold); }
+    .radio-card:hover { border-color: var(--gold); }
 
     .customer-inputs {
       display: grid;
@@ -1089,9 +1097,7 @@
       outline: none;
     }
 
-    .custom-input:focus {
-      border-color: var(--gold);
-    }
+    .custom-input:focus { border-color: var(--gold); }
 
     .modal-footer {
       padding: 1.35rem 1.6rem;
@@ -1147,10 +1153,7 @@
       margin-bottom: 0.2rem;
     }
 
-    .pyramid-notes {
-      font-size: 0.85rem;
-      color: #e2e8f0;
-    }
+    .pyramid-notes { font-size: 0.85rem; color: #e2e8f0; }
 
     .performance-grid {
       display: grid;
@@ -1179,6 +1182,36 @@
       color: var(--gold-light);
       font-weight: 700;
       margin-top: 0.2rem;
+    }
+
+    /* CONSTRUCTOR DE DÚO */
+    .duo-selector-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .duo-slot {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px dashed var(--card-border);
+      border-radius: 14px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.6rem;
+    }
+
+    .duo-slot select {
+      width: 100%;
+      background: #0d1017;
+      border: 1px solid var(--card-border);
+      color: #fff;
+      padding: 0.5rem;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      outline: none;
     }
 
     /* COMPARADOR VERSUS */
@@ -1228,10 +1261,7 @@
       flex-direction: column;
       gap: 1.1rem;
     }
-
-    .quiz-step.active {
-      display: flex;
-    }
+    .quiz-step.active { display: flex; }
 
     .quiz-options-grid {
       display: grid;
@@ -1251,12 +1281,7 @@
       text-align: left;
       transition: all 0.2s;
     }
-
-    .quiz-opt-btn:hover {
-      background: var(--gold-soft);
-      border-color: var(--gold);
-      transform: translateX(4px);
-    }
+    .quiz-opt-btn:hover { background: var(--gold-soft); border-color: var(--gold); transform: translateX(4px); }
 
     .quiz-recommendations-list {
       display: flex;
@@ -1283,27 +1308,10 @@
       flex-shrink: 0;
     }
 
-    .quiz-rec-info {
-      flex-grow: 1;
-    }
-
-    .quiz-rec-title {
-      font-size: 0.92rem;
-      font-weight: 700;
-      color: #fff;
-    }
-
-    .quiz-rec-desc {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      margin: 0.2rem 0 0.4rem;
-    }
-
-    .quiz-rec-prices {
-      font-size: 0.82rem;
-      color: var(--gold-light);
-      font-weight: 700;
-    }
+    .quiz-rec-info { flex-grow: 1; }
+    .quiz-rec-title { font-size: 0.92rem; font-weight: 700; color: #fff; }
+    .quiz-rec-desc { font-size: 0.78rem; color: var(--text-muted); margin: 0.2rem 0 0.4rem; }
+    .quiz-rec-prices { font-size: 0.82rem; color: var(--gold-light); font-weight: 700; }
 
     /* RULETA */
     .roulette-box-ui {
@@ -1373,10 +1381,7 @@
       box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
       transition: transform 0.2s;
     }
-
-    .btn-spin-roulette:hover {
-      transform: scale(1.05);
-    }
+    .btn-spin-roulette:hover { transform: scale(1.05); }
 
     /* TOAST */
     .toast-notification {
@@ -1400,11 +1405,7 @@
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       pointer-events: none;
     }
-
-    .toast-notification.show {
-      transform: translateY(0);
-      opacity: 1;
-    }
+    .toast-notification.show { transform: translateY(0); opacity: 1; }
   </style>
 </head>
 <body>
@@ -1421,6 +1422,9 @@
       <button class="quiz-trigger-btn" id="btnOpenQuiz">
         <span>🎯</span> Asesor Olfativo
       </button>
+      <button class="duo-trigger-btn" onclick="abrirModalDuo()">
+        <span>👥</span> Dúo con 5% OFF
+      </button>
       <button class="roulette-trigger-btn" id="btnOpenRoulette">
         <span>🎰</span> Ruleta de Premios
       </button>
@@ -1428,7 +1432,7 @@
         <span>⚖️</span> Comparar (<span id="compareCount">0</span>)
       </button>
       <button class="tips-trigger-btn" onclick="abrirModalTips()">
-        <span>✨</span> Guía de Aplicación
+        <span>✨</span> Consejos
       </button>
     </div>
 
@@ -1459,6 +1463,14 @@
         <button class="filter-btn" data-cat="arabes">Árabes Selectos</button>
         <button class="filter-btn fav-tab" id="btnFavTab" onclick="filtrarFavoritos()">♥ Mis Favoritos (<span id="favCount">0</span>)</button>
         <button class="filter-btn" data-cat="custom">A Pedido</button>
+      </div>
+
+      <div class="tabs-label">Concentración / Intensidad:</div>
+      <div class="filter-tabs" id="concentrationTabs">
+        <button class="filter-btn active" data-conc="all">✨ Todas</button>
+        <button class="filter-btn" data-conc="edp">💧 Eau de Parfum (EDP)</button>
+        <button class="filter-btn" data-conc="edt">🍃 Eau de Toilette (EDT)</button>
+        <button class="filter-btn" data-conc="elixir">🔥 Elixir / Parfum</button>
       </div>
 
       <div class="tabs-label">Clima & Momento del día:</div>
@@ -1539,7 +1551,7 @@
       </div>
     </section>
 
-    <!-- FRANJA DE MÉTODOS DE PAGO LOCALES -->
+    <!-- MEDIOS DE PAGO LOCALES -->
     <div class="payment-strip">
       <span style="font-size: 0.85rem; color: #fff; font-weight: 700; width: 100%; margin-bottom: 0.2rem;">Medios de Pago Aceptados en Ecuador:</span>
       <span class="payment-badge highlight">💳 Pichincha & Deuna!</span>
@@ -1558,6 +1570,12 @@
     </div>
   </main>
 
+  <!-- BOTÓN FLOTANTE DIRECTO DE WHATSAPP -->
+  <a href="https://wa.me/593993641593?text=¡Hola%20Perfumería%20Vantage!%20Tengo%20una%20consulta%20sobre%20sus%20perfumes." target="_blank" rel="noopener" class="whatsapp-float-btn" title="Escríbenos directamente">
+    💬
+    <span class="whatsapp-tooltip">¿Dudas? Escríbenos</span>
+  </a>
+
   <!-- BARRA FLOTANTE -->
   <div class="floating-bar">
     <div class="floating-content">
@@ -1572,7 +1590,7 @@
     </div>
   </div>
 
-  <!-- MODAL CARRITO CON BARRA DE ENVÍO GRATIS -->
+  <!-- MODAL CARRITO -->
   <div class="modal-overlay" id="cartModal">
     <div class="modal-box">
       <div class="modal-header">
@@ -1581,7 +1599,7 @@
       </div>
       <div class="modal-body">
         
-        <!-- TERMÓMETRO ENVÍO GRATIS (Meta: $80 USD) -->
+        <!-- TERMÓMETRO ENVÍO GRATIS -->
         <div class="shipping-progress-box">
           <span class="shipping-progress-text" id="shippingProgressText">Agrega perfumes para activar Envío Gratis</span>
           <div class="shipping-bar-bg">
@@ -1646,7 +1664,42 @@
     </div>
   </div>
 
-  <!-- MODAL GUÍA DE APLICACIÓN -->
+  <!-- MODAL DÚO / COMBO -->
+  <div class="modal-overlay" id="duoModal">
+    <div class="modal-box wide">
+      <div class="modal-header">
+        <h3>Arma tu Dúo Perfecto (5% OFF Adicional)</h3>
+        <button class="modal-close" id="btnCloseDuo">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.88rem; color: var(--text-muted);">Elige dos fragancias cualesquiera para ti o tu pareja y obtén un <strong>5% de descuento directo</strong> en el combo.</p>
+        
+        <div class="duo-selector-grid">
+          <div class="duo-slot">
+            <span style="font-size: 0.8rem; font-weight:700; color: var(--gold-light);">Fragancia 1</span>
+            <select id="duoSelect1"></select>
+            <span id="duoPrice1" style="font-size:0.9rem; font-weight:800; color:#fff;">$0.00</span>
+          </div>
+          <div class="duo-slot">
+            <span style="font-size: 0.8rem; font-weight:700; color: var(--gold-light);">Fragancia 2</span>
+            <select id="duoSelect2"></select>
+            <span id="duoPrice2" style="font-size:0.9rem; font-weight:800; color:#fff;">$0.00</span>
+          </div>
+        </div>
+
+        <div style="background: rgba(212, 175, 55, 0.08); border: 1px solid var(--gold); border-radius: 12px; padding: 1rem; text-align: center;">
+          <div style="font-size: 0.82rem; color: #cbd5e1;">Total con 5% de descuento:</div>
+          <div id="duoFinalPrice" style="font-size: 1.4rem; font-weight: 800; color: var(--gold-light);">$0.00 USD</div>
+        </div>
+
+        <button class="btn-wa" style="width: 100%; justify-content: center;" onclick="agregarDuoAlCarrito()">
+          Añadir Dúo al Carrito (+ Ahorro)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL CONSEJOS -->
   <div class="modal-overlay" id="tipsModal">
     <div class="modal-box">
       <div class="modal-header">
@@ -1770,13 +1823,14 @@
 
   <script>
     const MI_WHATSAPP = "593993641593"; 
-    const META_ENVIO_GRATIS = 80; // $80 USD para envío gratuito
+    const META_ENVIO_GRATIS = 80;
 
     const PRODUCTOS = [
       {
         id: 1,
         name: "Lattafa Yara Rosa EDP (100ml)",
         category: "mujer arabes",
+        concentration: "edp",
         climate: "versatil",
         occasions: "diario fiesta verano",
         notesKey: "vainilla fresa",
@@ -1797,13 +1851,14 @@
         id: 2,
         name: "Lattafa Yara Candy EDP (100ml)",
         category: "mujer arabes",
+        concentration: "edp",
         climate: "calor",
         occasions: "fiesta verano navidad",
         notesKey: "fresa vainilla",
         stock: true,
         priceRegular: 48,
         priceTester: 39,
-        badge: "Novedad Viral",
+        badge: "Alta Demanda",
         type: "Dama • Árabe",
         salida: "Mandarina verde y grosellas negras.",
         corazon: "Caramelo efervescente de fresa y gardenia.",
@@ -1817,6 +1872,7 @@
         id: 3,
         name: "Carolina Herrera Good Girl Blush EDP (80ml)",
         category: "mujer",
+        concentration: "edp",
         climate: "versatil",
         occasions: "noche fiesta navidad",
         notesKey: "vainilla cítrico",
@@ -1837,6 +1893,7 @@
         id: 4,
         name: "Ariana Grande Cloud EDP (100ml)",
         category: "mujer",
+        concentration: "edp",
         climate: "versatil",
         occasions: "diario fiesta halloween",
         notesKey: "vainilla cítrico",
@@ -1857,6 +1914,7 @@
         id: 5,
         name: "Jean Paul Gaultier Le Male Elixir (125ml)",
         category: "hombre",
+        concentration: "elixir",
         climate: "frio",
         occasions: "noche fiesta halloween navidad",
         notesKey: "vainilla tabaco",
@@ -1877,13 +1935,14 @@
         id: 6,
         name: "Afnan 9 PM EDP (100ml)",
         category: "hombre arabes",
+        concentration: "edp",
         climate: "frio",
         occasions: "noche fiesta halloween",
         notesKey: "vainilla",
         stock: true,
         priceRegular: 45,
         priceTester: 36,
-        badge: "Rey de la Noche",
+        badge: "Alta Demanda",
         type: "Caballero • Árabe",
         salida: "Manzana silvestre, canela especiada y lavanda salvaje.",
         corazon: "Flor de azahar y muguete.",
@@ -1897,6 +1956,7 @@
         id: 7,
         name: "Lattafa Khamrah Qahwa (100ml)",
         category: "hombre mujer arabes",
+        concentration: "edp",
         climate: "frio",
         occasions: "noche halloween navidad",
         notesKey: "café vainilla",
@@ -1917,6 +1977,7 @@
         id: 8,
         name: "Lattafa Asad EDP (100ml)",
         category: "hombre arabes",
+        concentration: "edp",
         climate: "frio",
         occasions: "diario noche halloween",
         notesKey: "tabaco café vainilla",
@@ -1937,6 +1998,7 @@
         id: 9,
         name: "Armaf Club de Nuit Intense Man EDT (100ml)",
         category: "hombre arabes",
+        concentration: "edt",
         climate: "calor",
         occasions: "diario fiesta verano",
         notesKey: "cítrico",
@@ -1957,6 +2019,7 @@
         id: 10,
         name: "Carolina Herrera 212 VIP Black EDP (100ml)",
         category: "hombre",
+        concentration: "edp",
         climate: "frio",
         occasions: "noche fiesta navidad",
         notesKey: "vainilla",
@@ -1977,6 +2040,7 @@
         id: 12,
         name: "Dior Sauvage Eau de Parfum (100ml)",
         category: "hombre",
+        concentration: "edp",
         climate: "versatil",
         occasions: "diario noche fiesta verano navidad",
         notesKey: "cítrico vainilla",
@@ -1997,6 +2061,7 @@
         id: 13,
         name: "Paco Rabanne 1 Million Elixir (100ml)",
         category: "hombre",
+        concentration: "elixir",
         climate: "frio",
         occasions: "noche fiesta halloween navidad",
         notesKey: "vainilla",
@@ -2017,6 +2082,7 @@
         id: 14,
         name: "Lattafa Bade'e Al Oud - Oud for Glory (100ml)",
         category: "hombre mujer arabes",
+        concentration: "edp",
         climate: "frio",
         occasions: "noche halloween",
         notesKey: "oud",
@@ -2037,6 +2103,7 @@
         id: 15,
         name: "Lattafa Yara Tous Amarillo (100ml)",
         category: "mujer arabes",
+        concentration: "edp",
         climate: "calor",
         occasions: "diario fiesta verano",
         notesKey: "mango vainilla",
@@ -2057,6 +2124,7 @@
         id: 11,
         name: "Cotización de Fragancia Exclusiva",
         category: "custom",
+        concentration: "all",
         climate: "all",
         occasions: "all",
         notesKey: "",
@@ -2089,6 +2157,7 @@
     const grid = document.getElementById('productsGrid');
     const searchInput = document.getElementById('searchInput');
     const categoryBtns = document.querySelectorAll('#categoryTabs .filter-btn');
+    const concentrationBtns = document.querySelectorAll('#concentrationTabs .filter-btn');
     const occasionBtns = document.querySelectorAll('#occasionTabs .filter-btn');
     const climateBtns = document.querySelectorAll('#climateTabs .filter-btn');
     const noteBtns = document.querySelectorAll('#notesFilterWrap .note-tag-btn');
@@ -2127,6 +2196,15 @@
     const detailBody = document.getElementById('detailBody');
     const detailFooter = document.getElementById('detailFooter');
 
+    // Modal Dúo
+    const duoModal = document.getElementById('duoModal');
+    const btnCloseDuo = document.getElementById('btnCloseDuo');
+    const duoSelect1 = document.getElementById('duoSelect1');
+    const duoSelect2 = document.getElementById('duoSelect2');
+    const duoPrice1 = document.getElementById('duoPrice1');
+    const duoPrice2 = document.getElementById('duoPrice2');
+    const duoFinalPrice = document.getElementById('duoFinalPrice');
+
     // Modal Tips
     const tipsModal = document.getElementById('tipsModal');
     const btnCloseTips = document.getElementById('btnCloseTips');
@@ -2162,6 +2240,7 @@
     const quoteBudget = document.getElementById('quoteBudget');
 
     let categoriaActual = 'all';
+    let concentracionActual = 'all';
     let ocasionActual = 'all';
     let climaActual = 'all';
     let notaActual = 'all';
@@ -2214,6 +2293,7 @@
         }
 
         const coincideCat = categoriaActual === 'all' || p.category.includes(categoriaActual);
+        const coincideConc = concentracionActual === 'all' || p.concentration === concentracionActual;
         const coincideOcc = ocasionActual === 'all' || (p.occasions && p.occasions.includes(ocasionActual));
         const coincideClim = climaActual === 'all' || (p.climate && (p.climate === climaActual || p.climate === 'versatil'));
         const coincideNota = notaActual === 'all' || (p.notesKey && p.notesKey.includes(notaActual));
@@ -2221,7 +2301,7 @@
                               (p.salida && p.salida.toLowerCase().includes(filtroTexto.toLowerCase())) ||
                               (p.fondo && p.fondo.toLowerCase().includes(filtroTexto.toLowerCase())) ||
                               p.desc.toLowerCase().includes(filtroTexto.toLowerCase());
-        return coincideCat && coincideOcc && coincideClim && coincideNota && coincideTexto;
+        return coincideCat && coincideConc && coincideOcc && coincideClim && coincideNota && coincideTexto;
       });
 
       if (filtrados.length === 0) {
@@ -2379,6 +2459,60 @@
       tipsModal.classList.add('active');
     }
     btnCloseTips.addEventListener('click', () => tipsModal.classList.remove('active'));
+
+    // Constructor de Dúo
+    function abrirModalDuo() {
+      const opciones = PRODUCTOS.filter(p => p.id !== 11);
+      duoSelect1.innerHTML = '';
+      duoSelect2.innerHTML = '';
+
+      opciones.forEach((p, index) => {
+        const opt1 = document.createElement('option');
+        opt1.value = p.id;
+        opt1.textContent = `${p.name} ($${p.priceRegular})`;
+        duoSelect1.appendChild(opt1);
+
+        const opt2 = document.createElement('option');
+        opt2.value = p.id;
+        opt2.textContent = `${p.name} ($${p.priceRegular})`;
+        if (index === 1) opt2.selected = true;
+        duoSelect2.appendChild(opt2);
+      });
+
+      actualizarCalculoDuo();
+      duoModal.classList.add('active');
+    }
+
+    function actualizarCalculoDuo() {
+      const id1 = parseInt(duoSelect1.value);
+      const id2 = parseInt(duoSelect2.value);
+      const p1 = PRODUCTOS.find(p => p.id === id1);
+      const p2 = PRODUCTOS.find(p => p.id === id2);
+
+      if (!p1 || !p2) return;
+
+      duoPrice1.textContent = `$${p1.priceRegular.toFixed(2)}`;
+      duoPrice2.textContent = `$${p2.priceRegular.toFixed(2)}`;
+
+      const subtotal = p1.priceRegular + p2.priceRegular;
+      const totalDescuento = subtotal * 0.95; // 5% de descuento
+
+      duoFinalPrice.textContent = `$${totalDescuento.toFixed(2)} USD (Ahorras $${(subtotal * 0.05).toFixed(2)})`;
+    }
+
+    duoSelect1.addEventListener('change', actualizarCalculoDuo);
+    duoSelect2.addEventListener('change', actualizarCalculoDuo);
+    btnCloseDuo.addEventListener('click', () => duoModal.classList.remove('active'));
+
+    function agregarDuoAlCarrito() {
+      const id1 = parseInt(duoSelect1.value);
+      const id2 = parseInt(duoSelect2.value);
+      agregarAlCarritoConVariante(id1, 'regular');
+      agregarAlCarritoConVariante(id2, 'regular');
+      duoModal.classList.remove('active');
+      abrirModal();
+      mostrarToast("¡Dúo agregado con beneficio!");
+    }
 
     // Comparador Versus
     window.toggleComparar = function(id) {
@@ -2903,6 +3037,15 @@
       });
     });
 
+    concentrationBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        concentrationBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        concentracionActual = btn.getAttribute('data-conc');
+        renderizar(searchInput.value);
+      });
+    });
+
     climateBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         climateBtns.forEach(b => b.classList.remove('active'));
@@ -2938,7 +3081,7 @@
     });
 
     // Cerrar modales con fondo
-    [cartModal, detailModal, quizModal, rouletteModal, quoteModal, compareModal, tipsModal].forEach(modal => {
+    [cartModal, detailModal, quizModal, rouletteModal, quoteModal, compareModal, tipsModal, duoModal].forEach(modal => {
       modal.addEventListener('click', (e) => {
         if (e.target === modal) modal.classList.remove('active');
       });
